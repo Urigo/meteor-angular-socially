@@ -6,7 +6,7 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
     $scope.sort = { name: 1 };
     $scope.orderProperty = '1';
 
-    $meteor.subscribe('users');
+    $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
     
     $scope.parties = $meteor.collection(function() {
       return Parties.find({}, {
@@ -54,5 +54,16 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
             return "me";
 
       return owner;
+    };
+
+    $scope.rsvp = function(partyId, rsvp){
+      $meteor.call('rsvp', partyId, rsvp).then(
+        function(data){
+          console.log('success responding', data);
+        },
+        function(err){
+          console.log('failed', err);
+        }
+      );
     };
 }]);
