@@ -15,3 +15,10 @@ Here you will see and change the details of the party:
     Everyone are already invited.
   </li>
 </ul>
+
+<div class="angular-google-map-container">
+  <ui-gmap-google-map center="map.center" events="map.events" zoom="map.zoom">
+    <ui-gmap-marker coords="party.location" options="map.marker.options" events="map.marker.events" idkey="party._id">
+    </ui-gmap-marker>
+  </ui-gmap-google-map>
+</div>

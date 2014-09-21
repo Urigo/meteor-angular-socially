@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope',
-  function($scope, $meteor, $rootScope){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state',
+  function($scope, $meteor, $rootScope, $state){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -21,6 +21,25 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
         sort: $scope.getReactively('sort')
       }, $scope.getReactively('search')).then(function() {
         $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
+
+        $scope.parties.forEach( function (party) {
+          party.onClicked = function () {
+            onMarkerClicked(party);
+          };
+        });
+
+        $scope.map = {
+          center: {
+            latitude: 45,
+            longitude: -73
+          },
+          zoom: 8
+        };
+
+        var onMarkerClicked = function(marker){
+          $state.go('partyDetails', {partyId: marker._id});
+        }
+
       });
     });
 
