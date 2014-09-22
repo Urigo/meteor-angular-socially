@@ -31,7 +31,6 @@ minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
 mongo@1.0.5
-mquandalle:bower@0.1.11
 observe-sequence@1.0.2
 ordered-dict@1.0.0
 random@1.0.0
@@ -47,7 +46,6 @@ templating@1.0.6
 tracker@1.0.2
 ui@1.0.2
 underscore@1.0.0
-urigo:ngmeteor@0.3.0
 url@1.0.0
 webapp-hashing@1.0.0
 webapp@1.1.1
