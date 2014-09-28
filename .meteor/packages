@@ -7,4 +7,5 @@ meteor-platform
 autopublish
 insecure
 urigo:angular
+urigo:angular-ui-router
 
