@@ -17,6 +17,10 @@ if (Meteor.isClient) {
         $scope.parties.splice( $scope.parties.indexOf(party), 1 );
       };
 
+      $scope.remove = function(party){
+        $scope.parties.splice( $scope.parties.indexOf(party), 1 );
+      };
+
     }]);
 }
 
