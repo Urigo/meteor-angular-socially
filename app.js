@@ -1,3 +1,5 @@
+Parties = new Mongo.Collection("parties");
+
 if (Meteor.isClient) {
 
   angular.module('socially',['angular-meteor']);
@@ -6,10 +8,18 @@ if (Meteor.isClient) {
     angular.bootstrap(document, ['socially']);
   });
 
-  angular.module("socially").controller("PartiesListCtrl", ['$scope',
-    function($scope){
+  angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection',
+    function($scope, $collection){
 
-      $scope.parties = [
+      $collection(Parties).bind($scope, 'parties', true, true);
+
+    }]);
+}
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    if (Parties.find().count() === 0) {
+      var parties = [
         {'name': 'Dubstep-Free Zone',
           'description': 'Fast just got faster with Nexus S.'},
         {'name': 'All dubstep all the time',
@@ -17,6 +27,8 @@ if (Meteor.isClient) {
         {'name': 'Savage lounging',
           'description': 'Leisure suit required. And only fiercest manners.'}
       ];
-
-    }]);
+      for (var i = 0; i < parties.length; i++)
+        Parties.insert({name: parties[i].name, description: parties[i].description});
+    }
+  });
 }
