@@ -11,8 +11,7 @@ if (Meteor.isClient) {
   angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection',
     function($scope, $collection){
 
-      Meteor.subscribe("parties");
-      $collection(Parties).bind($scope, 'parties', true);
+      $collection(Parties).bind($scope, 'parties', true, true);
 
     }]);
 }
