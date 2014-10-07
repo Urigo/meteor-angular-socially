@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
 
-  angular.module('socially',['ngMeteor']);
+  angular.module('socially',['angular-meteor']);
 
   Meteor.startup(function () {
     angular.bootstrap(document, ['socially']);
