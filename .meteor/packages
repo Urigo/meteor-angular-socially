@@ -5,6 +5,10 @@
 
 meteor-platform
 autopublish
-insecure
 urigo:angular
 mquandalle:bower
+accounts-password
+accounts-ui
+accounts-facebook
+accounts-twitter
+
