@@ -3,4 +3,6 @@ angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$statePara
 
     $collection(Parties).bindOne($scope, 'party', $stateParams.partyId, true, true);
 
-}]);
+    $collection(Meteor.users).bind($scope, 'users', false, true);
+
+  }]);
