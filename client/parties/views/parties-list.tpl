@@ -5,12 +5,22 @@
   <input ng-model="newParty.description">
   <label>Public</label>
   <input type="checkbox" ng-model="newParty.public">
-  <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty)">Add</button>
+  <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</button>
 </form>
 <ul>
-  <li ng-repeat="party in parties">
+  Parties:
+  <div>
+    Search
+    <input type="search" ng-model="search">
+    <select ng-model="orderProperty">
+      <option value="name">Ascending</option>
+      <option value="-name">Descending</option>
+    </select>
+  </div>
+  <li ng-repeat="party in parties | filter:search | orderBy:orderProperty">
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
     <button ng-click="remove(party)">X</button>
+    <p><small>Posted by {{ creator(party) | displayName }}</small></p>
   </li>
 </ul>
