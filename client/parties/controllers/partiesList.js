@@ -19,7 +19,7 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorColl
         return;
       var owner = $scope.getUserById(party.owner);
       if (!owner)
-        return "noboby";
+        return "nobody";
 
       if ($rootScope.currentUser)
         if ($rootScope.currentUser._id)
