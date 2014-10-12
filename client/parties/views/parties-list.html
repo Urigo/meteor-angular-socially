@@ -9,11 +9,18 @@
     <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty)">Add</button>
   </form>
   <ul>
+    Parties:
     <li ng-repeat="party in parties">
       <a href="/parties/[[party._id]]">[[party.name]]</a>
 
       <p>[[party.description]]</p>
       <button ng-click="remove(party)">X</button>
+    </li>
+  </ul>
+  <ul>
+    Users:
+    <li ng-repeat="user in users">
+      <div>[[ user.emails[0].address ]]</div>
     </li>
   </ul>
 </template>
