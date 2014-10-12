@@ -9,3 +9,6 @@ urigo:angular
 urigo:angular-ui-router
 accounts-password
 accounts-ui
+accounts-facebook
+accounts-twitter
+
