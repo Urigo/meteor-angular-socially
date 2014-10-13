@@ -7,4 +7,6 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
       $scope.parties.splice( $scope.parties.indexOf(party), 1 );
     };
 
-}]);
+    $scope.orderProperty = 'name';
+
+  }]);
