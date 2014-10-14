@@ -9,7 +9,7 @@
   <ul>
     Users:
     <li ng-repeat="user in users | uninvited:party">
-      <div>[[ user.emails[0].address ]]</div>
+      <div>[[ user | displayName ]]</div>
     </li>
   </ul>
 </template>
