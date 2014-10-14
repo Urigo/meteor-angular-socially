@@ -9,4 +9,15 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
 
     $scope.orderProperty = 'name';
 
+    $scope.creator = function(party){
+      var owner = Meteor.users.findOne(party.owner);
+      if (!owner)
+        return "noboby";
+
+      if ($scope.user)
+        if ($scope.user._id)
+          if (owner._id === $scope.user._id)
+            return "me";
+      return owner;
+    };
   }]);
