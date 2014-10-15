@@ -7,7 +7,7 @@
   <input type="checkbox" ng-model="party.public">
 
   <ul>
-    Users:
+    Users to invite:
     <li ng-repeat="user in users | uninvited:party">
       <div>[[ user | displayName ]]</div>
     </li>
