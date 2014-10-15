@@ -8,6 +8,10 @@ Meteor.publish("parties", function () {
         {$and:[
           {owner: this.userId},
           {owner: {$exists: true}}
+        ]},
+        {$and:[
+          {invited: this.userId},
+          {invited: {$exists: true}}
         ]}
       ]});
 });
