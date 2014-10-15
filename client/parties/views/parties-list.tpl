@@ -18,18 +18,19 @@
       <div>
         <input type="search" ng-model="search" placeholder="Search">
         <select ng-model="orderProperty">
-          <option value="name">Ascending</option>
-          <option value="-name">Descending</option>
+          <option value="1">Ascending</option>
+          <option value="-1">Descending</option>
         </select>
       </div>
       <div class="angular-google-map-container">
         <ui-gmap-google-map center="map.center" zoom="map.zoom">
-          <ui-gmap-markers models="filteredParties" coords="'location'" click="'onClicked'"
+          <ui-gmap-markers models="parties" coords="'location'" click="'onClicked'"
                            fit="true" idkey="'_id'" doRebuildAll="true">
           </ui-gmap-markers>
         </ui-gmap-google-map>
       </div>
-      <li ng-repeat="party in parties | filter:search | orderBy:orderProperty" class="party">
+      <li dir-paginate="party in parties | itemsPerPage: perPage | filter:search"
+          class="party" total-items="partiesCount.count">
         <h1><a href="/parties/{{party._id}}">{{party.name}}</a></h1>
 
         <p>{{party.description}}</p>
@@ -70,5 +71,6 @@
         <p><small>Posted by {{ creator(party) | displayName }}</small></p>
       </li>
     </ul>
+    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
   </div>
 </div>

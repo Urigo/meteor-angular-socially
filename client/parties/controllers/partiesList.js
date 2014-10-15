@@ -1,39 +1,59 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorCollection', '$rootScope', '$meteorMethods', '$filter', '$state', '$meteorSubscribe',
-  function($scope, $meteorCollection, $rootScope, $meteorMethods, $filter, $state, $meteorSubscribe){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorCollection', '$rootScope', '$meteorMethods', '$filter', '$state', '$meteorSubscribe', '$meteorUtils',
+  function($scope, $meteorCollection, $rootScope, $meteorMethods, $filter, $state, $meteorSubscribe, $meteorUtils){
 
-    $scope.parties = $meteorCollection(Parties).subscribe('parties');
-    $meteorSubscribe.subscribe('parties').then(function(){
-      $scope.parties.forEach( function (party) {
-        party.onClicked = function () {
-          onMarkerClicked(party);
-        };
-      });
+    $scope.page = 1;
+    $scope.perPage = 3;
+    $scope.sort = { name: 1 };
+    $scope.orderProperty = '1';
 
-      $scope.filteredParties = $scope.parties;
-
-      $scope.$watch("search", function(search){
-        $scope.filteredParties = $filter("filter")($scope.parties, search);
-      });
-
-      $scope.map = {
-        center: {
-          latitude: 45,
-          longitude: -73
-        },
-        zoom: 8
-      };
-
-      var onMarkerClicked = function(marker){
-        $state.go('partyDetails', {partyId: marker._id});
-      }      
-    });
     $scope.users = $meteorCollection(Meteor.users, false).subscribe('users');
+
+    $scope.parties = $meteorCollection(function() {
+      return Parties.find({}, {
+        sort : $scope.getReactively('sort')
+      });
+    });
+
+    $meteorUtils.autorun($scope, function() {
+      $meteorSubscribe.subscribe('parties', {
+        limit: parseInt($scope.getReactively('perPage')),
+        skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
+        sort: $scope.getReactively('sort')
+      }, $scope.getReactively('search')).then(function() {
+        $scope.parties.forEach( function (party) {
+          party.onClicked = function () {
+            onMarkerClicked(party);
+          };
+        });
+
+        $scope.map = {
+          center: {
+            latitude: 45,
+            longitude: -73
+          },
+          zoom: 8
+        };
+
+        var onMarkerClicked = function(marker){
+          $state.go('partyDetails', {partyId: marker._id});
+        };
+
+        $scope.partiesCount = $meteorCollection(Counts)[0];
+      });
+    });
+
+    $scope.pageChanged = function(newPage) {
+      $scope.page = newPage;
+    };
+
+    $scope.$watch('orderProperty', function(){
+      if ($scope.orderProperty)
+        $scope.sort = {name: parseInt($scope.orderProperty)};
+    });
 
     $scope.remove = function(party){
       $scope.parties.splice( $scope.parties.indexOf(party), 1 );
     };
-
-    $scope.orderProperty = 'name';
 
     $scope.getUserById = function(userId){
       return Meteor.users.findOne(userId);
