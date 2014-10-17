@@ -19,11 +19,11 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
         return;
       var owner = $scope.getUserById(party.owner);
       if (!owner)
-        return "noboby";
+        return "nobody";
 
-      if ($scope.user)
-        if ($scope.user._id)
-          if (owner._id === $scope.user._id)
+      if ($rootScope.currentUser)
+        if ($rootScope.currentUser._id)
+          if (owner._id === $rootScope.currentUser._id)
             return "me";
       return owner;
     };
