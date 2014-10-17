@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods',
-  function($scope, $collection, $methods){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope',
+  function($scope, $collection, $methods, $rootScope){
 
     $collection(Parties).bind($scope, 'parties', true, true);
     $collection(Meteor.users).bind($scope, 'users', false, true);
@@ -19,11 +19,11 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
         return;
       var owner = $scope.getUserById(party.owner);
       if (!owner)
-        return "noboby";
+        return "nobody";
 
-      if ($scope.user)
-        if ($scope.user._id)
-          if (owner._id === $scope.user._id)
+      if ($rootScope.currentUser)
+        if ($rootScope.currentUser._id)
+          if (owner._id === $rootScope.currentUser._id)
             return "me";
       return owner;
     };
