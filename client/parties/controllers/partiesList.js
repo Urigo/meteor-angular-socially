@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods',
-  function($scope, $collection, $methods){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope',
+  function($scope, $collection, $methods, $rootScope){
 
     $collection(Parties).bind($scope, 'parties', true, true);
     $collection(Meteor.users).bind($scope, 'users', false, true);
