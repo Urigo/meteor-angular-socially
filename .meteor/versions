@@ -42,6 +42,8 @@ minimongo@1.0.5
 mobile-status-bar@1.0.1
 mongo@1.0.8
 mquandalle:bower@0.1.11
+nemo64:bootstrap-data@3.2.0-rc2
+nemo64:bootstrap@3.2.3
 npm-bcrypt@0.7.7
 oauth1@1.1.2
 oauth2@1.1.1
