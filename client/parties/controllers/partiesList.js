@@ -1,7 +1,32 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope',
-  function($scope, $collection, $methods, $rootScope){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope', '$filter', '$state',
+  function($scope, $collection, $methods, $rootScope, $filter, $state){
 
-    $collection(Parties).bind($scope, 'parties', true, true);
+    $collection(Parties).bind($scope, 'parties', true, true).then(
+      function(){
+        $scope.parties.forEach( function (party) {
+          party.onClicked = function () {
+            onMarkerClicked(party);
+          };
+        });
+
+        $scope.filteredParties = $scope.parties;
+
+        $scope.$watch("search", function(search){
+          $scope.filteredParties = $filter("filter")($scope.parties, search);
+        });
+
+        $scope.map = {
+          center: {
+            latitude: 45,
+            longitude: -73
+          },
+          zoom: 8
+        };
+
+        var onMarkerClicked = function(marker){
+          $state.go('partyDetails', {partyId: marker._id});
+        }
+    });
     $collection(Meteor.users).bind($scope, 'users', false, true);
 
     $scope.remove = function(party){
