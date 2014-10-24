@@ -1,7 +1,32 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorCollection', '$rootScope', '$meteorMethods',
-  function($scope, $meteorCollection, $rootScope, $meteorMethods){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorCollection', '$rootScope', '$meteorMethods', '$filter', '$state', '$meteorSubscribe',
+  function($scope, $meteorCollection, $rootScope, $meteorMethods, $filter, $state, $meteorSubscribe){
 
     $scope.parties = $meteorCollection(Parties).subscribe('parties');
+    $meteorSubscribe.subscribe('parties').then(function(){
+      $scope.parties.forEach( function (party) {
+        party.onClicked = function () {
+          onMarkerClicked(party);
+        };
+      });
+
+      $scope.filteredParties = $scope.parties;
+
+      $scope.$watch("search", function(search){
+        $scope.filteredParties = $filter("filter")($scope.parties, search);
+      });
+
+      $scope.map = {
+        center: {
+          latitude: 45,
+          longitude: -73
+        },
+        zoom: 8
+      };
+
+      var onMarkerClicked = function(marker){
+        $state.go('partyDetails', {partyId: marker._id});
+      }      
+    });
     $scope.users = $meteorCollection(Meteor.users, false).subscribe('users');
 
     $scope.remove = function(party){

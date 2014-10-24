@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row parties-list">
   <div class="col-md-6 col-md-offset-3">
     <form ng-show="$root.currentUser">
       <h2>Create a new party:</h2>
@@ -21,6 +21,13 @@
           <option value="name">Ascending</option>
           <option value="-name">Descending</option>
         </select>
+      </div>
+      <div class="angular-google-map-container">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom">
+          <ui-gmap-markers models="filteredParties" coords="'location'" click="'onClicked'"
+                           fit="true" idkey="'_id'" doRebuildAll="true">
+          </ui-gmap-markers>
+        </ui-gmap-google-map>
       </div>
       <li ng-repeat="party in parties | filter:search | orderBy:orderProperty" class="party">
         <h1><a href="/parties/{{party._id}}">{{party.name}}</a></h1>

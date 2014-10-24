@@ -40,8 +40,9 @@ minimongo@1.0.6
 mobile-status-bar@1.0.2
 mongo@1.0.11
 mquandalle:bower@0.1.11
-nemo64:bootstrap-data@3.2.0-rc2
-nemo64:bootstrap@3.2.3
+mvrx:bluebird@0.0.1
+nemo64:bootstrap@3.3.1_1
+nemo64:bootstrap-data@3.3.1_1
 npm-bcrypt@0.7.7
 oauth@1.1.3
 oauth1@1.1.3
@@ -60,12 +61,14 @@ sha@1.0.2
 spacebars@1.0.4
 spacebars-compiler@1.0.4
 srp@1.0.2
+stevezhu:lodash@1.0.2
 templating@1.0.10
 tracker@1.0.4
 twitter@1.1.3
 ui@1.0.5
 underscore@1.0.2
 urigo:angular@0.6.0
+urigo:angular-google-maps@0.0.6
 url@1.0.3
 webapp@1.1.5
 webapp-hashing@1.0.2
