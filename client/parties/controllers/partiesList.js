@@ -1,7 +1,7 @@
 angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope', '$filter', '$state',
   function($scope, $collection, $methods, $rootScope, $filter, $state){
 
-    $collection(Parties).bind($scope, 'parties', true, true).then(
+    $collection(Parties).bind($scope, 'parties', true, true, true).then(
       function(){
         $scope.parties.forEach( function (party) {
           party.onClicked = function () {
@@ -28,6 +28,14 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
         }
     });
     $collection(Meteor.users).bind($scope, 'users', false, true);
+
+    $scope.page = 1;
+    $scope.perPage = 3;
+    $collection(Counts).bindOne($scope, 'partiesCount', 'numberOfParties');
+
+    $scope.pageChanged = function(newPage) {
+      $scope.page = newPage;
+    };
 
     $scope.remove = function(party){
       $scope.parties.splice( $scope.parties.indexOf(party), 1 );
