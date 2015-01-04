@@ -1,4 +1,4 @@
-<template name="party-details.html">
+
   Here you will see and change the details of the party:
 
   <input ng-model="party.name" ng-disabled="party.owner != $root.currentUser._id">
@@ -9,7 +9,7 @@
   <ul ng-show="canInvite()">
     Users to invite:
     <li ng-repeat="user in users | uninvited:party">
-      <div>[[ user | displayName ]]</div>
+      <div>{{ user | displayName }}</div>
       <button ng-click="invite(user)">Invite</button>
     </li>
     <li ng-if="(users | uninvited:party).length <= 0">
@@ -25,4 +25,3 @@
       </ui-gmap-google-map>
     </div>
   </div>
-</template>

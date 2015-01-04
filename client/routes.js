@@ -6,12 +6,12 @@ angular.module("socially").config(['$urlRouterProvider', '$stateProvider', '$loc
     $stateProvider
       .state('parties', {
         url: '/parties',
-        template: UiRouter.template('parties-list.html'),
+        templateUrl: 'client/parties/views/parties-list.tpl',
         controller: 'PartiesListCtrl'
       })
       .state('partyDetails', {
         url: '/parties/:partyId',
-        template: UiRouter.template('party-details.html'),
+        templateUrl: 'client/parties/views/party-details.tpl',
         controller: 'PartyDetailsCtrl'
       });
 
