@@ -1,8 +1,17 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope', '$filter', '$state',
-  function($scope, $collection, $methods, $rootScope, $filter, $state){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope', '$filter', '$state', '$subscribe',
+  function($scope, $collection, $methods, $rootScope, $filter, $state, $subscribe){
 
-    $collection(Parties).bind($scope, 'parties', true, true, true).then(
-      function(){
+    $scope.page = 1;
+    $scope.perPage = 3;
+    $scope.sort = { name: 1 };
+    $scope.orderProperty = '1';
+
+    $collection(Meteor.users).bind($scope, 'users', false, true).then(function(){
+
+      $scope.partiesSubscribe().then(function(){
+
+        $collection(Parties).bind($scope, 'parties', true, false, true);
+
         $scope.parties.forEach( function (party) {
           party.onClicked = function () {
             onMarkerClicked(party);
@@ -26,22 +35,35 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
         var onMarkerClicked = function(marker){
           $state.go('partyDetails', {partyId: marker._id});
         }
-    });
-    $collection(Meteor.users).bind($scope, 'users', false, true);
+      });
 
-    $scope.page = 1;
-    $scope.perPage = 3;
-    $collection(Counts).bindOne($scope, 'partiesCount', 'numberOfParties');
+      $collection(Counts).bindOne($scope, 'partiesCount', 'numberOfParties');
+    });
+
+    $scope.partiesSubscribe = function(){
+      return $subscribe.subscribe('parties', {
+        limit: parseInt($scope.perPage),
+        skip: (parseInt($scope.page) - 1) * parseInt($scope.perPage),
+        sort: $scope.sort
+      });
+    };
 
     $scope.pageChanged = function(newPage) {
       $scope.page = newPage;
+
+      $scope.partiesSubscribe();
     };
+
+    $scope.$watch('orderProperty', function(){
+      if ($scope.orderProperty)
+        $scope.sort = {name: parseInt($scope.orderProperty)};
+
+      $scope.partiesSubscribe();
+    });
 
     $scope.remove = function(party){
       $scope.parties.splice( $scope.parties.indexOf(party), 1 );
     };
-
-    $scope.orderProperty = 'name';
 
     $scope.getUserById = function(userId){
       return Meteor.users.findOne(userId);

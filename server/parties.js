@@ -1,4 +1,4 @@
-Meteor.publish("parties", function () {
+Meteor.publish("parties", function (options) {
   Counts.publish(this, 'numberOfParties', Parties.find({
     $or:[
       {$and:[
@@ -29,5 +29,5 @@ Meteor.publish("parties", function () {
           {invited: this.userId},
           {invited: {$exists: true}}
         ]}
-      ]});
+      ]}, options);
 });
