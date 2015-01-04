@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection', '$methods', '$rootScope', '$filter', '$state', '$subscribe', '$meteorCollection', '$meteorUtils',
-  function($scope, $collection, $methods, $rootScope, $filter, $state, $subscribe, $meteorCollection, $meteorUtils){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$methods', '$rootScope', '$filter', '$state', '$subscribe', '$meteorCollection', '$meteorUtils',
+  function($scope, $methods, $rootScope, $filter, $state, $subscribe, $meteorCollection, $meteorUtils){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -8,7 +8,11 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$collection
 
     $scope.users = $meteorCollection(Meteor.users, false).subscribe('users');
 
-    $scope.parties = $meteorCollection(Parties);
+    $scope.parties = $meteorCollection(function() {
+      return Parties.find({}, {
+        sort : $scope.getReactivly('sort')
+      });
+    });
 
     $meteorUtils.autorun($scope, function() {
       $subscribe.subscribe('parties', {
