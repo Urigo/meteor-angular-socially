@@ -1,9 +1,14 @@
-angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$collection', '$methods',
-  function($scope, $stateParams, $collection, $methods){
+angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteorCollection', '$methods', '$subscribe',
+  function($scope, $stateParams, $meteorCollection, $methods, $subscribe){
+    $scope.users = $meteorCollection(Meteor.users).subscribe('users');
 
-    $collection(Parties).bindOne($scope, 'party', $stateParams.partyId, true, true);
-
-    $collection(Meteor.users).bind($scope, 'users', false, true);
+    $subscribe.subscribe('parties').then(function() {
+      $scope.party = $meteorCollection(function() {
+        return Parties.find({
+          _id : $stateParams.partyId
+        });
+      })[0];
+    });
 
     $scope.invite = function(user){
       $methods.call('invite', $scope.party._id, user._id).then(
