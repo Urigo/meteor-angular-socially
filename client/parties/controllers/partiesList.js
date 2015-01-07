@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$methods', '$rootScope', '$filter', '$state', '$subscribe', '$meteorCollection', '$meteorUtils',
-  function($scope, $methods, $rootScope, $filter, $state, $subscribe, $meteorCollection, $meteorUtils){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorMethods', '$rootScope', '$filter', '$state', '$meteorSubscribe', '$meteorCollection', '$meteorUtils',
+  function($scope, $meteorMethods, $rootScope, $filter, $state, $meteorSubscribe, $meteorCollection, $meteorUtils){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -15,7 +15,7 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$methods', 
     });
 
     $meteorUtils.autorun($scope, function() {
-      $subscribe.subscribe('parties', {
+      $meteorSubscribe.subscribe('parties', {
         limit: parseInt($scope.getReactivly('perPage')),
         skip: (parseInt($scope.getReactivly('page')) - 1) * parseInt($scope.getReactivly('perPage')),
         sort: $scope.getReactivly('sort')
@@ -88,7 +88,7 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$methods', 
     };
 
     $scope.rsvp = function(partyId, rsvp){
-      $methods.call('rsvp', partyId, rsvp).then(
+      $meteorMethods.call('rsvp', partyId, rsvp).then(
         function(data){
           console.log('success responding', data);
         },

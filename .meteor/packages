@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-urigo:angular
 urigo:angular-ui-router
 accounts-password
 accounts-ui
@@ -16,4 +15,5 @@ nemo64:bootstrap
 urigo:angular-google-maps
 tmeasday:publish-counts
 urigo:angular-utils-pagination
+urigo:angular@0.6.0-alpha
 
