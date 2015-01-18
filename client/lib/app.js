@@ -4,7 +4,3 @@ angular.module('socially',[
   'google-maps'.ns(),
   'angularUtils.directives.dirPagination'
 ]);
-
-Meteor.startup(function () {
-  angular.bootstrap(document, ['socially']);
-});

@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorMethods', '$rootScope', '$filter', '$state', '$meteorSubscribe', '$meteorCollection', '$meteorUtils',
-  function($scope, $meteorMethods, $rootScope, $filter, $state, $meteorSubscribe, $meteorCollection, $meteorUtils){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorCollection', '$rootScope', '$meteorMethods', '$filter', '$state', '$meteorSubscribe', '$meteorUtils',
+  function($scope, $meteorCollection, $rootScope, $meteorMethods, $filter, $state, $meteorSubscribe, $meteorUtils){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -10,15 +10,15 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorMeth
 
     $scope.parties = $meteorCollection(function() {
       return Parties.find({}, {
-        sort : $scope.getReactivly('sort')
+        sort : $scope.getReactively('sort')
       });
     });
 
     $meteorUtils.autorun($scope, function() {
       $meteorSubscribe.subscribe('parties', {
-        limit: parseInt($scope.getReactivly('perPage')),
-        skip: (parseInt($scope.getReactivly('page')) - 1) * parseInt($scope.getReactivly('perPage')),
-        sort: $scope.getReactivly('sort')
+        limit: parseInt($scope.getReactively('perPage')),
+        skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
+        sort: $scope.getReactively('sort')
       }).then(function() {
         $scope.parties.forEach( function (party) {
           party.onClicked = function () {
@@ -97,4 +97,4 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorMeth
         }
       );
     };
-  }]);
+}]);

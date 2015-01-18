@@ -1,17 +1,12 @@
-angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteorCollection', '$methods', '$subscribe',
-  function($scope, $stateParams, $meteorCollection, $methods, $subscribe){
-    $scope.users = $meteorCollection(Meteor.users).subscribe('users');
+angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteorObject', '$meteorCollection', '$meteorMethods',
+  function($scope, $stateParams, $meteorObject, $meteorCollection, $meteorMethods){
 
-    $subscribe.subscribe('parties').then(function() {
-      $scope.party = $meteorCollection(function() {
-        return Parties.find({
-          _id : $stateParams.partyId
-        });
-      })[0];
-    });
+    $scope.party = $meteorObject(Parties, $stateParams.partyId).subscribe('parties');
+
+    $scope.users = $meteorCollection(Meteor.users, false).subscribe('users');
 
     $scope.invite = function(user){
-      $methods.call('invite', $scope.party._id, user._id).then(
+      $meteorMethods.call('invite', $scope.party._id, user._id).then(
         function(data){
           console.log('success inviting', data);
         },
