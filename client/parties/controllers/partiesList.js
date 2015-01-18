@@ -19,17 +19,11 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteorColl
         limit: parseInt($scope.getReactively('perPage')),
         skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
         sort: $scope.getReactively('sort')
-      }).then(function() {
+      }, $scope.getReactively('search')).then(function() {
         $scope.parties.forEach( function (party) {
           party.onClicked = function () {
             onMarkerClicked(party);
           };
-        });
-
-        $scope.filteredParties = $scope.parties;
-
-        $scope.$watch("search", function(search){
-          $scope.filteredParties = $filter("filter")($scope.parties, search);
         });
 
         $scope.map = {

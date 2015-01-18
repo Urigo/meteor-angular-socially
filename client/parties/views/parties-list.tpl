@@ -24,7 +24,7 @@
       </div>
       <div class="angular-google-map-container">
         <ui-gmap-google-map center="map.center" zoom="map.zoom">
-          <ui-gmap-markers models="filteredParties" coords="'location'" click="'onClicked'"
+          <ui-gmap-markers models="parties" coords="'location'" click="'onClicked'"
                            fit="true" idkey="'_id'" doRebuildAll="true">
           </ui-gmap-markers>
         </ui-gmap-google-map>
