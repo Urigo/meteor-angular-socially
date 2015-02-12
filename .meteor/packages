@@ -10,3 +10,5 @@ accounts-password
 accounts-ui
 accounts-facebook
 accounts-twitter
+urigo:angular-utils-pagination
+tmeasday:publish-counts
