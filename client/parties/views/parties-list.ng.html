@@ -1,41 +1,68 @@
-<form ng-show="$root.currentUser">
-  <h2>Create a new party:</h2>
-  <label>Name</label>
-  <input ng-model="newParty.name">
-  <label>Description</label>
-  <input ng-model="newParty.description">
-  <label>Public</label>
-  <input type="checkbox" ng-model="newParty.public">
-  <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</button>
-</form>
-<div ng-hide="$root.currentUser || $root.loggingIn">
-  Log in to create a party!
+<div class="row">
+  <div class="col-sm-12">
+    <div class="alert alert-info" ng-hide="$root.currentUser || $root.loggingIn">
+      Log in to create a party!
+    </div>
+    <form ng-show="$root.currentUser">
+      <h2>Create a new party:</h2>
+      <div class="form-group">
+        <label for="nameInput">Name</label>
+        <input ng-model="newParty.name" id="nameInput" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input ng-model="newParty.description" id="description" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="public">
+          <input type="checkbox" ng-model="newParty.public" id="public"> Public
+        </label>
+      </div>
+      <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';" class="btn">Add</button>
+    </form>
+  </div>
 </div>
-<ul>
-  <h1>Parties:</h1>
-  <div>
-    <input type="search" ng-model="search" placeholder="Search">
-    <select ng-model="orderProperty">
-      <option value="1">Ascending</option>
-      <option value="-1">Descending</option>
-    </select>
+
+<div class="row">
+  <div class="col-sm-12">
+
+    <h1>Parties:</h1>
+    <div class="form-group">
+      <label class="sr-only" for="search">Search</label>
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" ng-model="search" placeholder="Search" id="search" class="form-control">
+      </div>
+      <select ng-model="orderProperty" class="form-control">
+        <option value="1">Ascending</option>
+        <option value="-1">Descending</option>
+      </select>
+    </div>
+    <div class="angular-google-map-container">
+      <ui-gmap-google-map center="map.center" zoom="map.zoom">
+        <ui-gmap-markers models="parties" coords="'location'" click="'onClicked'"
+                         fit="true" idkey="'_id'" doRebuildAll="true">
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
+    </div>
   </div>
-  <div class="angular-google-map-container">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom">
-      <ui-gmap-markers models="parties" coords="'location'" click="'onClicked'"
-                       fit="true" idkey="'_id'" doRebuildAll="true">
-      </ui-gmap-markers>
-    </ui-gmap-google-map>
-  </div>
-  <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count">
-    <a href="/parties/{{party._id}}">{{party.name}}</a>
-    <p>{{party.description}}</p>
-    <button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">X</button>
+</div>
+<ul class="list-group">
+  <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" class="list-group-item">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
+        <p>{{party.description}}</p>
+      </div>
+      <div class="col-sm-4">
+        <a ng-click="remove(party)" class="close" ng-show="$root.currentUser && $root.currentUser._id == party.owner">&times;</a>
+      </div>
+    </div>
 
     <div ng-show="$root.currentUser">
-      <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')">
-      <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')">
-      <input type="button" value="No" ng-click="rsvp(party._id, 'no')">
+      <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')" class="btn btn-primary">
+      <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')" class="btn">
+      <input type="button" value="No" ng-click="rsvp(party._id, 'no')" class="btn">
     </div>
     <div ng-hide="$root.currentUser">
       <i>Sign in to RSVP for this party.</i>
