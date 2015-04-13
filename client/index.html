@@ -1,14 +1,20 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
 </head>
 <body>
 
 <div>
-  <meteor-include src="loginButtons"></meteor-include>
-  <h1>
-    <a href="/parties">Home</a>
-  </h1>
-  <div ui-view></div>
+  <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/parties">Parties</a>
+      </div>
+      <div class="navbar-right navbar-text">
+        <meteor-include src="loginButtons"></meteor-include>
+      </div>
+    </div>
+  </nav>
+  <div ui-view class="container-fluid"></div>
 </div>
-
 </body>
