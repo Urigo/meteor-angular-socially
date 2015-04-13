@@ -1,4 +1,5 @@
-<form>
+<form ng-show="$root.currentUser">
+  <h2>Create a new party:</h2>
   <label>Name</label>
   <input ng-model="newParty.name">
   <label>Description</label>
@@ -7,6 +8,9 @@
   <input type="checkbox" ng-model="newParty.public">
   <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</button>
 </form>
+<div ng-hide="$root.currentUser || $root.loggingIn">
+  Log in to create a party!
+</div>
 <ul>
   <h1>Parties:</h1>
   <div>
@@ -19,13 +23,17 @@
   <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count">
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
-    <button ng-click="remove(party)">X</button>
+    <button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">X</button>
 
-    <div>
+    <div ng-show="$root.currentUser">
       <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')">
       <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')">
       <input type="button" value="No" ng-click="rsvp(party._id, 'no')">
     </div>
+    <div ng-hide="$root.currentUser">
+      <i>Sign in to RSVP for this party.</i>
+    </div>
+
     <div>
       Who is coming:
       Yes - {{ (party.rsvps | filter:{rsvp:'yes'}).length }}
@@ -41,12 +49,15 @@
           {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
       </div>
     </div>
-    <ul>
+    <ul ng-if="!party.public">
       Users who not responded:
       <li ng-repeat="invitedUser in outstandingInvitations(party)">
           {{ invitedUser | displayName }}
       </li>
     </ul>
+    <div ng-if="party.public">
+      Everyone is invited
+    </div>
 
     <p><small>Posted by {{ creator(party) | displayName }}</small></p>
   </li>
