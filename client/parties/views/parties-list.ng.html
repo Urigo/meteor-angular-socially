@@ -5,7 +5,7 @@
   <input ng-model="newParty.description">
   <label>Public</label>
   <input type="checkbox" ng-model="newParty.public">
-  <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty)">Add</button>
+  <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</button>
 </form>
 <ul>
   <h1>Parties:</h1>
@@ -20,6 +20,7 @@
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
     <button ng-click="remove(party)">X</button>
+    <p><small>Posted by {{ creator(party) | displayName }}</small></p>
   </li>
 </ul>
 <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
