@@ -14,5 +14,6 @@ angularutils:pagination
 tmeasday:publish-counts
 email
 angularui:angular-google-maps
-twbs:bootstrap
 less
+planettraining:angular-material
+planettraining:material-design-icons
