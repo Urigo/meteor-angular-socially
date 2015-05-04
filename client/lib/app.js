@@ -6,7 +6,7 @@ angular.module('socially',[
   'ngMaterial'
 ]);
 
-var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
+var configFn = ['$mdIconProvider', '$mdThemingProvider', function ($mdIconProvider, $mdThemingProvider) {
 
   $mdIconProvider
     .iconSet("social", "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-social.svg")
@@ -16,11 +16,16 @@ var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
     .iconSet("toggle", "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-toggle.svg")
     .iconSet("navigation", "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-navigation.svg")
     .iconSet("image", "/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/svg-sprite-image.svg");
+    
+  $mdThemingProvider.theme('default')
+    .primaryPalette('light-blue')
+    .accentPalette('orange')
+    .warnPalette('red');
 
 }];
 
 angular.module('socially')
-  .config(themeIcons);
+  .config(configFn);
 
 function onReady() {
   angular.bootstrap(document, ['socially']);

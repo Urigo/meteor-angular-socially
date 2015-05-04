@@ -13,3 +13,4 @@ Pull request the master branch to add new features or pull request specific step
 Our goal in this tutorial is to add more steps as we go along, to cover as many use cases as possible.
 
 Thanks @MilosStanic for writing step 18 on angular-material
+>>>>>>> upstream/master
