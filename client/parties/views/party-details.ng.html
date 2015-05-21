@@ -11,8 +11,8 @@
     <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text" aria-label="Description">
   </md-input-container>
   <md-checkbox ng-model="party.public" ng-disabled="party.owner != $root.currentUser._id" aria-label="Public">
-      Is public        
-  </md-checkbox>  
+      Is public
+  </md-checkbox>
 
   <div layout="row" layout-align="left">
     <md-button ng-click="save()">Save</md-button>
