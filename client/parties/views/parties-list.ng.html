@@ -1,10 +1,10 @@
 <md-content layout-padding>
-  <div layout="column">      
+  <div layout="column">
       <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" ng-hide="$root.currentUser || $root.loggingIn">
         <span>Log in to create a party!</span>
       </md-whiteframe>
       <form ng-show="$root.currentUser">
-        <h2 class="md-headline">Create a new party:</h2>      
+        <h2 class="md-headline">Create a new party:</h2>
         <md-input-container>
           <label>Name</label>
           <input ng-model="newParty.name" id="nameInput" type="text" aria-label="Name">
@@ -14,21 +14,21 @@
           <input ng-model="newParty.description" id="description" type="text" aria-label="Description">
         </md-input-container>
         <md-checkbox ng-model="newParty.public" id="public" aria-label="Public">
-          Public        
+          Public
         </md-checkbox>
         <md-button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</md-button>
-      </form>  
+      </form>
   </div>
 
   <div layout="column">
     <h2 class="md-headline">Parties:</h2>
     <form layout="row">
-      <md-input-container md-no-float>      
+      <md-input-container md-no-float>
         <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
-        <input type="text" ng-model="search" id="search" placeholder="Search" aria-label="Search">        
+        <input type="text" ng-model="search" id="search" placeholder="Search" aria-label="Search">
       </md-input-container>
       <span flex></span>
-      <md-input-container>        
+      <md-input-container>
         <md-select ng-model="orderProperty" placeholder="Sort Order">
           <md-option value="1">Ascending</md-option>
           <md-option value="-1">Descending</md-option>
@@ -41,7 +41,7 @@
                          fit="true" idkey="'_id'" doRebuildAll="true">
         </ui-gmap-markers>
       </ui-gmap-google-map>
-    </div>  
+    </div>
   </div>
   <div layout="column" layout-padding>
     <div dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" layout="column">
@@ -50,10 +50,10 @@
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
           <p>{{party.description}}</p>
         </div>
-        <span flex></span>        
+        <span flex></span>
         <md-button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">
           <md-icon md-svg-icon="content:ic_clear_24px"></md-icon>
-        </md-button>      
+        </md-button>
       </div>
 
       <div ng-show="$root.currentUser" layout="row">
