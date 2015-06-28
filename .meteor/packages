@@ -4,7 +4,7 @@
 # but you can also edit it by hand.
 
 meteor-platform
-urigo:angular
+urigo:angular@0.9.2-alpha.1
 angularui:angular-ui-router
 accounts-password
 accounts-ui
@@ -17,3 +17,6 @@ angularui:angular-google-maps
 less
 angular:angular-material
 planettraining:material-design-icons
+cfs:standard-packages
+cfs:gridfs
+danialfarid:ng-file-upload

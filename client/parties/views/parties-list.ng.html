@@ -16,7 +16,8 @@
         <md-checkbox ng-model="newParty.public" id="public" aria-label="Public">
           Public
         </md-checkbox>
-        <md-button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</md-button>
+        <md-button class="md-raised" ng-click="openAddImageModal()">Add Image</md-button><br />
+        <md-button class="md-raised md-primary" ng-click="createParty()">Create Party</md-button>
       </form>
   </div>
 
@@ -46,7 +47,10 @@
   <div layout="column" layout-padding>
     <div dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" layout="column">
       <div layout="row">
-        <div flex="80">
+        <div flex ng-if="party.image">
+          <img ng-src="{{(images | filter: {_id: party.image})[0].url()}}" />
+        </div>
+        <div flex="50">
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
           <p>{{party.description}}</p>
         </div>
