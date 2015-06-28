@@ -8,11 +8,12 @@
   </md-input-container>
   <md-input-container>
     <label>Party Description</label>
-    <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text" aria-label="Description">
+    <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text"
+           aria-label="Description">
   </md-input-container>
   <md-checkbox ng-model="party.public" ng-disabled="party.owner != $root.currentUser._id" aria-label="Public">
-      Is public        
-  </md-checkbox>  
+    Is public
+  </md-checkbox>
 
   <div layout="row" layout-align="left">
     <md-button ng-click="save()">Save</md-button>
@@ -30,6 +31,16 @@
       Everyone are already invited.
     </md-list-item>
   </md-list>
+
+  <md-whiteframe class="md-whiteframe-z1 images-container" layout="column" >
+    <div layout="row" class="images-container-title">
+      <div class="party-image-container" ng-repeat="image in party.images">
+        <div class="main-image" ng-show="image.order === 0">Main Image</div>
+        <img draggable="false" ng-src="{{ getImage(image.id).url() }}"/><br/>
+        {{ getImage(image.id).metadata.description || 'No Description' }}
+      </div>
+    </div>
+  </md-whiteframe>
 
   <div class="angular-google-map-container">
     <ui-gmap-google-map center="map.center" events="map.events" zoom="map.zoom">

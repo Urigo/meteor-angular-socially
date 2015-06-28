@@ -2,8 +2,12 @@ angular.module('socially',[
   'angular-meteor',
   'ui.router',
   'angularUtils.directives.dirPagination',
-  'uiGmapgoogle-maps', 
-  'ngMaterial'
+  'uiGmapgoogle-maps',
+  'ngMaterial',
+  'ngFileUpload',
+  'ngImgCrop',
+  'xeditable',
+  'angular-sortable-view'
 ]);
 
 var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
