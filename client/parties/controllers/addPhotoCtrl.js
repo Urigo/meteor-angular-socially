@@ -1,5 +1,5 @@
-angular.module("socially").controller("AddPhotoCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog',
-  function($scope, $meteor, $rootScope, $state, $mdDialog) {
+angular.module("socially").controller("AddPhotoCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog', 'newOrder',
+  function($scope, $meteor, $rootScope, $state, $mdDialog, newOrder) {
     $scope.addImages = function (files) {
       if (files.length > 0) {
         var reader = new FileReader();
@@ -21,7 +21,7 @@ angular.module("socially").controller("AddPhotoCtrl", ['$scope', '$meteor', '$ro
     $scope.saveCroppedImage = function() {
       if ($scope.myCroppedImage !== '') {
         var fileObject = new FS.File($scope.myCroppedImage);
-        fileObject.metadata = { owner: $rootScope.currentUser._id };
+        fileObject.metadata = { owner: $rootScope.currentUser._id, description: '', order: newOrder};
 
         $scope.images.save(fileObject).then(function(result) {
           $scope.uploadedImage = result[0]._id;

@@ -1,28 +1,51 @@
 <md-content layout-padding>
   <div layout="column">
-      <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" ng-hide="$root.currentUser || $root.loggingIn">
-        <span>Log in to create a party!</span>
+    <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center"
+                   ng-hide="$root.currentUser || $root.loggingIn">
+      <span>Log in to create a party!</span>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-z1" ng-show="$root.currentUser">
+      <h2 class="md-headline">Create a new party:</h2>
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="newParty.name" id="nameInput" type="text" aria-label="Name">
+      </md-input-container>
+      <md-input-container>
+        <label>Description</label>
+        <input ng-model="newParty.description" id="description" type="text" aria-label="Description">
+      </md-input-container>
+      <md-checkbox ng-model="newParty.public" id="public" aria-label="Public">
+        Public
+      </md-checkbox>
+      <md-whiteframe class="md-whiteframe-z1" layout="column">
+        <div layout="row" class="images-container-title">
+          <div flex>
+            <h3>Add photos to your party!</h3>
+          </div>
+          <div>
+            <md-button class="md-raised" ng-click="openAddImageModal()">Add Photo</md-button>
+          </div>
+        </div>
+        <div layout="row" class="images-container-title" sv-root sv-part="newPartyImages"
+             sv-on-sort="updateOrder($partTo)">
+          <div ng-show="!newPartyImages || newPartyImages.length === 0">Add photo by clicking "Add Photo" to the
+            right.
+          </div>
+          <div sv-element class="party-image-container" ng-repeat="image in newPartyImages">
+            <div class="main-image" ng-show="$index === 0">Main Image</div>
+            <img draggable="false" ng-src="{{ image.url() }}"/><br/>
+            <a href="#" editable-text="image.metadata.description"
+               onbeforesave="updateDescription($data, image)">{{ image.metadata.description || 'Click to add description' }}</a>
+          </div>
+        </div>
       </md-whiteframe>
-      <form ng-show="$root.currentUser">
-        <h2 class="md-headline">Create a new party:</h2>
-        <md-input-container>
-          <label>Name</label>
-          <input ng-model="newParty.name" id="nameInput" type="text" aria-label="Name">
-        </md-input-container>
-        <md-input-container>
-          <label>Description</label>
-          <input ng-model="newParty.description" id="description" type="text" aria-label="Description">
-        </md-input-container>
-        <md-checkbox ng-model="newParty.public" id="public" aria-label="Public">
-          Public
-        </md-checkbox>
-        <md-button class="md-raised" ng-click="openAddImageModal()">Add Image</md-button><br />
-        <md-button class="md-raised md-primary" ng-click="createParty()">Create Party</md-button>
-      </form>
+      <md-button class="md-raised md-primary" ng-click="createParty()">Create Party</md-button>
+    </md-whiteframe>
   </div>
 
   <div layout="column">
     <h2 class="md-headline">Parties:</h2>
+
     <form layout="row">
       <md-input-container md-no-float>
         <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
@@ -47,11 +70,12 @@
   <div layout="column" layout-padding>
     <div dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" layout="column">
       <div layout="row">
-        <div flex ng-if="party.image">
-          <img ng-src="{{(images | filter: {_id: party.image})[0].url()}}" />
+        <div flex ng-if="party.images && party.images.length > 0">
+          <img ng-src="{{ getMainImage(party.images) }}"/>
         </div>
         <div flex="50">
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
+
           <p>{{party.description}}</p>
         </div>
         <span flex></span>
@@ -78,22 +102,24 @@
         Maybe - {{ (party.rsvps | filter:{rsvp:'maybe'}).length }}
         No - {{ (party.rsvps | filter:{rsvp:'no'}).length }}
         <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'yes'}">
-            {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+          {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
         </div>
         <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'maybe'}">
-            {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+          {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
         </div>
         <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'no'}">
-            {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+          {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
         </div>
       </div>
       <md-list ng-if="!party.public">
         Users who haven't responded:
         <md-list-item ng-repeat="invitedUser in outstandingInvitations(party)">
-            {{ invitedUser | displayName }}
+          {{ invitedUser | displayName }}
         </md-list-item>
       </md-list>
-      <p><small>Posted by {{ creator(party) | displayName }}</small></p>
+      <p>
+        <small>Posted by {{ creator(party) | displayName }}</small>
+      </p>
     </div>
   </div>
   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>

@@ -5,7 +5,9 @@ angular.module('socially',[
   'uiGmapgoogle-maps',
   'ngMaterial',
   'ngFileUpload',
-  'ngImgCrop'
+  'ngImgCrop',
+  'xeditable',
+  'angular-sortable-view'
 ]);
 
 var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
