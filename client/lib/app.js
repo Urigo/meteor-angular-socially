@@ -3,7 +3,11 @@ angular.module('socially',[
   'ui.router',
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
-  'ngMaterial'
+  'ngMaterial',
+  'ngFileUpload',
+  'ngImgCrop',
+  'xeditable',
+  'angular-sortable-view'
 ]);
 
 var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
