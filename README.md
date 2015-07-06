@@ -14,6 +14,8 @@ Our goal in this tutorial is to add more steps as we go along, to cover as many 
 
 Thanks @MilosStanic for writing step 18 on angular-material
 
+An example with the `controller as` syntax can be found in [this branch](https://github.com/Urigo/meteor-angular-socially/tree/step_12_controller_as_vm).
+
 # angular-meteor University! <a href="http://angularjs.meteor.com/"><img src="http://angularjs.meteor.com/images/logo-large.png" width="60" height="60" /></a>  
 
 The angular-meteor university is a community learning experiment, we would like to create a similar experience to the [hueniversity](https://github.com/hueniverse/hueniversity)
