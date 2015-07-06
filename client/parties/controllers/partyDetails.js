@@ -1,12 +1,17 @@
-angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteor',
-  function($scope, $stateParams, $meteor){
+angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteor', '$filter',
+  function($scope, $stateParams, $meteor, $filter){
 
     $scope.party = $meteor.object(Parties, $stateParams.partyId);
+    $scope.images = $meteor.collectionFS(Images, false).subscribe('images');
 
     var subscriptionHandle;
     $meteor.subscribe('parties').then(function(handle) {
       subscriptionHandle = handle;
     });
+
+    $scope.getImage = function(imageId) {
+      return $filter('filter')($scope.images, {_id: imageId})[0];
+    };
 
     $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
 
