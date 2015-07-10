@@ -45,13 +45,14 @@
 
   <div layout="column">
     <h2 class="md-headline">Parties:</h2>
+
     <form layout="row">
-      <md-input-container md-no-float>      
+      <md-input-container md-no-float>
         <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
-        <input type="text" ng-model="search" id="search" placeholder="Search" aria-label="Search">        
+        <input type="text" ng-model="search" id="search" placeholder="Search" aria-label="Search">
       </md-input-container>
       <span flex></span>
-      <md-input-container>        
+      <md-input-container>
         <md-select ng-model="orderProperty" placeholder="Sort Order">
           <md-option value="1">Ascending</md-option>
           <md-option value="-1">Descending</md-option>
@@ -64,22 +65,23 @@
                          fit="true" idkey="'_id'" doRebuildAll="true">
         </ui-gmap-markers>
       </ui-gmap-google-map>
-    </div>  
+    </div>
   </div>
   <div layout="column" layout-padding>
     <div dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" layout="column">
       <div layout="row">
-        <div flex="80" ng-if="party.images && party.images.length > 0">
+        <div flex ng-if="party.images && party.images.length > 0">
           <img ng-src="{{ getMainImage(party.images) }}"/>
         </div>
         <div flex="50">
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
+
           <p>{{party.description}}</p>
         </div>
-        <span flex></span>        
+        <span flex></span>
         <md-button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">
           <md-icon md-svg-icon="content:ic_clear_24px"></md-icon>
-        </md-button>      
+        </md-button>
       </div>
 
       <div ng-show="$root.currentUser" layout="row">
