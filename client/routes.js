@@ -8,7 +8,8 @@ angular.module("socially").run(["$rootScope", "$location", function($rootScope, 
   });
 }]);
 
-angular.module("socially").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
+angular.module("socially")
+    .config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function($urlRouterProvider, $stateProvider, $locationProvider){
 
     $locationProvider.html5Mode(true);
