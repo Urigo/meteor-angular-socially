@@ -87,4 +87,14 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
         }
       );
     };
+
+    $scope.isRSVP = function(rsvp, party){
+      var rsvpIndex = party.myRsvpIndex;
+      rsvpIndex = rsvpIndex || _.indexOf(_.pluck(party.rsvps, 'user'), $rootScope.currentUser._id);
+
+      if(rsvpIndex !== -1){
+        party.myRsvpIndex = rsvpIndex;
+        return party.rsvps[rsvpIndex].rsvp === rsvp;
+      }
+    }
 }]);

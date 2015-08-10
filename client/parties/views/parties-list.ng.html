@@ -63,9 +63,9 @@
                         </span>
 
                         <div ng-show="$root.currentUser" class="ma-rsvp-buttons">
-                            <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')" class="btn btn-primary">
-                            <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')" class="btn">
-                            <input type="button" value="No" ng-click="rsvp(party._id, 'no')" class="btn">
+                            <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')" class="btn" ng-class="{'btn-primary' : isRSVP('yes', party)}">
+                            <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')" class="btn"  ng-class="{'btn-primary' : isRSVP('maybe', party)}">
+                            <input type="button" value="No" ng-click="rsvp(party._id, 'no')" class="btn"  ng-class="{'btn-primary' : isRSVP('no', party)}">
                         </div>
                         <div ng-hide="$root.currentUser">
                             <i>Sign in to RSVP for this party.</i>
