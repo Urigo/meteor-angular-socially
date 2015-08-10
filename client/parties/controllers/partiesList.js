@@ -38,7 +38,8 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
             longitude: -73
           },
           options : {
-            styles : styles2
+            styles : styles2,
+            maxZoom : 10
           },
           zoom: 8
         };
