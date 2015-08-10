@@ -1,5 +1,9 @@
 <div class="container-fluid ma-add-new-party-container">
-    <form>
+    <div class="alert alert-info" ng-hide="$root.currentUser || $root.loggingIn">
+        Please log in to create a party!
+    </div>
+
+    <form ng-show="$root.currentUser || $root.loggingIn">
         <h2>Create a new party</h2>
         <div class="form-group">
             <label for="nameInput">Name</label>
