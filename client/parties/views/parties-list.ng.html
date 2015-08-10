@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row h100">
     <div class="col-md-6 ma-parties-col">
         <div class="alert alert-info" ng-hide="$root.currentUser || $root.loggingIn">
             Log in to create a party!
@@ -21,7 +21,22 @@
             <!--<button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';" class="btn">Add</button>-->
         <!--</form>-->
         <div>
-
+            <form class="form-inline search-form">
+                <div class="form-group">
+                    <label class="sr-only" for="search">Search</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+                        <input type="text" ng-model="search" placeholder="Search" id="search" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="sort-order">Sort Order</label>
+                    <select ng-model="orderProperty" class="form-control">
+                        <option value="1">Ascending</option>
+                        <option value="-1">Descending</option>
+                    </select>
+                </div>
+            </form>
         </div>
         <ul class="list-group">
             <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" class="list-group-item ma-party-item">
@@ -101,8 +116,8 @@
         <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
 
     </div>
-    <div class="col-md-6">
-        <div class="angular-google-map-container">
+    <div class="col-md-6 h100">
+        <div class="angular-google-map-container h100">
             <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
                 <ui-gmap-markers models="parties" coords="'location'" click="onClicked()"
                                  fit="true" idkey="'_id'" doRebuildAll="true">
