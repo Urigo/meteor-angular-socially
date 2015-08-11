@@ -18,11 +18,11 @@
             </div>
         </form>
 
-        <div class="ma-invite-list">
+        <div class="ma-invite-list" ng-show="canInvite()">
             <h3>
                 Users to invite:
             </h3>
-            <ul ng-show="canInvite()" class="">
+            <ul  class="">
 
                 <li ng-repeat="user in users | uninvited:party">
                     <div>{{ user | displayName }}</div>
