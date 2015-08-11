@@ -16,9 +16,14 @@
                 <label>Is public</label>
                 <input type="checkbox" ng-model="party.public" ng-disabled="party.owner != $root.currentUser._id">
             </div>
+        </form>
 
-            <ul ng-show="canInvite()">
+        <div class="ma-invite-list">
+            <h3>
                 Users to invite:
+            </h3>
+            <ul ng-show="canInvite()" class="">
+
                 <li ng-repeat="user in users | uninvited:party">
                     <div>{{ user | displayName }}</div>
                     <button ng-click="invite(user)">Invite</button>
@@ -27,7 +32,9 @@
                     Everyone are already invited.
                 </li>
             </ul>
-        </form>
+        </div>
+
+
         <h3 class="ma-map-title">
             Click the map to set the party location
         </h3>
