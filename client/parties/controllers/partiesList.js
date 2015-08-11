@@ -109,6 +109,7 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
 
 
     $scope.isRSVP = function(rsvp, party){
+      if(!$rootScope.currentUser._id) return false;
       var rsvpIndex = party.myRsvpIndex;
       rsvpIndex = rsvpIndex || _.indexOf(_.pluck(party.rsvps, 'user'), $rootScope.currentUser._id);
 
