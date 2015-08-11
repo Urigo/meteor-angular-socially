@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="row ma-party-item-bottom">
-                    <div class="col-sm-6">
+                    <div class="col-sm-8 ma-posted-by-col">
                         <span class="ma-posted-by">Posted by {{ creator(party) | displayName }}  </span>
 
                         <span ng-if="party.public" class="ma-everyone-invited"><i class="fa fa-male"></i> Everyone is invited</span>
@@ -56,41 +56,40 @@
 
 
                     </div>
-                    <div class="col-sm-6">
-                        <div class="">
-                            <div class="ma-rsvp-sum">
-                                <div class="ma-rsvp-amount">
-                                    <div class="ma-amount">
-                                        {{ (party.rsvps | filter:{rsvp:'yes'}).length || "0"}}
-                                    </div>
-                                    <div class="ma-rsvp-title">
-                                        YES
-                                    </div>
+                    <div class="col-sm-4">
+                        <div class="ma-rsvp-sum">
+                            <div class="ma-rsvp-amount">
+                                <div class="ma-amount">
+                                    {{ (party.rsvps | filter:{rsvp:'yes'}).length || "0"}}
                                 </div>
-                                <div class="ma-rsvp-amount">
-                                    <div class="ma-amount">
-                                        {{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0"}}
-                                    </div>
-                                    <div class="ma-rsvp-title">
-                                        MAYBE
-                                    </div>
-                                </div>
-                                <div class="ma-rsvp-amount">
-                                    <div class="ma-amount">
-                                        {{ (party.rsvps | filter:{rsvp:'no'}).length || "0"}}
-                                    </div>
-                                    <div class="ma-rsvp-title">
-                                        NO
-                                    </div>
+                                <div class="ma-rsvp-title">
+                                    YES
                                 </div>
                             </div>
-
-                            <ul ng-if="!party.public">
-                                <li ng-repeat="invitedUser in outstandingInvitations(party)">
-                                    {{ invitedUser | displayName }}
-                                </li>
-                            </ul>
+                            <div class="ma-rsvp-amount">
+                                <div class="ma-amount">
+                                    {{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0"}}
+                                </div>
+                                <div class="ma-rsvp-title">
+                                    MAYBE
+                                </div>
+                            </div>
+                            <div class="ma-rsvp-amount">
+                                <div class="ma-amount">
+                                    {{ (party.rsvps | filter:{rsvp:'no'}).length || "0"}}
+                                </div>
+                                <div class="ma-rsvp-title">
+                                    NO
+                                </div>
+                            </div>
                         </div>
+
+                        <ul ng-if="!party.public">
+                            <li ng-repeat="invitedUser in outstandingInvitations(party)">
+                                {{ invitedUser | displayName }}
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
 
