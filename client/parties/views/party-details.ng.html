@@ -6,11 +6,13 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <label>Party Name</label>
-                <input ng-model="party.name" ng-disabled="party.owner != $root.currentUser._id" type="text" class="form-control">
+                <input ng-model="party.name" ng-disabled="party.owner != $root.currentUser._id" type="text"
+                       class="form-control">
             </div>
             <div class="form-group">
                 <label>Party Name</label>
-                <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text" class="form-control">
+                <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text"
+                       class="form-control">
             </div>
             <div class="form-group">
                 <label>Is public</label>
@@ -22,7 +24,7 @@
             <h3>
                 Users to invite:
             </h3>
-            <ul  class="">
+            <ul>
 
                 <li ng-repeat="user in users | uninvited:party">
                     <div>{{ user | displayName }}</div>
@@ -38,9 +40,11 @@
         <h3 class="ma-map-title">
             Click the map to set the party location
         </h3>
+
         <div class="angular-google-map-container">
             <ui-gmap-google-map center="map.center" events="map.events" zoom="map.zoom">
-                <ui-gmap-marker coords="party.location" options="map.marker.options" events="map.marker.events" idkey="party._id">
+                <ui-gmap-marker coords="party.location" options="map.marker.options" events="map.marker.events"
+                                idkey="party._id">
                 </ui-gmap-marker>
             </ui-gmap-google-map>
         </div>

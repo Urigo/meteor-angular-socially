@@ -5,6 +5,7 @@
                 <form class="form-inline search-form">
                     <div class="form-group">
                         <label class="sr-only" for="search">Search</label>
+
                         <div class="input-group">
                             <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
                             <input type="text" ng-model="search" placeholder="Search" id="search" class="form-control">
@@ -24,14 +25,17 @@
             </div>
         </div>
         <ul class="list-group">
-            <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" class="list-group-item ma-party-item">
+            <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count"
+                class="list-group-item ma-party-item">
                 <div class="row">
                     <div class="col-sm-8">
                         <h2 class="ma-party-name"><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
-                        <p  class="ma-party-description">{{party.description}}</p>
+
+                        <p class="ma-party-description">{{party.description}}</p>
                     </div>
                     <div class="col-sm-4">
-                        <i ng-click="remove(party)" class="ma-remove fa fa-times" ng-show="$root.currentUser && $root.currentUser._id == party.owner"></i>
+                        <i ng-click="remove(party)" class="ma-remove fa fa-times"
+                           ng-show="$root.currentUser && $root.currentUser._id == party.owner"></i>
                     </div>
                 </div>
 
@@ -46,9 +50,12 @@
                         </span>
 
                         <div ng-show="$root.currentUser" class="ma-rsvp-buttons">
-                            <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')" class="btn" ng-class="{'btn-primary' : isRSVP('yes', party)}">
-                            <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')" class="btn"  ng-class="{'btn-primary' : isRSVP('maybe', party)}">
-                            <input type="button" value="No" ng-click="rsvp(party._id, 'no')" class="btn"  ng-class="{'btn-primary' : isRSVP('no', party)}">
+                            <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')" class="btn"
+                                   ng-class="{'btn-primary' : isRSVP('yes', party)}">
+                            <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')" class="btn"
+                                   ng-class="{'btn-primary' : isRSVP('maybe', party)}">
+                            <input type="button" value="No" ng-click="rsvp(party._id, 'no')" class="btn"
+                                   ng-class="{'btn-primary' : isRSVP('no', party)}">
                         </div>
                         <div ng-hide="$root.currentUser">
                             <i>Sign in to RSVP for this party.</i>
