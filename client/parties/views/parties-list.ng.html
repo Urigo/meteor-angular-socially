@@ -27,15 +27,16 @@
         <ul class="list-group">
             <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count"
                 class="list-group-item ma-party-item">
+
+                <i ng-click="remove(party)" class="ma-remove fa fa-times"
+                   ng-show="$root.currentUser && $root.currentUser._id == party.owner"></i>
+
+                
                 <div class="row">
                     <div class="col-sm-8">
                         <h2 class="ma-party-name"><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
 
                         <p class="ma-party-description">{{party.description}}</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <i ng-click="remove(party)" class="ma-remove fa fa-times"
-                           ng-show="$root.currentUser && $root.currentUser._id == party.owner"></i>
                     </div>
                 </div>
 
