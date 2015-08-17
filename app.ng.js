@@ -7,5 +7,9 @@ if (Meteor.isClient) {
     $scope.remove = function(party){
       $scope.parties.remove(party);
     };
+
+    $scope.removeAll = function(){
+      $scope.parties.remove();
+    };
   });
 }
