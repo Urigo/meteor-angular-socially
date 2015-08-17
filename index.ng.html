@@ -5,6 +5,7 @@
     <label>Description</label>
     <input ng-model="newParty.description">
     <button ng-click="parties.save(newParty); newParty='';">Add</button>
+    <button ng-click="removeAll()">Remove All</button>
   </form>
   <ul>
     <li ng-repeat="party in parties">
