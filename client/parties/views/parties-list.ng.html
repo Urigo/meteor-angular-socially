@@ -27,6 +27,21 @@
       <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')">
       <input type="button" value="No" ng-click="rsvp(party._id, 'no')">
     </div>
+    <div>
+      Who is coming:
+      Yes - {{ (party.rsvps | filter:{rsvp:'yes'}).length }}
+      Maybe - {{ (party.rsvps | filter:{rsvp:'maybe'}).length }}
+      No - {{ (party.rsvps | filter:{rsvp:'no'}).length }}
+      <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'yes'}">
+        {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+      </div>
+      <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'maybe'}">
+        {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+      </div>
+      <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'no'}">
+        {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+      </div>
+    </div>
 
     <p><small>Posted by {{ creator(party) | displayName }}</small></p>
   </li>
