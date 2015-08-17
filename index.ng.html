@@ -1,14 +1,8 @@
-<ul>
-  <li>
-    <span>Dubstep-Free Zone</span>
-    <p>
-      Can we please just for an evening not listen to dubstep.
-    </p>
-  </li>
-  <li>
-    <span>All dubstep all the time</span>
-    <p>
-      Get it on!
-    </p>
-  </li>
-</ul>
+<div ng-controller="PartiesListCtrl">
+  <ul>
+    <li ng-repeat="party in parties">
+      {{party.name}}
+      <p>{{party.description}}</p>
+    </li>
+  </ul>
+</div>
