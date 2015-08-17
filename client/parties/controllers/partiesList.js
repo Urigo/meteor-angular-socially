@@ -11,12 +11,14 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor',
       });
     });
 
-    $meteor.subscribe('parties', {
-      limit: parseInt($scope.perPage),
-      skip: parseInt(($scope.page - 1) * $scope.perPage),
-      sort: $scope.sort
-    }).then(function(){
-      $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
+    $meteor.autorun($scope, function() {
+      $meteor.subscribe('parties', {
+        limit: parseInt($scope.perPage),
+        skip: parseInt(($scope.page - 1) * $scope.perPage),
+        sort: $scope.sort
+      }).then(function(){
+        $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
+      });
     });
 
     $scope.remove = function(party){
