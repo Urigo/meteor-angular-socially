@@ -22,4 +22,13 @@ angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$statePara
       return !$scope.party.public &&
         $scope.party.owner === Meteor.userId();
     };
+
+    $scope.map = {
+      center: {
+        latitude: 45,
+        longitude: -73
+      },
+      zoom: 8,
+      events: {}
+    };
   }]);
