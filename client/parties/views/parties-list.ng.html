@@ -25,7 +25,7 @@
     <p>{{party.description}}</p>
     <button ng-click="remove(party)">X</button>
 
-    <div>
+    <div ng-show="$root.currentUser">
       <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')">
       <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')">
       <input type="button" value="No" ng-click="rsvp(party._id, 'no')">
