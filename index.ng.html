@@ -4,7 +4,7 @@
     <input ng-model="newParty.name">
     <label>Description</label>
     <input ng-model="newParty.description">
-    <button>Add</button>
+    <button ng-click="parties.push(newParty); newParty='';">Add</button>
   </form>
   <ul>
     <li ng-repeat="party in parties">
