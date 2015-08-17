@@ -50,12 +50,15 @@
       </div>
     </div>
 
-    <ul>
+    <ul ng-if="!party.public">
       Users who not responded:
       <li ng-repeat="invitedUser in outstandingInvitations(party)">
         {{ invitedUser | displayName }}
       </li>
     </ul>
+    <div ng-if="party.public">
+      Everyone is invited
+    </div>
 
     <p><small>Posted by {{ creator(party) | displayName }}</small></p>
   </li>
