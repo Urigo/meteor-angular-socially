@@ -32,7 +32,7 @@ if (Meteor.isClient) {
     };
   });
 
-  angular.module("socially").controller("PartyDetailsCtrl", function($scope, $stateParams) {
-    $scope.partyId = $stateParams.partyId;
+  angular.module("socially").controller("PartyDetailsCtrl", function($scope, $stateParams, $meteor) {
+    $scope.party = $meteor.object(Parties, $stateParams.partyId);
   });
 }
