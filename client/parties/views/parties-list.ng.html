@@ -1,12 +1,12 @@
 <form ng-show="$root.currentUser">
+  <h2>Create a new party:</h2>
   <label>Name</label>
   <input ng-model="newParty.name">
   <label>Description</label>
   <input ng-model="newParty.description">
   <label>Public</label>
   <input type="checkbox" ng-model="newParty.public">
-  <button ng-click="newParty.owner=$root.currentUser._id; parties.push(newParty)">Add</button>
-  <button ng-click="removeAll()">Remove All</button>
+  <button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">Add</button>
 </form>
 <div ng-hide="$root.currentUser || $root.loggingIn">
   Log in to create a party!
@@ -21,7 +21,7 @@
     </select>
   </div>
   <div class="angular-google-map-container">
-    <ui-gmap-google-map center="party.location || map.center" zoom="map.zoom">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom">
       <ui-gmap-markers models="parties" coords="'location'" click="onClicked()"
                        fit="true" idkey="'_id'" doRebuildAll="true">
       </ui-gmap-markers>
@@ -56,11 +56,10 @@
         {{ getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
       </div>
     </div>
-
     <ul ng-if="!party.public">
       Users who not responded:
       <li ng-repeat="invitedUser in outstandingInvitations(party)">
-        {{dstache}} invitedUser | displayName }}
+        {{ invitedUser | displayName }}
       </li>
     </ul>
     <div ng-if="party.public">

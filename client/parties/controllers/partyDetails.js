@@ -1,8 +1,14 @@
 angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteor',
-  function ($scope, $stateParams, $meteor) {
+  function($scope, $stateParams, $meteor){
+
     $scope.party = $meteor.object(Parties, $stateParams.partyId);
+
+    var subscriptionHandle;
+    $meteor.subscribe('parties').then(function(handle) {
+      subscriptionHandle = handle;
+    });
+
     $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
-    $scope.$meteorSubscribe('parties');
 
     $scope.invite = function(user){
       $meteor.call('invite', $scope.party._id, user._id).then(
@@ -14,6 +20,10 @@ angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$statePara
         }
       );
     };
+
+    $scope.$on('$destroy', function() {
+      subscriptionHandle.stop();
+    });
 
     $scope.canInvite = function (){
       if (!$scope.party)
@@ -56,4 +66,5 @@ angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$statePara
         }
       }
     };
+
   }]);
