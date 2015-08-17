@@ -5,7 +5,12 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor',
     $scope.perPage = 3;
     $scope.sort = { name: 1 };
 
-    $scope.parties = $meteor.collection(Parties);
+    $scope.parties = $meteor.collection(function() {
+      return Parties.find({}, {
+        sort : $scope.sort
+      });
+    });
+
     $meteor.subscribe('parties', {
       limit: parseInt($scope.perPage),
       skip: parseInt(($scope.page - 1) * $scope.perPage),
