@@ -1,3 +1,5 @@
+Parties = new Mongo.Collection("parties");
+
 if (Meteor.isClient) {
   angular.module('socially', ['angular-meteor', 'ui.router']);
 
@@ -30,5 +32,9 @@ if (Meteor.isClient) {
     $scope.removeAll = function(){
       $scope.parties.remove();
     };
+  });
+
+  angular.module("socially").controller("PartyDetailsCtrl", function($scope, $stateParams) {
+    $scope.partyId = $stateParams.partyId;
   });
 }
