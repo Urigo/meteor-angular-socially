@@ -21,7 +21,7 @@
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
     <button ng-click="remove(party)">X</button>
-    <p><small>Posted by {{ creator(party) }}</small></p>
+    <p><small>Posted by {{ creator(party) | displayName }}</small></p>
   </li>
 </ul>
 <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
