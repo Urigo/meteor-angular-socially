@@ -35,11 +35,9 @@ if (Meteor.isClient) {
     };
   }]);
 
-  angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams',
-    function($scope, $stateParams){
-
-      $scope.partyId = $stateParams.partyId;
-
+  angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteor',
+    function($scope, $stateParams, $meteor){
+      $scope.party = $meteor.object(Parties, $stateParams.partyId);
     }]);
 }
 
