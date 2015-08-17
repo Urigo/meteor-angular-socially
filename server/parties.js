@@ -1,4 +1,4 @@
-Meteor.publish("parties", function (options) {
+Meteor.publish("parties", function (options, searchString) {
   Counts.publish(this, 'numberOfParties', Parties.find({
     $or:[
       {$and:[
