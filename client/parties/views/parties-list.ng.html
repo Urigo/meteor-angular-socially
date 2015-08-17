@@ -23,7 +23,7 @@
   <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count">
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
-    <button ng-click="remove(party)">X</button>
+    <button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">X</button>
 
     <div ng-show="$root.currentUser">
       <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')">
