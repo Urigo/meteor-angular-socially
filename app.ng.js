@@ -31,4 +31,8 @@ if (Meteor.isClient) {
       $scope.parties.remove();
     };
   });
+
+  angular.module("socially").controller("PartyDetailsCtrl", function($scope, $stateParams) {
+    $scope.partyId = $stateParams.partyId;
+  });
 }
