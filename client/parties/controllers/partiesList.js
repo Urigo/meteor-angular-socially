@@ -24,4 +24,8 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor',
     $scope.removeAll = function(){
       $scope.parties.remove();
     };
+
+    $scope.pageChanged = function(newPage) {
+      $scope.page = newPage;
+    };
   }]);
