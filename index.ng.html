@@ -1,4 +1,11 @@
 <div ng-controller="PartiesListCtrl">
+  <form>
+    <label>Name</label>
+    <input>
+    <label>Description</label>
+    <input>
+    <button>Add</button>
+  </form>
   <ul>
     <li ng-repeat="party in parties">
       {{party.name}}
