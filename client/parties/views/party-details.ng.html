@@ -8,6 +8,6 @@ Here you will see and change the details of the party:
 <ul>
   Users to invite:
   <li ng-repeat="user in users | uninvited:party">
-    <div>{{ user.emails[0].address }}</div>
+    <div>{{ user | displayName }}</div>
   </li>
 </ul>
