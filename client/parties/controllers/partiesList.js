@@ -101,4 +101,10 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
     $scope.updateDescription = function($data, image) {
       image.update({$set: {'metadata.description': $data}});
     };
+
+    $scope.updateOrder = function(sortedArr) {
+      angular.forEach(sortedArr, function(item, index) {
+        item.currentOrder = index;
+      });
+    };
   }]);
