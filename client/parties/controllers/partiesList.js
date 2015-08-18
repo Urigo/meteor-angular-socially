@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state',
-  function($scope, $meteor, $rootScope, $state){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog',
+  function($scope, $meteor, $rootScope, $state, $mdDialog){
 
     $scope.page = 1;
     $scope.perPage = 3;
