@@ -30,6 +30,14 @@
             <md-button class="md-raised" ng-click="openAddImageModal()">Add Photo</md-button>
           </div>
         </div>
+        <div layout="row" class="images-container-title">
+          <div ng-show="!newPartyImages || newPartyImages.length === 0">Add photo by clicking "Add Photo" to the
+            right.
+          </div>
+          <div class="party-image-container" ng-repeat="image in newPartyImages">
+            <img ng-src="{{ image.url() }}"/><br/>
+          </div>
+        </div>
       </md-whiteframe>
       <md-button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">
         Add</md-button>
