@@ -21,6 +21,16 @@
                    id="public" aria-label="Public">
         Public
       </md-checkbox>
+      <md-whiteframe class="md-whiteframe-z1" layout="column">
+        <div layout="row" class="images-container-title">
+          <div flex>
+            <h3>Add photos to your party!</h3>
+          </div>
+          <div>
+            <md-button class="md-raised" ng-click="openAddImageModal()">Add Photo</md-button>
+          </div>
+        </div>
+      </md-whiteframe>
       <md-button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">
         Add</md-button>
     </form>
