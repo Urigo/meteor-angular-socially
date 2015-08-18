@@ -5,7 +5,7 @@
                    ng-hide="$root.currentUser || $root.loggingIn">
       <span>Log in to create a party!</span>
     </md-whiteframe>
-    <form ng-show="$root.currentUser">
+    <div ng-show="$root.currentUser">
       <h2 class="md-headline">Create a new party:</h2>
       <md-input-container>
         <label>Name</label>
@@ -41,7 +41,7 @@
       </md-whiteframe>
       <md-button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">
         Add</md-button>
-    </form>
+    </div>
   </div>
 
   <div layout="column">
