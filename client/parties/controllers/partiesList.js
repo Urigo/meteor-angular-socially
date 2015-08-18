@@ -81,4 +81,14 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
         }
       );
     };
+
+    $scope.openAddImageModal = function() {
+      $mdDialog.show({
+        controller: 'AddPhotoCtrl',
+        templateUrl: 'client/parties/views/add-photo-modal.ng.html',
+        scope: $scope.$new()
+      }).then(function(image) {
+        // We will add here later the logic to handle the link between the image and the party
+      });
+    };
   }]);
