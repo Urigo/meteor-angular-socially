@@ -27,5 +27,18 @@ angular.module("socially").controller("AddPhotoCtrl", ['$scope', '$meteor', '$ro
       }
     };
 
+    $scope.answer = function(saveImage) {
+      if (saveImage) {
+        $mdDialog.hide($scope.uploadedImage);
+      }
+      else {
+        if ($scope.uploadedImage) {
+          $scope.images.remove($scope.uploadedImage._id);
+        }
+
+        $mdDialog.hide();
+      }
+    };
+
     $scope.close = $mdDialog.hide;
   }]);
