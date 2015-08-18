@@ -76,16 +76,17 @@
     </div>
   </div>
   <div layout="column" layout-padding>
-    <div dir-paginate="party in parties | itemsPerPage: perPage"
-         total-items="partiesCount.count" layout="column">
+    <div dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" layout="column">
       <div layout="row">
-        <div flex="80">
+        <div flex="80" ng-if="party.images && party.images.length > 0">
+          <img ng-src="{{ getMainImage(party.images) }}"/>
+        </div>
+        <div flex="50">
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
           <p>{{party.description}}</p>
         </div>
         <span flex></span>
-        <md-button ng-click="remove(party)"
-                   ng-show="$root.currentUser && $root.currentUser._id == party.owner">
+        <md-button ng-click="remove(party)" ng-show="$root.currentUser && $root.currentUser._id == party.owner">
           <md-icon md-svg-icon="content:ic_clear_24px"></md-icon>
         </md-button>
       </div>
