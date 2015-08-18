@@ -97,4 +97,8 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
         }
       });
     };
+
+    $scope.updateDescription = function($data, image) {
+      image.update({$set: {'metadata.description': $data}});
+    };
   }]);
