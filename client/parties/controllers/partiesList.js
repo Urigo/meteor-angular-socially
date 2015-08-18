@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog',
-  function($scope, $meteor, $rootScope, $state, $mdDialog){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog', '$filter',
+  function($scope, $meteor, $rootScope, $state, $mdDialog, $filter){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -126,5 +126,13 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
       // Reset the form
       $scope.newPartyImages = [];
       $scope.newParty = {};
+    };
+
+    $scope.getMainImage = function(images) {
+      var mainImage = $filter('filter')(images, {order: 0})[0];
+
+      if (mainImage) {
+        return $filter('filter')($scope.images, {_id: mainImage.id})[0].url();
+      }
     };
   }]);
