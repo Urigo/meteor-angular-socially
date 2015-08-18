@@ -21,13 +21,25 @@
                    id="public" aria-label="Public">
         Public
       </md-checkbox>
+      <md-whiteframe class="md-whiteframe-z1" layout="column">
+        <div layout="row" class="images-container-title">
+          <div flex>
+            <h3>Add photos to your party!</h3>
+          </div>
+          <div>
+            <md-button class="md-raised" ng-click="openAddImageModal()">Add Photo</md-button>
+          </div>
+        </div>
+      </md-whiteframe>
       <md-button ng-click="newParty.owner=$root.currentUser._id;parties.push(newParty); newParty='';">
-        Add</md-button>
+        Add
+      </md-button>
     </form>
   </div>
 
   <div layout="column">
     <h2 class="md-headline">Parties:</h2>
+
     <form layout="row">
       <md-input-container md-no-float>
         <md-icon md-svg-icon="action:ic_search_24px"></md-icon>
@@ -60,6 +72,7 @@
       <div layout="row">
         <div flex="80">
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
+
           <p>{{party.description}}</p>
         </div>
         <span flex></span>
@@ -102,7 +115,9 @@
           {{ invitedUser | displayName }}
         </md-list-item>
       </md-list>
-      <p><small>Posted by {{ creator(party) | displayName }}</small></p>
+      <p>
+        <small>Posted by {{ creator(party) | displayName }}</small>
+      </p>
     </div>
   </div>
   <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
