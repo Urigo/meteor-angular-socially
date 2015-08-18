@@ -18,3 +18,9 @@ angularui:angular-google-maps
 less
 angular:angular-material
 planettraining:material-design-icons
+cfs:standard-packages
+cfs:gridfs
+danialfarid:ng-file-upload
+alexk111:ng-img-crop
+vitalets:angular-xeditable
+netanelgilad:angular-sortable-view
