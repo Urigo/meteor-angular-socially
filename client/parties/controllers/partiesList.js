@@ -107,4 +107,24 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
         item.currentOrder = index;
       });
     };
+
+    $scope.createParty = function() {
+      $scope.newParty.owner = $rootScope.currentUser._id;
+
+      // Link the images and the order to the new party
+      if ($scope.newPartyImages && $scope.newPartyImages.length > 0) {
+        $scope.newParty.images = [];
+
+        angular.forEach($scope.newPartyImages, function(image) {
+          $scope.newParty.images.push({id: image._id, order: image.currentOrder})
+        });
+      }
+
+      // Save the party
+      $scope.parties.push($scope.newParty);
+
+      // Reset the form
+      $scope.newPartyImages = [];
+      $scope.newParty = {};
+    };
   }]);
