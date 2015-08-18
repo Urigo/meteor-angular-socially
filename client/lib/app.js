@@ -2,7 +2,8 @@ angular.module('socially',[
   'angular-meteor',
   'ui.router',
   'angularUtils.directives.dirPagination',
-  'uiGmapgoogle-maps'
+  'uiGmapgoogle-maps',
+  'ngMaterial'
 ]);
 function onReady() {
   angular.bootstrap(document, ['socially']);
