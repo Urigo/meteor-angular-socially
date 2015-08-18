@@ -36,6 +36,8 @@
           </div>
           <div class="party-image-container" ng-repeat="image in newPartyImages">
             <img ng-src="{{ image.url() }}"/><br/>
+            <a href="#" editable-text="image.metadata.description"
+               onbeforesave="updateDescription($data, image)">{{ image.metadata.description || 'Click to add description' }}</a>
           </div>
         </div>
       </md-whiteframe>
