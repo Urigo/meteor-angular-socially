@@ -30,12 +30,13 @@
             <md-button class="md-raised" ng-click="openAddImageModal()">Add Photo</md-button>
           </div>
         </div>
-        <div layout="row" class="images-container-title">
+        <div layout="row" class="images-container-title" sv-root sv-part="newPartyImages"
+             sv-on-sort="updateOrder($partTo)">
           <div ng-show="!newPartyImages || newPartyImages.length === 0">Add photo by clicking "Add Photo" to the
             right.
           </div>
-          <div class="party-image-container" ng-repeat="image in newPartyImages">
-            <img ng-src="{{ image.url() }}"/><br/>
+          <div sv-element class="party-image-container" ng-repeat="image in newPartyImages">
+            <img draggable="false" ng-src="{{ image.url() }}"/><br/>
             <a href="#" editable-text="image.metadata.description"
                onbeforesave="updateDescription($data, image)">{{ image.metadata.description || 'Click to add description' }}</a>
           </div>
