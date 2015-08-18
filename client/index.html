@@ -1,20 +1,18 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
 </head>
-<body>
 
-<div>
-  <header class="navbar navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <h1>
-          <a href="/parties">Home</a>
-        </h1>
-      </div>
+<body layout="column">
+  <md-toolbar md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+    <div>
+      <a href="/parties">Parties</a>
+    </div>
+    <span flex></span>
+
+    <div class="navbar-right navbar-text">
       <meteor-include src="loginButtons"></meteor-include>
     </div>
-  </header>
+  </md-toolbar>
   <div ui-view class="container-fluid"></div>
-</div>
-
 </body>
