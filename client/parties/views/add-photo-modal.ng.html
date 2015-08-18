@@ -1,0 +1,33 @@
+<md-dialog class="add-photo-dialog">
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add Photos To Your Event</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div>
+        <div ngf-drop ngf-select
+             ngf-change="addImages($files)"
+             ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
+             ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
+             ngf-drop-available="dropAvailable">
+          <div>Click here to select image</div>
+          <div>
+            <strong>OR</strong>
+          </div>
+          <div ng-show="dropAvailable">You can also drop image to here</div>
+        </div>
+      </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+      <span flex></span>
+      <md-button ng-click="close()" class="md-primary">
+        Done
+      </md-button>
+      <md-button ng-click="close()" class="md-warn">
+        Cancel
+      </md-button>
+    </div>
+  </form>
+</md-dialog>
