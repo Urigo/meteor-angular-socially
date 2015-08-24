@@ -78,7 +78,10 @@
     <div dir-paginate="party in parties | itemsPerPage: perPage"
          total-items="partiesCount.count" layout="column">
       <div layout="row">
-        <div flex="80">
+        <div flex="80" ng-if="party.images && party.images.length > 0">
+          <img ng-src="{{ getMainImage(party.images) }}"/>
+        </div>
+        <div flex="50">
           <h2><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
           <p>{{party.description}}</p>
         </div>
