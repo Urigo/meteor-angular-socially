@@ -38,9 +38,9 @@ Meteor.methods({
           from: "noreply@socially.com",
           to: to,
           replyTo: from || undefined,
-          subject: "PARTY: " + party.title,
+          subject: "PARTY: " + party.name,
           text:
-          "Hey, I just invited you to '" + party.title + "' on Socially." +
+          "Hey, I just invited you to '" + party.name + "' on Socially." +
           "\n\nCome check it out: " + Meteor.absoluteUrl() + "\n"
         });
       }
