@@ -1,26 +1,54 @@
-Here you will see and change the details of the party:
+<div class="row ma-party-details-container">
+  <div class="col-sm-6 col-sm-offset-3">
+    <legend>
+      View and Edit Your Party Details:
+    </legend>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label>Party Name</label>
+        <input ng-model="party.name" ng-disabled="party.owner != $root.currentUser._id" type="text"
+               class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Party Name</label>
+        <input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id" type="text"
+               class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Is public</label>
+        <input type="checkbox" ng-model="party.public" ng-disabled="party.owner != $root.currentUser._id">
+      </div>
+    </form>
 
-<input ng-model="party.name" ng-disabled="party.owner != $root.currentUser._id">
-<input ng-model="party.description" ng-disabled="party.owner != $root.currentUser._id">
-<label>Is public</label>
-<input type="checkbox" ng-model="party.public" ng-disabled="party.owner != $root.currentUser._id">
+    <div class="ma-invite-list" ng-show="canInvite()">
+      <h3>
+        Users to invite:
+      </h3>
+      <ul>
 
-<ul ng-show="canInvite()">
-  Users to invite:
-  <li ng-repeat="user in users | uninvited:party">
-    <div>{{ user | displayName }}</div>
-    <button ng-click="invite(user)">Invite</button>
-  </li>
-  <li ng-if="(users | uninvited:party).length <= 0">
-    Everyone are already invited.
-  </li>
-</ul>
+        <li ng-repeat="user in users | uninvited:party">
+          <div>{{ user | displayName }}</div>
+          <button ng-click="invite(user)">Invite</button>
+        </li>
+        <li ng-if="(users | uninvited:party).length <= 0">
+          Everyone are already invited.
+        </li>
+      </ul>
+    </div>
 
-<div class="angular-google-map-container">
-  <ui-gmap-google-map center="party.location || map.center"
-                      events="map.events" zoom="map.zoom">
-    <ui-gmap-marker coords="party.location" options="map.marker.options"
-                    events="map.marker.events" idkey="party._id">
-    </ui-gmap-marker>
-  </ui-gmap-google-map>
+
+    <h3 class="ma-map-title">
+      Click the map to set the party location
+    </h3>
+
+    <div class="angular-google-map-container">
+      <ui-gmap-google-map center="party.location || map.center" 
+                          events="map.events" zoom="map.zoom">
+        <ui-gmap-marker coords="party.location" options="map.marker.options" 
+                        events="map.marker.events" idkey="party._id">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
+    </div>
+  </div>
+
 </div>
