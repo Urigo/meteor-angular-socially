@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$modal',
-  function($scope, $meteor, $rootScope, $state, $modal){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$mdDialog',
+  function($scope, $meteor, $rootScope, $state, $mdDialog){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -152,21 +152,22 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
       return owner;
     };
 
-    $scope.openAddNewPartyModal = function () {
-      var modalInstance = $modal.open({
-        animation: true,
-        templateUrl: 'client/parties/views/add-new-party-modal.ng.html',
+    $scope.openAddNewPartyModal = function(){
+      $mdDialog.show({
         controller: 'AddNewPartyCtrl',
+        templateUrl: 'client/parties/views/add-new-party-modal.ng.html',
+        clickOutsideToClose:true,
         resolve: {
           parties: function () {
             return $scope.parties;
           }
         }
-      });
-
-      modalInstance.result.then(function () {
-      }, function () {
-      });
+      })
+        .then(function(answer) {
+          $scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
     };
 
     $scope.isRSVP = function (rsvp, party) {
