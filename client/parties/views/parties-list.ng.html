@@ -1,118 +1,75 @@
-<div class="row h100">
-  <div class="col-md-6 ma-parties-col">
-    <div class="row">
-      <div class="col-xs-8">
-        <form class="form-inline search-form">
-          <div class="form-group">
-            <label class="sr-only" for="search">Search</label>
+<md-content flex-gt-sm layout-gt-sm="row" class="ma-parties-list">
+  <div layout-gt-sm="row" flex-gt-sm>
+    <div flex-gt-sm="50" flex-sm>
+      <div>
+        <div layout-padding layout="row">
+          <md-input-container style="width:50%;margin-right:10px;">
+            <label>Search</label>
+            <input type="text" ng-model="search"/>
+          </md-input-container>
+          <md-select ng-model="orderProperty" placeholder="Sort Order" >
+            <md-option value="1">Ascending</md-option>
+            <md-option value="-1">Descending</md-option>
+          </md-select>
+          <md-button class="md-fab" aria-label="Eat cake" ng-click="openAddNewPartyModal()">
+            <md-icon md-font-set="material-icons"> add </md-icon>
+          </md-button>
+        </div>
+      </div>
+      <md-content class="md-padding" style="padding-top:0;">
+        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+        <div  dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count" class="ma-party">
+          <md-card>
+            <md-card-content>
+              <h2 class="md-title ma-name" style=""><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
+              <p class="ma-description" style="padding:0 10px;margin-bottom:35px;margin-top: 6px;">{{party.description}}</p>
 
-            <div class="input-group">
-              <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
-              <input type="text" ng-model="search" placeholder="Search" id="search" class="form-control">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="sort-order">Sort Order</label>
-            <select ng-model="orderProperty" class="form-control">
-              <option value="1">Ascending</option>
-              <option value="-1">Descending</option>
-            </select>
-          </div>
-        </form>
-      </div>
-      <div class="col-xs-4 ma-add-button-container">
-        <button class="btn" ng-click="openAddNewPartyModal()"><i class="fa fa-plus"></i></button>
-      </div>
+
+              <div layout="row">
+                <div flex="1">
+                  <p style="margin-top:0px;margin-bottom:3px;font-size:14px;color:#aaa;">
+                    <small>Posted by {{ creator(party) | displayName }}</small>
+                    <span ng-if="party.public" style="font-size:12px;color:#999;">| Everyone is invited</span>
+                  </p>
+
+                  <div ng-show="$root.currentUser" class="md-actions" layout="row">
+                    <md-button ng-click="rsvp(party._id, 'yes')">I'm going!</md-button>
+                    <md-button ng-click="rsvp(party._id, 'maybe')">Maybe</md-button>
+                    <md-button ng-click="rsvp(party._id, 'no')">No</md-button>
+                  </div>
+                </div>
+                <div  layout="row" layout-align="end end">
+                  <div ng-hide="$root.currentUser" style="font-size:13px;margin-bottom:10px;">
+                    Sign in to RSVP for this party
+                  </div>
+                  <div>
+                    <div class="rsvps-sum">
+                      <div class="rsvps-amount">{{ (party.rsvps | filter:{rsvp:'yes'}).length || "0" }}</div>
+                      <div class="rsvps-title">Yes</div>
+                    </div>
+                    <div class="rsvps-sum">
+                      <div class="rsvps-amount">{{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0" }}</div>
+                      <div class="rsvps-title">Maybe</div>
+                    </div>
+                    <div class="rsvps-sum">
+                      <div class="rsvps-amount">{{ (party.rsvps | filter:{rsvp:'no'}).length || "0" }}</div>
+                      <div class="rsvps-title">No</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </md-card-content>
+          </md-card>
+        </div>
+      </md-content>
+
     </div>
-    <ul class="list-group">
-      <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count"
-          class="list-group-item ma-party-item">
-
-        <i ng-click="remove(party)" class="ma-remove fa fa-times"
-           ng-show="$root.currentUser && $root.currentUser._id == party.owner"></i>
-
-
-        <div class="row">
-          <div class="col-sm-8">
-            <h2 class="ma-party-name"><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
-
-            <p class="ma-party-description">{{party.description}}</p>
-          </div>
-        </div>
-
-        <div class="row ma-party-item-bottom">
-          <div class="col-sm-8 ma-posted-by-col">
-            <span class="ma-posted-by">Posted by {{ creator(party) | displayName }}  </span>
-
-            <span ng-if="party.public" class="ma-everyone-invited"><i class="fa fa-male"></i> Everyone is invited</span>
-
-                        <span ng-if="!party.public" class="ma-everyone-invited">
-                             <i class="fa fa-user-secret"></i>  This is a private event
-                        </span>
-
-            <div ng-show="$root.currentUser" class="ma-rsvp-buttons">
-              <input type="button" value="I'm going!" ng-click="rsvp(party._id, 'yes')" class="btn"
-                     ng-class="{'btn-primary' : isRSVP('yes', party)}">
-              <input type="button" value="Maybe" ng-click="rsvp(party._id, 'maybe')" class="btn"
-                     ng-class="{'btn-primary' : isRSVP('maybe', party)}">
-              <input type="button" value="No" ng-click="rsvp(party._id, 'no')" class="btn"
-                     ng-class="{'btn-primary' : isRSVP('no', party)}">
-            </div>
-            <div ng-hide="$root.currentUser">
-              <i>Sign in to RSVP for this party.</i>
-            </div>
-
-
-          </div>
-          <div class="col-sm-4">
-            <div class="ma-rsvp-sum">
-              <div class="ma-rsvp-amount">
-                <div class="ma-amount">
-                  {{ (party.rsvps | filter:{rsvp:'yes'}).length || "0"}}
-                </div>
-                <div class="ma-rsvp-title">
-                  YES
-                </div>
-              </div>
-              <div class="ma-rsvp-amount">
-                <div class="ma-amount">
-                  {{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0"}}
-                </div>
-                <div class="ma-rsvp-title">
-                  MAYBE
-                </div>
-              </div>
-              <div class="ma-rsvp-amount">
-                <div class="ma-amount">
-                  {{ (party.rsvps | filter:{rsvp:'no'}).length || "0"}}
-                </div>
-                <div class="ma-rsvp-title">
-                  NO
-                </div>
-              </div>
-            </div>
-
-            <ul ng-if="!party.public">
-              <li ng-repeat="invitedUser in outstandingInvitations(party)">
-                {{ invitedUser | displayName }}
-              </li>
-            </ul>
-
-          </div>
-        </div>
-
-      </li>
-    </ul>
-    <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
-
-  </div>
-  <div class="col-md-6 h100 ma-angular-map-col">
-    <div class="angular-google-map-container h100">
-      <ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+    <div flex-gt-sm="50" flex-sm layout="row" style="min-height:300px;">
+      <ui-gmap-google-map options="map.options" center="map.center" zoom="map.zoom" flex layout="row">
         <ui-gmap-markers models="parties" coords="'location'" click="onClicked()"
                          fit="true" idkey="'_id'" doRebuildAll="true">
         </ui-gmap-markers>
       </ui-gmap-google-map>
     </div>
   </div>
-</div>
+</md-content>
