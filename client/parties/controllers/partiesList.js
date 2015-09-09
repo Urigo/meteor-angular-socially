@@ -1,5 +1,5 @@
-angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state',
-  function($scope, $meteor, $rootScope, $state){
+angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '$rootScope', '$state', '$modal',
+  function($scope, $meteor, $rootScope, $state, $modal){
 
     $scope.page = 1;
     $scope.perPage = 3;
@@ -28,14 +28,73 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
           };
         });
 
+        var styles1 = [{
+          "featureType": "landscape.natural",
+          "elementType": "geometry.fill",
+          "stylers": [{"visibility": "on"}, {"color": "#e0efef"}]
+        }, {
+          "featureType": "poi",
+          "elementType": "geometry.fill",
+          "stylers": [{"visibility": "on"}, {"hue": "#1900ff"}, {"color": "#c0e8e8"}]
+        }, {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [{"lightness": 100}, {"visibility": "simplified"}]
+        }, {
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [{"visibility": "off"}]
+        }, {
+          "featureType": "transit.line",
+          "elementType": "geometry",
+          "stylers": [{"visibility": "on"}, {"lightness": 700}]
+        }, {"featureType": "water", "elementType": "all", "stylers": [{"color": "#7dcdcd"}]}];
+        var styles2 = [{
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [{"color": "#444444"}]
+        }, {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [{"color": "#f2f2f2"}]
+        }, {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [{"visibility": "off"}]
+        }, {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [{"saturation": -100}, {"lightness": 45}]
+        }, {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [{"visibility": "simplified"}]
+        }, {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [{"visibility": "off"}]
+        }, {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [{"visibility": "off"}]
+        }, {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [{"color": "#46bcec"}, {"visibility": "on"}]
+        }];
+
+
         $scope.map = {
           center: {
             latitude: 45,
             longitude: -73
           },
+          options: {
+            styles: styles2,
+            maxZoom: 10
+          },
           zoom: 8
         };
-
       });
     });
 
@@ -92,4 +151,32 @@ angular.module("socially").controller("PartiesListCtrl", ['$scope', '$meteor', '
 
       return owner;
     };
+
+    $scope.openAddNewPartyModal = function () {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'client/parties/views/add-new-party-modal.ng.html',
+        controller: 'AddNewPartyCtrl',
+        resolve: {
+          parties: function () {
+            return $scope.parties;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+      }, function () {
+      });
+    };
+
+    $scope.isRSVP = function (rsvp, party) {
+      if (!$rootScope.currentUser._id) return false;
+      var rsvpIndex = party.myRsvpIndex;
+      rsvpIndex = rsvpIndex || _.indexOf(_.pluck(party.rsvps, 'user'), $rootScope.currentUser._id);
+
+      if (rsvpIndex !== -1) {
+        party.myRsvpIndex = rsvpIndex;
+        return party.rsvps[rsvpIndex].rsvp === rsvp;
+      }
+    }
   }]);
