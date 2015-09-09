@@ -16,3 +16,5 @@ tmeasday:publish-counts
 email
 angularui:angular-google-maps
 less
+angularui:angular-ui-bootstrap@0.13.0
+twbs:bootstrap@3.3.5

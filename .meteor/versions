@@ -7,6 +7,7 @@ accounts-ui@1.1.5
 accounts-ui-unstyled@1.1.7
 angular:angular@1.4.4
 angularui:angular-google-maps@2.1.5
+angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
 angularutils:pagination@0.7.0
 autoupdate@1.2.1
@@ -65,6 +66,7 @@ stevezhu:lodash@1.0.2
 templating@1.1.1
 tmeasday:publish-counts@0.7.0
 tracker@1.0.7
+twbs:bootstrap@3.3.5
 twitter@1.1.4
 ui@1.0.6
 underscore@1.0.3
