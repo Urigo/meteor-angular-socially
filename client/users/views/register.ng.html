@@ -1,0 +1,32 @@
+<md-content layout="row">
+  <span flex></span>
+  <md-whiteframe layout="column" flex="50">
+    <div layout="row" layout-align="space-around center">
+      <div>Register</div>
+      <md-button>Twitter</md-button>
+      <md-button>Facebook</md-button>
+    </div>
+    <div ng-show="rc.error" class="md-warn">
+      <small>{{ rc.error }}</small>
+    </div>
+    <form layout="column">
+      <md-input-container>
+        <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
+        <input type="text" ng-model="rc.credentials.email"
+               placeholder="email" aria-label="email"/>
+      </md-input-container>
+      <md-input-container>
+        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
+        <input type="password" ng-model="rc.credentials.password"
+               placeholder="password" aria-label="password"/>
+      </md-input-container>
+      <md-button class="md-raised md-primary"
+                 ng-click="rc.register()">Create Account
+      </md-button>
+    </form>
+    <div layout="row" layout-align="end center">
+      <a href="/login">Login</a>
+    </div>
+  </md-whiteframe>
+  <span flex></span>
+</md-content>
