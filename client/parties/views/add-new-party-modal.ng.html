@@ -1,5 +1,4 @@
 <md-dialog>
-  <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
         <h2> Create a new party</h2>
@@ -44,6 +43,8 @@
               <div layout="row" class="images-container-title">
                 <div class="party-image-container" ng-repeat="image in newPartyImages">
                   <img ng-src="{{ image.url() }}"/><br/>
+                  <a href="#" editable-text="image.metadata.description"
+                     onbeforesave="updateDescription($data, image)">{{ image.metadata.description || 'Click to add description' }}</a>
                 </div>
               </div>
             </div>
@@ -63,5 +64,4 @@
         Add
       </md-button>
     </div>
-  </form>
 </md-dialog>
