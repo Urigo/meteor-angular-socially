@@ -20,3 +20,5 @@ angularui:angular-ui-bootstrap@0.13.0
 twbs:bootstrap@3.3.5
 angular:angular-material
 planettraining:material-design-icons
+cfs:standard-packages
+cfs:gridfs
