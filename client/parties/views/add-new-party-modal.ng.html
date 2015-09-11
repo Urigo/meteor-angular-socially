@@ -21,7 +21,7 @@
             <div flex>
               <h3>Add photos to your party!</h3>
               <div ng-controller="AddPhotoCtrl">
-                <div ngf-drop ngf-select
+                <div ng-hide="imgSrc" ngf-drop ngf-select
                      ngf-change="addImages($files)"
                      ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
                      ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
