@@ -6,7 +6,8 @@ angular.module('socially',[
   'ngMaterial',
   'ngFileUpload',
   'ngImgCrop',
-  'xeditable'
+  'xeditable',
+  'angular-sortable-view'
 ]);
 
 var themeIcons = ['$mdIconProvider' , function ($mdIconProvider) {
