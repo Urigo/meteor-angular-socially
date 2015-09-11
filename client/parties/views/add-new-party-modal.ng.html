@@ -44,7 +44,7 @@
               <div layout="row" class="images-container-title" sv-root sv-part="newPartyImages">
                 <div sv-element class="party-image-container" ng-repeat="image in newPartyImages">
                   <div class="main-image" ng-show="$index === 0">Main Image</div>
-                  <img draggable="false" ng-src="{{ image.url() }}"/><br/>
+                  <img draggable="false" ng-src="{{ image.url({store: 'thumbnail'}) }}"/><br/>
                   <a href="#" editable-text="image.metadata.description"
                      onbeforesave="updateDescription($data, image)">{{ image.metadata.description || 'Click to add description' }}</a>
                 </div>
