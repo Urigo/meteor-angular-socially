@@ -2,6 +2,7 @@ angular.module("socially").controller("AddNewPartyCtrl", ['$scope', '$meteor', '
   function ($scope, $meteor, $rootScope, $state, $mdDialog, parties) {
     $scope.newParty = {};
     $scope.images = $meteor.collectionFS(Images, false, Images);
+    $scope.newPartyImages = [];
 
     $scope.addNewParty = function () {
       if($scope.newParty.name){
