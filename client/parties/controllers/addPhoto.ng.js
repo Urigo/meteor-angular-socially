@@ -17,4 +17,14 @@ angular.module("socially").controller("AddPhotoCtrl", ['$scope',
         $scope.imgSrc = undefined;
       }
     };
+
+    $scope.saveCroppedImage = function() {
+      if ($scope.myCroppedImage !== '') {
+        $scope.images.save($scope.myCroppedImage).then(function(result) {
+          $scope.newPartyImages.push(result[0]._id);
+          $scope.imgSrc = undefined;
+          $scope.myCroppedImage = '';
+        });
+      }
+    };
   }]);
