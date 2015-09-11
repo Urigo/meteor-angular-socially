@@ -33,7 +33,10 @@
                   <div ng-show="dropAvailable">You can also drop image to here</div>
                 </div>
                 <div ng-show="imgSrc" class="ng-crop-container">
-                  <h3>Great! Now edit & crop your image...</h3><br />
+                  <h3>Great! Now edit & crop your image...</h3>
+                  <md-button ng-click="saveCroppedImage()" ng-disabled="!imgSrc" class="md-primary">
+                    Save Image
+                  </md-button>
                   <img-crop image="imgSrc" result-image="myCroppedImage" area-type="square"></img-crop>
                 </div>
               </div>
