@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog>
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -6,7 +6,7 @@
         <span flex></span>
       </div>
     </md-toolbar>
-    <md-dialog-content style="min-width:300px;max-width:800px;max-height:810px; ">
+    <md-dialog-content style="min-width:800px;max-width:800px;max-height:100%; ">
       <div  ng-show="$root.currentUser">
         <md-input-container>
           <label>Name</label>
@@ -16,6 +16,26 @@
           <label>Description</label>
           <input ng-model="newParty.description" id="description" type="text" aria-label="Description">
         </md-input-container>
+        <md-whiteframe class="md-whiteframe-z1" layout="column">
+          <div layout="row" class="images-container-title">
+            <div flex>
+              <h3>Add photos to your party!</h3>
+              <div ng-controller="AddPhotoCtrl">
+                <div ngf-drop ngf-select
+                     ngf-change="addImages($files)"
+                     ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
+                     ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
+                     ngf-drop-available="dropAvailable">
+                  <div>Click here to select image</div>
+                  <div>
+                    <strong>OR</strong>
+                  </div>
+                  <div ng-show="dropAvailable">You can also drop image to here</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </md-whiteframe>
         <md-checkbox ng-model="newParty.public" id="public" aria-label="Public">
           Public
         </md-checkbox>
