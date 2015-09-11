@@ -11,8 +11,13 @@ angular.module("socially").controller("AddNewPartyCtrl", ['$scope', '$meteor', '
         $scope.newParty = '';
         $mdDialog.hide();
       }
-    }
+    };
+
     $scope.close = function () {
       $mdDialog.hide();
-    }
+    };
+
+    $scope.updateDescription = function($data, image) {
+      image.update({$set: {'metadata.description': $data}});
+    };
   }]);
