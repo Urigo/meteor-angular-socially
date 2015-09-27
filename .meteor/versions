@@ -1,5 +1,6 @@
 angular@1.0.0-rc.11
 angular:angular@1.4.6
+angularui:angular-ui-router@0.2.15
 autopublish@1.0.4
 autoupdate@1.2.3
 babel-compiler@5.8.24_1
