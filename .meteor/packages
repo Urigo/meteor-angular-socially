@@ -20,3 +20,4 @@ autopublish             # Publish all data to the clients (for prototyping)
 angular
 angularui:angular-ui-router
 accounts-password
+accounts-ui
