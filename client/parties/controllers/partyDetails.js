@@ -1,31 +1,21 @@
 angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$stateParams', '$meteor',
   function ($scope, $stateParams, $meteor) {
-
     $scope.party = $meteor.object(Parties, $stateParams.partyId);
-
-    var subscriptionHandle;
-    $meteor.subscribe('parties').then(function (handle) {
-      subscriptionHandle = handle;
-    });
-
     $scope.users = $meteor.collection(Meteor.users, false).subscribe('users');
+    $scope.$meteorSubscribe('parties');
 
-    $scope.invite = function (user) {
+    $scope.invite = function(user){
       $meteor.call('invite', $scope.party._id, user._id).then(
-        function (data) {
+        function(data){
           console.log('success inviting', data);
         },
-        function (err) {
+        function(err){
           console.log('failed', err);
         }
       );
     };
 
-    $scope.$on('$destroy', function () {
-      subscriptionHandle.stop();
-    });
-
-    $scope.canInvite = function () {
+    $scope.canInvite = function (){
       if (!$scope.party)
         return false;
 
@@ -54,7 +44,7 @@ angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$statePara
         }
       },
       marker: {
-        options: {draggable: true},
+        options: { draggable: true },
         events: {
           dragend: function (marker, eventName, args) {
             if (!$scope.party.location)
@@ -66,5 +56,4 @@ angular.module("socially").controller("PartyDetailsCtrl", ['$scope', '$statePara
         }
       }
     };
-
   }]);

@@ -4,11 +4,23 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
-urigo:angular
+meteor-base             # Packages every Meteor app needs to have
+mobile-experience       # Packages for a great mobile UX
+mongo                   # The database Meteor supports right now
+blaze-html-templates    # Compile .html files into Meteor Blaze views
+session                 # Client-side reactive dictionary for your app
+jquery                  # Helpful client-side library
+tracker                 # Meteor's client-side reactive programming library
+
+standard-minifiers      # JS/CSS minifiers run for production mode
+es5-shim                # ECMAScript 5 compatibility for older browsers.
+ecmascript              # Enable ECMAScript2015+ syntax in app code
+
+angular
 angularui:angular-ui-router
 accounts-password
 accounts-ui
+urigo:angular-blaze-template
 accounts-facebook
 accounts-twitter
 angularutils:pagination
@@ -16,8 +28,7 @@ tmeasday:publish-counts
 email
 angularui:angular-google-maps
 less
-angularui:angular-ui-bootstrap@0.13.0
-twbs:bootstrap@3.3.5
+angularui:angular-ui-bootstrap
 angular:angular-material
 planettraining:material-design-icons
 cfs:standard-packages
