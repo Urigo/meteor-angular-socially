@@ -9,8 +9,8 @@ alexk111:ng-img-crop@0.3.2
 angular:angular@1.4.4
 angular:angular-animate@1.4.4
 angular:angular-aria@1.4.4
-angular:angular-material@0.10.1
-angularui:angular-google-maps@2.1.5
+angular:angular-material@0.11.0
+angularui:angular-google-maps@2.2.1
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
 angularutils:pagination@0.7.0
@@ -69,6 +69,7 @@ mobile-status-bar@1.0.3
 mongo@1.1.0
 mongo-livedata@1.0.8
 netanelgilad:angular-sortable-view@0.0.13
+nmccready:angular-simple-logger@0.0.4
 npm-bcrypt@0.7.8_2
 oauth@1.1.4
 oauth1@1.1.4
@@ -91,7 +92,7 @@ spacebars-compiler@1.0.6
 srp@1.0.3
 stevezhu:lodash@1.0.2
 templating@1.1.1
-tmeasday:publish-counts@0.7.0
+tmeasday:publish-counts@0.7.2
 tracker@1.0.7
 twbs:bootstrap@3.3.5
 twitter@1.1.4
