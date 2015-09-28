@@ -1,33 +1,60 @@
-<md-content layout="row">
-  <span flex></span>
-  <md-whiteframe layout="column" flex="50">
-    <div layout="row" layout-align="space-around center">
-      <div>Login with:</div>
-      <md-button>Twitter</md-button>
-      <md-button>Facebook</md-button>
-    </div>
-    <div ng-show="lc.error" class="md-warn">
-      <small>{{ lc.error }}</small>
-    </div>
-    <form layout="column">
-      <md-input-container>
-        <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
-        <input type="text" ng-model="lc.credentials.email"
-               placeholder="email" aria-label="email"/>
-      </md-input-container>
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input type="password" ng-model="lc.credentials.password"
-               placeholder="password" aria-label="password"/>
-      </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="lc.login()"
-                 aria-label="login">Sign In
-      </md-button>
-    </form>
-    <div layout="row" layout-align="space-around center">
-      <a href="/resetpw">Forgot password?</a>
-      <a href="/register">Create an account</a>
-    </div>
-  </md-whiteframe>
-  <span flex></span>
+<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+
+    <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+
+        <md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>
+            <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+                <h3 class="md-display-1"> Sign in </h3>
+            </div>
+        </md-toolbar>
+
+        <div layout="column" layout-fill layout-margin layout-padding>
+            <div layout="row" layout-fill layout-margin>
+                <p class="md-body-2"> Use existing account</p>
+            </div>
+            <div layout="row" layout-fill layout-margin layout-padding layout-wrap>
+                <md-button class="md-raised">
+                    <md-icon md-svg-icon="google" style="color: #DC4A38;"></md-icon>
+                    <span> Google</span>
+                </md-button>
+                <md-button class="md-raised">
+                    <md-icon md-svg-icon="facebook" style="color: #3F62B4;"></md-icon>
+                    <span>Facebook </span>
+                </md-button>
+                <md-button class="md-raised">
+                    <md-icon md-svg-icon="twitter" style="color: #27AAE2;"></md-icon>
+                    <span>Twitter </span>
+                </md-button>
+            </div>
+            <md-divider class="inset"></md-divider>
+
+            <div layout="row" layout-fill layout-margin>
+                <p class="md-body-2"> Sign in with your email</p>
+            </div>
+
+            <form name="loginForm" layout="column" layout-fill layout-padding layout-margin>
+                <md-input-container >
+                    <label> Email </label>
+                    <input type="text" ng-model="lc.credentials.email" aria-label="email" required/>
+                </md-input-container>
+                <md-input-container >
+                    <label> Password </label>
+                    <input type="password" ng-model="lc.credentials.password" aria-label="password" required/>
+                </md-input-container>
+                <div layout="row" layout-align="space-between center">
+                    <a class="md-button" href="/resetPassword">Forgot password?</a>
+                    <md-button class="md-raised md-primary" ng-click="lc.login()" aria-label="login" ng-disabled="lc.loginForm.$invalid()">Sign In</md-button>
+                </div>
+            </form>
+            <md-toolbar ng-show="lc.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+                <p class="md-body-1">{{ lc.error }}</p>
+            </md-toolbar>
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center">
+                <a class="md-button" href="/register">Need an account?</a>
+            </div>
+
+        </div>
+
+    </md-whiteframe>
 </md-content>
