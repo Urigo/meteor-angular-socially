@@ -8,6 +8,7 @@ accounts-ui-unstyled@1.1.8
 angular@1.0.0-rc.11
 angular:angular@1.4.6
 angularui:angular-google-maps@2.2.1
+angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
 angularutils:pagination@0.7.0
 autoupdate@1.2.3
