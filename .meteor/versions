@@ -7,6 +7,9 @@ accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
 angular@1.0.0-rc.11
 angular:angular@1.4.6
+angular:angular-animate@1.4.6
+angular:angular-aria@1.4.6
+angular:angular-material@0.11.0
 angularui:angular-google-maps@2.2.1
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
