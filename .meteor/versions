@@ -71,6 +71,7 @@ oauth1@1.1.5
 oauth2@1.1.5
 observe-sequence@1.0.7
 ordered-dict@1.0.4
+planettraining:material-design-icons@2.0.0
 promise@0.4.8
 random@1.0.4
 rate-limit@1.0.0
