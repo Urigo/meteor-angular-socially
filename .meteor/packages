@@ -28,3 +28,4 @@ check
 angularui:angular-google-maps
 less
 angularui:angular-ui-bootstrap
+angular:angular-material
