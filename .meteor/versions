@@ -83,6 +83,7 @@ mobile-status-bar@1.0.6
 mongo@1.1.1
 mongo-id@1.0.1
 mongo-livedata@1.0.9
+netanelgilad:angular-sortable-view@0.0.13
 nmccready:angular-simple-logger@0.0.4
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
@@ -116,6 +117,7 @@ tracker@1.0.8
 twitter@1.1.5
 ui@1.0.8
 underscore@1.0.4
+urigo:angular@0.8.14
 urigo:angular-blaze-template@0.0.1
 url@1.0.5
 vitalets:angular-xeditable@0.1.9
