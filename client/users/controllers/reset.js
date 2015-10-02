@@ -14,7 +14,7 @@ angular.module("socially").controller("ResetCtrl", ['$meteor', '$state',
           $state.go('parties');
         },
         function (err) {
-          vm.error = 'Error sending forgot password email - ' + err;
+          vm.error = 'Error sending forgotten password email - ' + err;
         }
       );
     };
