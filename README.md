@@ -60,5 +60,11 @@ Submit Pull Request or open issues with proposals for [angular-meteor](https://g
 ### Anything else?
 [Open an issue](https://github.com/Urigo/meteor-angular-socially/issues/new), it's free.
 
+#FAQs
+1. ERROR whitelist rejection while running on ios
+   * Create ```mobile-config.js``` and add ```App.accessRule('*');```
+   * Re-run meteor and it should work
+   * Take a look at this for extra help: https://github.com/Urigo/meteor-angular-socially/issues/34#issuecomment-143902353
+
 
 
