@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
   angular.module('socially', ['angular-meteor']);
 
-  angular.module('socially').controller('PartiesListCtrl', ['$scope', function ($scope) {
+  angular.module('socially').controller('PartiesListCtrl', function ($scope) {
     $scope.parties = [
       {
         'name': 'Dubstep-Free Zone',
@@ -16,5 +16,5 @@ if (Meteor.isClient) {
         'description': 'Leisure suit required. And only fiercest manners.'
       }
     ];
-  }]);
+  });
 }
