@@ -20,7 +20,11 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
     $scope.parties.splice($scope.parties.indexOf(party), 1);
   };
 
-  $scope.removeAll = function () {
+  $scope.removeAll = function(){
     $scope.parties.remove();
+  };
+
+  $scope.pageChanged = function(newPage) {
+    $scope.page = newPage;
   };
 });
