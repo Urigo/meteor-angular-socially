@@ -9,6 +9,13 @@
   <button ng-click="removeAll()">Remove All</button>
 </form>
 <ul>
+  <h1>Parties:</h1>
+  <div>
+    <select ng-model="orderProperty">
+      <option value="1">Ascending</option>
+      <option value="-1">Descending</option>
+    </select>
+  </div>
   <li dir-paginate="party in parties | itemsPerPage: perPage" total-items="partiesCount.count">
     <a href="/parties/{{party._id}}">{{party.name}}</a>
     <p>{{party.description}}</p>
