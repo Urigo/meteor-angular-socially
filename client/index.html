@@ -10,7 +10,10 @@
   </h2>
   <span flex></span>
   <div class="navbar-right navbar-text">
-    <blaze-template name="loginButtons"></blaze-template>
+    <md-button ng-href="/login" ng-hide="$root.currentUser">Login</md-button>
+    <md-button ng-href="/register" ng-hide="$root.currentUser">Sign up</md-button>
+    <div ng-show="$root.currentUser" ng-bind="$root.currentUser"></div>
+    <md-button ng-href="/logout" ng-show="$root.currentUser">Logout</md-button>
   </div>
 </md-toolbar>
 <div ui-view flex-gt-sm layout-gt-sm="row"></div>
