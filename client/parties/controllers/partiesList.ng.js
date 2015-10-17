@@ -50,6 +50,13 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
     );
   };
 
+  $scope.outstandingInvitations = function (party) {
+    return _.filter($scope.users, function (user) {
+      return (_.contains(party.invited, user._id) &&
+      !_.findWhere(party.rsvps, {user: user._id}));
+    });
+  };
+
   $scope.getUserById = function(userId){
     return Meteor.users.findOne(userId);
   };
