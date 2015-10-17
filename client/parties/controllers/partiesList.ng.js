@@ -3,6 +3,7 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
   $scope.page = 1;
   $scope.perPage = 3;
   $scope.sort = {name: 1};
+  $scope.orderProperty = '1';
 
   $scope.parties = $meteor.collection(function() {
     return Parties.find({}, {
