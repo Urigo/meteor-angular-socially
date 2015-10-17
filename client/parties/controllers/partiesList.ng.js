@@ -39,6 +39,17 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
       $scope.sort = {name: parseInt($scope.orderProperty)};
   });
 
+  $scope.rsvp = function(partyId, rsvp){
+    $meteor.call('rsvp', partyId, rsvp).then(
+      function(data){
+        console.log('success responding', data);
+      },
+      function(err){
+        console.log('failed', err);
+      }
+    );
+  };
+
   $scope.getUserById = function(userId){
     return Meteor.users.findOne(userId);
   };
