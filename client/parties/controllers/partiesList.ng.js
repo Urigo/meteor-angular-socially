@@ -5,7 +5,11 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
   $scope.perPage = 3;
   $scope.sort = {name: 1};
 
-  $meteor.subscribe('parties');
+  $meteor.subscribe('parties', {
+    limit: parseInt($scope.perPage),
+    skip: parseInt(($scope.page - 1) * $scope.perPage),
+    sort: $scope.sort
+  });
 
   $scope.remove = function (party) {
     $scope.parties.splice($scope.parties.indexOf(party), 1);
