@@ -12,9 +12,9 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
 
   $meteor.autorun($scope, function() {
     $meteor.subscribe('parties', {
-      limit: parseInt($scope.perPage),
-      skip: parseInt(($scope.page - 1) * $scope.perPage),
-      sort: $scope.sort
+      limit: parseInt($scope.getReactively('perPage')),
+      skip: (parseInt($scope.getReactively('page')) - 1) * parseInt($scope.getReactively('perPage')),
+      sort: $scope.getReactively('sort')
     }).then(function(){
       $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
     });
