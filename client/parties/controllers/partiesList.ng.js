@@ -14,6 +14,8 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
     limit: parseInt($scope.perPage),
     skip: parseInt(($scope.page - 1) * $scope.perPage),
     sort: $scope.sort
+  }).then(function(){
+    $scope.partiesCount = $meteor.object(Counts ,'numberOfParties', false);
   });
 
   $scope.remove = function (party) {
