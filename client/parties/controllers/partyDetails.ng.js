@@ -13,4 +13,12 @@ angular.module("socially").controller("PartyDetailsCtrl", function ($scope, $sta
       }
     );
   };
+
+  $scope.canInvite = function (){
+    if (!$scope.party)
+      return false;
+
+    return !$scope.party.public &&
+      $scope.party.owner === Meteor.userId();
+  };
 });
