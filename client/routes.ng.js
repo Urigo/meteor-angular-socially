@@ -10,7 +10,12 @@ angular.module("socially").config(function ($urlRouterProvider, $stateProvider, 
     .state('partyDetails', {
       url: '/parties/:partyId',
       templateUrl: 'client/parties/views/party-details.ng.html',
-      controller: 'PartyDetailsCtrl'
+      controller: 'PartyDetailsCtrl',
+      resolve: {
+        "currentUser": function ($meteor) {
+          return $meteor.requireUser();
+        }
+      }
     });
 
   $urlRouterProvider.otherwise("/parties");
