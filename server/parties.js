@@ -1,4 +1,4 @@
-Meteor.publish("parties", function () {
+Meteor.publish("parties", function (options) {
   return Parties.find({
     $or:[
       {$and:[
@@ -9,5 +9,5 @@ Meteor.publish("parties", function () {
         {owner: this.userId},
         {owner: {$exists: true}}
       ]}
-    ]});
+    ]}, options);
 });
