@@ -6,7 +6,7 @@ angular.module("socially").controller("PartiesListCtrl", function ($scope, $mete
 
   $scope.parties = $meteor.collection(function() {
     return Parties.find({}, {
-      sort : $scope.sort
+      sort : $scope.getReactively('sort')
     });
   });
 
