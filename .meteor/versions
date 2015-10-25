@@ -11,6 +11,7 @@ angular:angular@1.4.6
 angular:angular-animate@1.4.6
 angular:angular-aria@1.4.6
 angular:angular-material@0.11.0
+angular:angular-sanitize@1.4.6
 angularui:angular-google-maps@2.2.1
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
@@ -55,6 +56,7 @@ ddp-rate-limiter@1.0.0
 ddp-server@1.2.1
 deps@1.0.9
 diff-sequence@1.0.1
+driftyco:ionic@1.1.0_2
 ecmascript@0.1.4
 ecmascript-collections@0.1.6
 ejson@1.0.7
@@ -107,6 +109,7 @@ routepolicy@1.0.6
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
+socially-browser@0.0.1
 socially-mobile@0.0.1
 spacebars@1.0.7
 spacebars-compiler@1.0.7
@@ -121,6 +124,7 @@ twitter@1.1.5
 ui@1.0.8
 underscore@1.0.4
 urigo:angular-blaze-template@0.0.1
+urigo:cancel-fastclick@0.0.2
 url@1.0.5
 vitalets:angular-xeditable@0.1.9
 webapp@1.2.2
