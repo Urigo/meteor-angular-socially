@@ -1,1 +1,33 @@
-mobile login
+<md-content layout="row">
+  <span flex></span>
+  <md-whiteframe layout="column" flex="50">
+    <div layout="row" layout-align="space-around center">
+      <div>Login with SMS</div>
+    </div>
+    <div ng-show="lc.error" class="md-warn">
+      <small>{{ lc.error }}</small>
+    </div>
+    <form layout="column" ng-show="lc.isStepTwo">
+      <md-input-container>
+        <input type="text" ng-model="lc.verificationCode"
+               placeholder="code"/>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="lc.verifyCode()"
+                 aria-label="login">Verify Code
+      </md-button>
+    </form>
+    <form layout="column" ng-show="!lc.isStepTwo">
+      <md-input-container>
+        <input type="text" ng-model="lc.phoneNumber"
+               placeholder="phone"/>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="lc.verifyPhone()"
+                 aria-label="login">Send SMS
+      </md-button>
+    </form>
+    <div layout="row" layout-align="space-around center">
+      <a href="/resetpw">Forgot password?</a>
+    </div>
+  </md-whiteframe>
+  <span flex></span>
+</md-content>
