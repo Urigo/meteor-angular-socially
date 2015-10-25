@@ -1,4 +1,4 @@
-angular.module("socially").controller("LoginCtrl", ['$meteor', '$state',
+angular.module("socially.browser").controller("LoginCtrl", ['$meteor', '$state',
   function ($meteor, $state) {
     var vm = this;
 
