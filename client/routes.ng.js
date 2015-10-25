@@ -27,12 +27,7 @@ angular.module("socially").config(function ($urlRouterProvider, $stateProvider, 
         }
       }
     })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'client/users/views/login.ng.html',
-      controller: 'LoginCtrl',
-      controllerAs: 'lc'
-    })
+
     .state('register',{
       url: '/register',
       templateUrl: 'client/users/views/register.ng.html',
