@@ -13,7 +13,8 @@ Package.onUse(function(api) {
 
   api.addFiles([
     'client/lib/module.ng.js',
-    'client/routes.ng.js'
+    'client/routes.ng.js',
+    'client/users/controllers/login.ng.js'
   ], 'web.cordova');
 
   api.addAssets([
