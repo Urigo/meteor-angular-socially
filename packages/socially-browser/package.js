@@ -14,11 +14,14 @@ Package.onUse(function(api) {
   api.addFiles([
     'client/lib/module.ng.js',
     'client/routes.ng.js',
-    'client/users/controllers/login.ng.js'
+    'client/users/controllers/login.ng.js',
+    'client/parties/controllers/partiesList.ng.js'
   ], 'web.browser');
 
   api.addAssets([
-    'client/users/views/login-browser.ng.html'
+    'client/users/views/login-browser.ng.html',
+    'client/parties/views/parties-list.ng.html',
+    'client/browser-main.ng.html'
   ], 'web.browser');
 });
 
