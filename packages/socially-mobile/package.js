@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.1');
   api.use('ecmascript');
   api.use('angular');
+  api.use('driftyco:ionic');
 
   api.addFiles([
     'client/lib/module.ng.js',
