@@ -18,7 +18,7 @@ angular.module("socially.mobile").controller("LoginCtrl", ['$meteor', '$state',
           vm.error = err;
         }
         else {
-          $state.go('parties');
+          $state.go('socially.parties');
         }
       });
     }
