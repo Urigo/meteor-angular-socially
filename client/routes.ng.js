@@ -12,35 +12,42 @@ angular.module("socially").config(function ($urlRouterProvider, $stateProvider, 
   $locationProvider.html5Mode(true);
 
   $stateProvider
-    .state('parties', {
-      url: '/parties',
-      templateUrl: 'client/parties/views/parties-list.ng.html',
-      controller: 'PartiesListCtrl'
-    })
-    .state('partyDetails', {
+
+    .state('socially.partyDetails', {
       url: '/parties/:partyId',
-      templateUrl: 'client/parties/views/party-details.ng.html',
-      controller: 'PartyDetailsCtrl',
-      resolve: {
-        "currentUser": function($meteor){
-          return $meteor.requireUser();
+      views: {
+        main: {
+          templateUrl: 'client/parties/views/party-details.ng.html',
+          controller: 'PartyDetailsCtrl',
+          resolve: {
+            "currentUser": function($meteor){
+              return $meteor.requireUser();
+            }
+          }
         }
       }
     })
-
-    .state('register',{
+    .state('socially.register',{
       url: '/register',
-      templateUrl: 'client/users/views/register.ng.html',
-      controller: 'RegisterCtrl',
-      controllerAs: 'rc'
+      views: {
+        main: {
+          templateUrl: 'client/users/views/register.ng.html',
+          controller: 'RegisterCtrl',
+          controllerAs: 'rc'
+        }
+      }
     })
-    .state('resetpw', {
+    .state('socially.resetpw', {
       url: '/resetpw',
-      templateUrl: 'client/users/views/reset-password.ng.html',
-      controller: 'ResetCtrl',
-      controllerAs: 'rpc'
+      views: {
+        main: {
+          templateUrl: 'client/users/views/reset-password.ng.html',
+          controller: 'ResetCtrl',
+          controllerAs: 'rpc'
+        }
+      }
     })
-    .state('logout', {
+    .state('socially.logout', {
       url: '/logout',
       resolve: {
         "logout": function($meteor, $state) {
@@ -53,5 +60,5 @@ angular.module("socially").config(function ($urlRouterProvider, $stateProvider, 
       }
     });
 
-  $urlRouterProvider.otherwise("/parties");
+  $urlRouterProvider.otherwise("/socially/parties");
 });
