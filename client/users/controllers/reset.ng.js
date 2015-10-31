@@ -11,7 +11,7 @@ angular.module("socially").controller("ResetCtrl", ['$meteor', '$state',
     vm.reset = function () {
       $meteor.forgotPassword(vm.credentials).then(
         function () {
-          $state.go('parties');
+          $state.go('socially.parties');
         },
         function (err) {
           vm.error = 'Error sending forgot password email - ' + err;

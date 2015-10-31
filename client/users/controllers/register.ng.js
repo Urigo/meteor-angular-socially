@@ -12,7 +12,7 @@ angular.module("socially").controller("RegisterCtrl", ['$meteor', '$state',
     vm.register = function () {
       $meteor.createUser(vm.credentials).then(
         function () {
-          $state.go('parties');
+          $state.go('socially.parties');
         },
         function (err) {
           vm.error = 'Registration error - ' + err;
