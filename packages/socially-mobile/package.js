@@ -19,7 +19,9 @@ Package.onUse(function(api) {
   ], 'web.cordova');
 
   api.addAssets([
-    'client/users/views/login-mobile.ng.html'
+    'client/users/views/login-mobile.ng.html',
+    'client/parties/views/parties-list.ng.html',
+    'client/mobile-main.ng.html'
   ], 'web.cordova');
 });
 
