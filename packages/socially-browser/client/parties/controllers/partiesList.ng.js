@@ -1,4 +1,4 @@
-angular.module("socially").controller("PartiesListCtrl", function ($scope, $meteor, $rootScope, $state, $mdDialog, $filter) {
+angular.module("socially.browser").controller("PartiesListCtrl", function ($scope, $meteor, $rootScope, $state, $mdDialog, $filter) {
   $scope.page = 1;
   $scope.perPage = 3;
   $scope.sort = {name: 1};
