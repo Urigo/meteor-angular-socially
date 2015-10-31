@@ -1,1 +1,1 @@
-angular.module('socially.mobile', []);
+angular.module('socially.mobile', ['ionic']);
