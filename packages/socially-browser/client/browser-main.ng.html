@@ -1,0 +1,13 @@
+<md-toolbar md-scroll-shrink layout="row" layout-align="start center" layout-padding>
+  <h2>
+    <a ui-sref="socially.parties"><span class="md-title">Socially</span></a>
+  </h2>
+  <span flex></span>
+  <div class="navbar-right navbar-text">
+    <md-button ng-href="/socially/login" ng-hide="$root.currentUser">Login</md-button>
+    <md-button ng-href="/socially/register" ng-hide="$root.currentUser">Sign up</md-button>
+    <div ng-show="$root.currentUser" ng-bind="$root.currentUser"></div>
+    <md-button ng-href="/socially/logout" ng-show="$root.currentUser">Logout</md-button>
+  </div>
+</md-toolbar>
+<div ui-view="main" flex-gt-sm layout-gt-sm="row"></div>
