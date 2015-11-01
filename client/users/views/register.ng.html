@@ -1,32 +1,57 @@
-<md-content layout="row">
-  <span flex></span>
-  <md-whiteframe layout="column" flex="50">
-    <div layout="row" layout-align="space-around center">
-      <div>Register</div>
-      <md-button>Twitter</md-button>
-      <md-button>Facebook</md-button>
-    </div>
-    <div ng-show="rc.error" class="md-warn">
-      <small>{{ rc.error }}</small>
-    </div>
-    <form layout="column">
-      <md-input-container>
-        <md-icon md-svg-icon="content:ic_mail_24px"></md-icon>
-        <input type="text" ng-model="rc.credentials.email"
-               placeholder="email" aria-label="email"/>
-      </md-input-container>
-      <md-input-container>
-        <md-icon md-svg-icon="action:ic_lock_open_24px"></md-icon>
-        <input type="password" ng-model="rc.credentials.password"
-               placeholder="password" aria-label="password"/>
-      </md-input-container>
-      <md-button class="md-raised md-primary"
-                 ng-click="rc.register()">Create Account
-      </md-button>
-    </form>
-    <div layout="row" layout-align="end center">
-      <a href="/login">Login</a>
-    </div>
-  </md-whiteframe>
-  <span flex></span>
+<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+    <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" >
+
+        <md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>
+            <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+                <h3 class="md-display-1"> Register a new account</h3>
+            </div>
+        </md-toolbar>
+
+        <div layout="column" layout-fill layout-margin layout-padding>
+
+            <div layout="row" layout-fill layout-margin ng-show="rc.providers.length >0">
+                <p class="md-body-2">Use an existing account? </p>
+            </div>
+
+            <div layout="row" layout-fill layout-margin layout-padding layout-wrap>
+                <md-button class="md-raised" ng-click="rc.loginWithProvider(provider.name)" ng-repeat="provider in rc.providers">
+                    <md-icon md-svg-src="{{provider.icon}}" style="color: {{provider.color}};"></md-icon>
+                    <span> {{provider.name}}</span>
+                </md-button>
+            </div>
+            <md-divider class="inset"></md-divider>
+
+            <div layout="row" layout-fill layout-margin>
+                <p class="md-body-2">Use your email?</p>
+            </div>
+
+            <form name="registerForm" layout="column" layout-fill layout-padding layout-margin>
+                <md-input-container >
+                    <label> Email </label>
+                    <input type="text" ng-model="rc.credentials.email"  aria-label="email" required/>
+                </md-input-container>
+                <md-input-container >
+                    <label> Password </label>
+                    <input type="password" ng-model="rc.credentials.password"  aria-label="password" required/>
+                </md-input-container>
+                <div layout="row" layout-align="end center">
+                    <md-button class="md-raised md-primary" ng-click="rc.register()" aria-label="login" ng-disabled="rc.registerForm.$invalid()">Register</md-button>
+                </div>
+            </form>
+
+
+
+            <md-toolbar ng-show="rc.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+                <p class="md-body-1">{{ rc.error }}</p>
+            </md-toolbar>
+
+            <md-divider></md-divider>
+            <div layout="row" layout-align="center">
+                <a class="md-button" href="/login">Already a user?</a>
+            </div>
+
+        </div>
+
+    </md-whiteframe>
 </md-content>
+
