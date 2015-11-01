@@ -10,15 +10,19 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.1');
   api.use('ecmascript');
   api.use('angular');
+  api.use('driftyco:ionic');
 
   api.addFiles([
     'client/lib/module.ng.js',
     'client/routes.ng.js',
-    'client/users/controllers/login.ng.js'
+    'client/users/controllers/login.ng.js',
+    'client/parties/controllers/partiesList.ng.js'
   ], 'web.cordova');
 
   api.addAssets([
-    'client/users/views/login-mobile.ng.html'
+    'client/users/views/login-mobile.ng.html',
+    'client/parties/views/parties-list.ng.html',
+    'client/mobile-main.ng.html'
   ], 'web.cordova');
 });
 
