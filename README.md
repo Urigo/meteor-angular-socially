@@ -1,11 +1,11 @@
-# meteor-angular-socially - [Tutorial's site](http://angularjs.meteor.com/tutorial)
+# meteor-angular-socially - [Tutorial's site](http://angular-meteor.com/tutorialIntro)
 angular-meteor example and tutorial app.
 
 The tutorial starts at branch 'step_00' till the last step.
 
 The master branch is always equal to the last step.
 
-Here is the deployed final version - http://socially-step18.meteor.com/
+Here is the deployed final version - http://socially-step22.meteor.com/
 
 Please contribute to the tutorial.
 Pull request the master branch to add new features or pull request specific step to improve that step.
@@ -16,7 +16,7 @@ Thanks @MilosStanic for writing step 18 on angular-material
 
 An example with the `controller as` syntax can be found in [this branch](https://github.com/Urigo/meteor-angular-socially/tree/step_12_controller_as_vm).
 
-# angular-meteor University! <a href="http://angularjs.meteor.com/"><img src="http://angularjs.meteor.com/images/logo-large.png" width="60" height="60" /></a>  
+# angular-meteor University! <a href="http://angularjs.meteor.com/"><img src="http://angular-meteor.com/images/logo.png" /></a>  
 
 The angular-meteor university is a community learning experiment, we would like to create a similar experience to the [hueniversity](https://github.com/hueniverse/hueniversity)
 
