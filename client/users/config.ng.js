@@ -5,5 +5,5 @@ angular.module('socially').config(
     $mdIconProvider
       .icon('facebook','icons/facebook.svg')
       .icon('twitter','icons/twitter.svg')
-      .icon('google-plus','icons/google-plus.svg')
+      .icon('google-plus','icons/google.svg')
   });
