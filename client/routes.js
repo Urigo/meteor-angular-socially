@@ -8,7 +8,17 @@ angular.module('socially').config(function ($urlRouterProvider, $stateProvider, 
     })
     .state('partyDetails', {
       url: '/parties/:partyId',
-      template: '<party-details></party-details>'
+      template: '<party-details></party-details>',
+      resolve: {
+        currentUser: ($q) => {
+          if (Meteor.userId() == null) {
+            return $q.reject();
+          }
+          else {
+            return $q.resolve();
+          }
+        }
+      }
     });
 
   $urlRouterProvider.otherwise("/parties");
