@@ -6,3 +6,10 @@ The party your selected is:
   <button ng-click="partyDetails.save()">Save</button>
 </form>
 <button ui-sref="parties">Back</button>
+
+<ul>
+  Users:
+  <li ng-repeat="user in partyDetails.users">
+    <div>{{ user.emails[0].address }}</div>
+  </li>
+</ul>
