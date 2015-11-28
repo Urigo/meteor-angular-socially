@@ -37,7 +37,11 @@ angular.module('socially').directive('partiesList', function () {
 
       this.removeParty = (party) => {
         Parties.remove({_id: party._id});
-      }
+      };
+
+      this.pageChanged = (newPage) => {
+        this.page = newPage;
+      };
     }
   }
 });
