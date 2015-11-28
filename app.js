@@ -55,8 +55,14 @@ if (Meteor.isClient) {
       restrict: 'E',
       templateUrl: 'party-details.html',
       controllerAs: 'partyDetails',
-      controller: function ($scope, $stateParams) {
-        this.partyId = $stateParams.partyId;
+      controller: function ($scope, $stateParams, $reactive) {
+        $reactive(this).attach($scope);
+
+        this.helpers({
+          party: () => {
+            return Parties.findOne({ _id: $stateParams.partyId });
+          }
+        });
       }
     }
   });
