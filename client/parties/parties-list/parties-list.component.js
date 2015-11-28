@@ -7,6 +7,11 @@ angular.module('socially').directive('partiesList', function () {
       $reactive(this).attach($scope);
 
       this.newParty = {};
+      this.perPage = 3;
+      this.page = 1;
+      this.sort = {
+        name: 1
+      };
 
       this.subscribe('parties');
 
