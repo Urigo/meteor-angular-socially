@@ -6,9 +6,14 @@ angular.module('socially').directive('partyDetails', function () {
     controller: function ($scope, $stateParams, $reactive) {
       $reactive(this).attach($scope);
 
+      this.subscribe('users');
+
       this.helpers({
         party: () => {
           return Parties.findOne({_id: $stateParams.partyId});
+        },
+        users: () => {
+          return Meteor.users.find({});
         }
       });
 
