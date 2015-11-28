@@ -9,5 +9,6 @@
   <li ng-repeat="party in partiesList.parties">
     {{party.name}}
     <p>{{party.description}}</p>
+    <button ng-click="partiesList.removeParty(party)">X</button>
   </li>
 </ul>
