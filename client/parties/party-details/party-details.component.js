@@ -16,7 +16,8 @@ angular.module('socially').directive('partyDetails', function () {
         Parties.update({_id: $stateParams.partyId}, {
           $set: {
             name: this.party.name,
-            description: this.party.description
+            description: this.party.description,
+            'public': this.party.public
           }
         }, (error) => {
           if (error) {
