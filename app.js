@@ -49,4 +49,15 @@ if (Meteor.isClient) {
       }
     }
   });
+
+  angular.module('socially').directive('partyDetails', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'party-details.html',
+      controllerAs: 'partyDetails',
+      controller: function ($scope, $stateParams) {
+        this.partyId = $stateParams.partyId;
+      }
+    }
+  });
 }
