@@ -23,6 +23,10 @@ if (Meteor.isClient) {
           Parties.insert(this.newParty);
           this.newParty = {};
         };
+
+        this.removeParty = (party) => {
+          Parties.remove({_id: party._id});
+        }
       }
     }
   });
