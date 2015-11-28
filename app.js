@@ -60,9 +60,18 @@ if (Meteor.isClient) {
 
         this.helpers({
           party: () => {
-            return Parties.findOne({ _id: $stateParams.partyId });
+            return Parties.findOne({_id: $stateParams.partyId});
           }
         });
+
+        this.save = () => {
+          Parties.update({_id: $stateParams.partyId}, {
+            $set: {
+              name: this.party.name,
+              description: this.party.description
+            }
+          });
+        };
       }
     }
   });
