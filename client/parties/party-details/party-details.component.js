@@ -1,7 +1,7 @@
 angular.module('socially').directive('partyDetails', function () {
   return {
     restrict: 'E',
-    templateUrl: 'party-details.html',
+    templateUrl: 'client/parties/party-details/party-details.html',
     controllerAs: 'partyDetails',
     controller: function ($scope, $stateParams, $reactive) {
       $reactive(this).attach($scope);
