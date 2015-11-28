@@ -1,6 +1,6 @@
-<div ng-controller="PartiesListCtrl">
+<div ng-controller="PartiesListCtrl as vm">
   <ul>
-    <li ng-repeat="party in parties">
+    <li ng-repeat="party in vm.parties">
       {{party.name}}
       <p>{{party.description}}</p>
     </li>
