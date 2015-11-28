@@ -15,6 +15,7 @@ angular.module('socially').directive('partiesList', function () {
       });
 
       this.addParty = () => {
+        this.newParty.owner = Meteor.user()._id;
         Parties.insert(this.newParty);
         this.newParty = {};
       };
