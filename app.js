@@ -70,6 +70,13 @@ if (Meteor.isClient) {
               name: this.party.name,
               description: this.party.description
             }
+          }, (error) => {
+            if (error) {
+              console.log('Oops, unable to update the party...');
+            }
+            else {
+              console.log('Done!');
+            }
           });
         };
       }
