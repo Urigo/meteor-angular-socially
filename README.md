@@ -43,7 +43,7 @@ First, read the [Code of Conduct](https://github.com/Urigo/meteor-angular-social
 
 Simple, you start by forking this repo.
 Every few days a new issue will be posted with an [`assignment` label](https://github.com/Urigo/meteor-angular-socially/labels/assignment)
-. If you would like to participate in the assignment, try to solve it and when you are done, submit a Pull Request back to this repo to the `step_NUMBER_u` branch. Make sure your code complies with the [john papa angular style guid](https://github.com/johnpapa/angular-styleguide).
+. If you would like to participate in the assignment, try to solve it and when you are done, submit a Pull Request back to this repo to the `step_NUMBER_u` branch. Make sure your code complies with the [John Papa Angular Style Guide](https://github.com/johnpapa/angular-styleguide).
 While you wait for the assignment to close, take a look at what others are submitting and see if you can improve your own solution (borrow ideas, add tests, write examples, update the documentation). If you see ways in which others can improve their solution, please don’t hesitate to comment on their Pull Request.
 Each assignment will have a final submission date. When the issue expires, one of the Pull Requests submitted will be picked and merged and published as the new tutorial step. Any follow up assignments will be based on the merged code.
 Before starting the next assignment, make sure [your fork matches the current](https://github.com/Urigo/meteor-angular-socially/blob/master/guides/git.md ) assignment step branch (`step_NUMBER_u`) since only one Pull Request can be accepted.
