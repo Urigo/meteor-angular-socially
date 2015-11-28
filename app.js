@@ -6,12 +6,24 @@ if (Meteor.isClient) {
     'ui.router'
   ]);
 
-  angular.module('socially').directive('partiesList', function() {
+  angular.module('socially').config(function ($urlRouterProvider, $stateProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+
+    $stateProvider
+      .state('parties', {
+        url: '/parties',
+        template: '<parties-list></parties-list>'
+      });
+
+    $urlRouterProvider.otherwise("/parties");
+  });
+
+  angular.module('socially').directive('partiesList', function () {
     return {
       restrict: 'E',
       templateUrl: 'parties-list.html',
       controllerAs: 'partiesList',
-      controller: function($scope, $reactive) {
+      controller: function ($scope, $reactive) {
         $reactive(this).attach($scope);
 
         this.newParty = {};
