@@ -1,10 +1,10 @@
 Meteor.publish("parties", function (options) {
-  return Parties.find({
+  let selector = {
     $or: [
       {
         $and: [
-          {"public": true},
-          {"public": {$exists: true}}
+          {'public': true},
+          {'public': {$exists: true}}
         ]
       },
       {
@@ -14,5 +14,8 @@ Meteor.publish("parties", function (options) {
         ]
       }
     ]
-  }, options);
+  };
+
+  Counts.publish(this, 'numberOfParties', Parties.find(selector), {noReady: true});
+  return Parties.find(selector, options);
 });
