@@ -3,7 +3,7 @@
   <input type="text" ng-model="partiesList.newParty.name" />
   <label>Description: </label>
   <input type="text" ng-model="partiesList.newParty.description" />
-  <button>Add Party!</button>
+  <button ng-click="partiesList.addParty()">Add Party!</button>
 </form>
 <ul>
   <li ng-repeat="party in partiesList.parties">
