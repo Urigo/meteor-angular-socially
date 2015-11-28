@@ -1,3 +1,14 @@
-<body ng-app="socially" ng-strict-di="">
-  <div ng-include src="'main.html'"></div>
+<head>
+  <base href="/">
+</head>
+<body>
+
+<div ng-app="socially" ng-strict-di="">
+  <h1>
+    <a href="/parties">Home</a>
+  </h1>
+
+  <div ui-view=""></div>
+</div>
+
 </body>
