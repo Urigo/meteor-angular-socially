@@ -13,12 +13,20 @@ angular.module('socially').directive('partiesList', function () {
         name: 1
       };
 
-      this.subscribe('parties');
-
       this.helpers({
         parties: () => {
           return Parties.find({});
         }
+      });
+
+      this.subscribe('parties', () => {
+        return [
+          {
+            limit: parseInt(this.perPage),
+            skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+            sort: this.getReactively('sort')
+          }
+        ]
       });
 
       this.addParty = () => {
