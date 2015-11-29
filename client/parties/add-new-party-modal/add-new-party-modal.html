@@ -1,0 +1,24 @@
+<div class="container-fluid ma-add-new-party-container">
+  <div class="alert alert-info" ng-hide="addNewPartyModal.isLoggedIn">
+    Please log in to create a party!
+  </div>
+
+  <form ng-show="addNewPartyModal.isLoggedIn">
+    <h2>Create a new party</h2>
+
+    <div class="form-group">
+      <label for="nameInput">Name</label>
+      <input ng-model="addNewPartyModal.newParty.name" id="nameInput" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input ng-model="addNewPartyModal.newParty.description" id="description" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="public">
+        <input type="checkbox" ng-model="addNewPartyModal.newParty.public" id="public"> Public
+      </label>
+    </div>
+    <button ng-click="addNewPartyModal.addNewParty()" class="btn">Add</button>
+  </form>
+</div>
