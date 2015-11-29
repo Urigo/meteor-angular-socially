@@ -74,6 +74,17 @@ angular.module('socially').directive('partiesList', function () {
 
         return owner;
       };
+
+      this.rsvp = (partyId, rsvp) => {
+        Meteor.call('rsvp', partyId, rsvp, (error) => {
+          if (error) {
+            console.log('Oops, unable to rsvp!');
+          }
+          else {
+            console.log('RSVP Done!');
+          }
+        });
+      };
     }
   }
 });
