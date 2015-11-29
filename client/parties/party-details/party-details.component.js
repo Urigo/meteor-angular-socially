@@ -18,8 +18,17 @@ angular.module('socially').directive('partyDetails', function () {
         },
         isLoggedIn: () => {
           return Meteor.userId() !== null;
-        },
+        }
       });
+
+      this.map = {
+        center: {
+          latitude: 45,
+          longitude: -73
+        },
+        zoom: 8,
+        events: {}
+      };
 
       this.save = () => {
         Parties.update({_id: $stateParams.partyId}, {
