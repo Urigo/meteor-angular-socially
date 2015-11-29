@@ -1,8 +1,8 @@
 The party your selected is:
 <form>
-  Party name: <input type="text" ng-model="partyDetails.party.name" />
-  Description: <input type="text" ng-model="partyDetails.party.description" />
-  Public Party? <input type="checkbox" ng-model="partyDetails.party.public">
+  Party name: <input type="text" ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn" />
+  Description: <input type="text" ng-model="partyDetails.party.description" ng-disabled="!partyDetails.isLoggedIn" />
+  Public Party? <input type="checkbox" ng-model="partyDetails.party.public" ng-disabled="!partyDetails.isLoggedIn" />
   <button ng-click="partyDetails.save()">Save</button>
 </form>
 <button ui-sref="parties">Back</button>
