@@ -19,6 +19,9 @@ angular.module('socially').directive('partiesList', function () {
         parties: () => {
           return Parties.find({}, { sort : this.getReactively('sort') });
         },
+        users: () => {
+          return Meteor.users.find({});
+        },
         partiesCount: () => {
           return Counts.get('numberOfParties');
         }
