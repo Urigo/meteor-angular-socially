@@ -11,5 +11,6 @@ The party your selected is:
   Users to invite:
   <li ng-repeat="user in partyDetails.users | uninvited:partyDetails.party">
     <div>{{ user | displayName }}</div>
+    <button ng-click="partyDetails.invite(user)">Invite</button>
   </li>
 </ul>
