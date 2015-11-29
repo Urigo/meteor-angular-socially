@@ -28,6 +28,9 @@
       <input type="button" value="Maybe" ng-click="partiesList.rsvp(party._id, 'maybe')">
       <input type="button" value="No" ng-click="partiesList.rsvp(party._id, 'no')">
     </div>
+    <div ng-hide="partiesList.isLoggedIn">
+      <i>Sign in to RSVP for this party.</i>
+    </div>
     <div>
       Who is coming:
       Yes - {{ (party.rsvps | filter:{rsvp:'yes'}).length }}
