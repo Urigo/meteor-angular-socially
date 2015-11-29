@@ -7,6 +7,13 @@
   <input type="checkbox" ng-model="partiesList.newParty.public">
   <button ng-click="partiesList.addParty()">Add Party!</button>
 </form>
+<h1>Parties:</h1>
+<div>
+  <select ng-model="partiesList.orderProperty" ng-change="partiesList.updateSort()">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+  </select>
+</div>
 <ul>
   <li ui-sref="partyDetails({ partyId: party._id })" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
     {{party.name}}
