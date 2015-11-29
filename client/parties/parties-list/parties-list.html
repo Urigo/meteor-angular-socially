@@ -58,4 +58,11 @@
     <p><small>Posted by {{ partiesList.getPartyCreator(party) | displayName }}</small></p>
   </li>
 </ul>
+<div class="angular-google-map-container">
+  <ui-gmap-google-map center="partiesList.party.location || partiesList.map.center" zoom="partiesList.map.zoom">
+    <ui-gmap-markers models="partiesList.parties" coords="'location'"
+                     fit="true" idkey="'_id'" doRebuildAll="true">
+    </ui-gmap-markers>
+  </ui-gmap-google-map>
+</div>
 <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
