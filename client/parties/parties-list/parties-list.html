@@ -46,12 +46,15 @@
         {{ partiesList.getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
       </div>
     </div>
-    <ul>
+    <ul ng-if="!party.public">
       Users who not responded:
       <li ng-repeat="invitedUser in partiesList.outstandingInvitations(party)">
         {{ invitedUser | displayName }}
       </li>
     </ul>
+    <div ng-if="party.public">
+      Everyone is invited
+    </div>
     <p><small>Posted by {{ partiesList.getPartyCreator(party) | displayName }}</small></p>
   </li>
 </ul>
