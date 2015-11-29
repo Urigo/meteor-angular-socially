@@ -1,20 +1,23 @@
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
+  <link href='http://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 
-<div>
-  <header class="navbar navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <h1>
-          <a href="/parties">Home</a>
-        </h1>
-      </div>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">socially</a>
+    </div>
+    <div class="navbar-right-container">
       <login-buttons></login-buttons>
     </div>
-  </header>
-  <div ui-view class="container-fluid"></div>
-</div>
+  </div>
+</nav>
 
+<div class="h100">
+  <div ui-view class="ma-main-container container-fluid h100"></div>
+</div>
 </body>
