@@ -7,10 +7,13 @@ The party your selected is:
 </form>
 <button ui-sref="parties">Back</button>
 
-<ul>
+<ul ng-show="partyDetails.canInvite()">
   Users to invite:
   <li ng-repeat="user in partyDetails.users | uninvited:partyDetails.party">
     <div>{{ user | displayName }}</div>
     <button ng-click="partyDetails.invite(user)">Invite</button>
+  </li>
+  <li ng-if="(partyDetails.users | uninvited:partyDetails.party).length <= 0">
+    Everyone are already invited.
   </li>
 </ul>
