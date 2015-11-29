@@ -1,68 +1,109 @@
-<form ng-show="partiesList.isLoggedIn">
-  <label>Party Name: </label>
-  <input type="text" ng-model="partiesList.newParty.name" />
-  <label>Description: </label>
-  <input type="text" ng-model="partiesList.newParty.description" />
-  <label>Public Party?</label>
-  <input type="checkbox" ng-model="partiesList.newParty.public">
-  <button ng-click="partiesList.addParty()">Add Party!</button>
-</form>
-<div ng-hide="partiesList.isLoggedIn">
-  Log in to create a party!
-</div>
-<h1>Parties:</h1>
-<div>
-  <input type="search" ng-model="partiesList.searchText" placeholder="Search" />
-  <select ng-model="partiesList.orderProperty" ng-change="partiesList.updateSort()">
-    <option value="1">Ascending</option>
-    <option value="-1">Descending</option>
-  </select>
-</div>
-<ul>
-  <li ui-sref="partyDetails({ partyId: party._id })" dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-    {{party.name}}
-    <p>{{party.description}}</p>
-    <button ng-click="partiesList.removeParty(party)" ng-show="partiesList.isLoggedIn && party.owner == partiesList.currentUserId">X</button>
-    <div ng-show="partiesList.isLoggedIn">
-      <input type="button" value="I'm going!" ng-click="partiesList.rsvp(party._id, 'yes')">
-      <input type="button" value="Maybe" ng-click="partiesList.rsvp(party._id, 'maybe')">
-      <input type="button" value="No" ng-click="partiesList.rsvp(party._id, 'no')">
-    </div>
-    <div ng-hide="partiesList.isLoggedIn">
-      <i>Sign in to RSVP for this party.</i>
-    </div>
-    <div>
-      Who is coming:
-      Yes - {{ (party.rsvps | filter:{rsvp:'yes'}).length }}
-      Maybe - {{ (party.rsvps | filter:{rsvp:'maybe'}).length }}
-      No - {{ (party.rsvps | filter:{rsvp:'no'}).length }}
-      <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'yes'}">
-        {{ partiesList.getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+<div class="row h100">
+  <div class="col-md-6 ma-parties-col">
+    <div class="row">
+      <div class="col-xs-8">
+        <form class="form-inline search-form">
+          <div class="form-group">
+            <label class="sr-only" for="search">Search</label>
+
+            <div class="input-group">
+              <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+              <input type="text" ng-model="partiesList.searchText" placeholder="Search" id="search"
+                     class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="sort-order">Sort Order</label>
+            <select ng-model="partiesList.orderProperty" ng-change="partiesList.updateSort()">
+              <option value="1">Ascending</option>
+              <option value="-1">Descending</option>
+            </select>
+          </div>
+        </form>
       </div>
-      <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'maybe'}">
-        {{ partiesList.getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
-      </div>
-      <div ng-repeat="rsvp in party.rsvps | filter:{rsvp:'no'}">
-        {{ partiesList.getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
+      <div class="col-xs-4 ma-add-button-container">
+        <button ng-show="partiesList.isLoggedIn" class="btn" ng-click="partiesList.openAddNewPartyModal()"><i
+                class="fa fa-plus"></i></button>
       </div>
     </div>
-    <ul ng-if="!party.public">
-      Users who not responded:
-      <li ng-repeat="invitedUser in partiesList.outstandingInvitations(party)">
-        {{ invitedUser | displayName }}
+    <ul class="list-group">
+      <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage"
+          total-items="partiesList.partiesCount" class="list-group-item ma-party-item">
+        <i class="ma-remove fa fa-times" ng-click="partiesList.removeParty(party)"
+           ng-show="partiesList.isLoggedIn && party.owner == partiesList.currentUserId"></i>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <h2 class="ma-party-name"><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
+
+            <p class="ma-party-description">{{party.description}}</p>
+          </div>
+        </div>
+        <div class="row ma-party-item-bottom">
+          <div class="col-sm-8 ma-posted-by-col">
+            <span class="ma-posted-by">Posted by {{ partiesList.getPartyCreator(party) | displayName }}  </span>
+            <span ng-if="party.public" class="ma-everyone-invited"><i class="fa fa-male"></i> Everyone is invited</span>
+            <span ng-if="!party.public" class="ma-everyone-invited">
+                 <i class="fa fa-user-secret"></i>  This is a private event
+            </span>
+
+            <div ng-show="partiesList.isLoggedIn" class="ma-rsvp-buttons">
+              <input type="button" value="I'm going!" ng-click="partiesList.rsvp(party._id, 'yes')" class="btn"
+                     ng-class="{'btn-primary' : partiesList.isRSVP('yes', party)}">
+              <input type="button" value="Maybe" ng-click="partiesList.rsvp(party._id, 'maybe')" class="btn"
+                     ng-class="{'btn-primary' : partiesList.isRSVP('maybe', party)}">
+              <input type="button" value="No" ng-click="partiesList.rsvp(party._id, 'no')" class="btn"
+                     ng-class="{'btn-primary' : partiesList.isRSVP('no', party)}">
+            </div>
+            <div ng-hide="partiesList.isLoggedIn">
+              <i>Sign in to RSVP for this party.</i>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="ma-rsvp-sum">
+              <div class="ma-rsvp-amount">
+                <div class="ma-amount">
+                  {{ (party.rsvps | filter:{rsvp:'yes'}).length || "0"}}
+                </div>
+                <div class="ma-rsvp-title">
+                  YES
+                </div>
+              </div>
+              <div class="ma-rsvp-amount">
+                <div class="ma-amount">
+                  {{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0"}}
+                </div>
+                <div class="ma-rsvp-title">
+                  MAYBE
+                </div>
+              </div>
+              <div class="ma-rsvp-amount">
+                <div class="ma-amount">
+                  {{ (party.rsvps | filter:{rsvp:'no'}).length || "0"}}
+                </div>
+                <div class="ma-rsvp-title">
+                  NO
+                </div>
+              </div>
+            </div>
+            <ul ng-if="!party.public">
+              <li ng-repeat="invitedUser in partiesList.outstandingInvitations(party)">
+                {{ invitedUser | displayName }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </li>
     </ul>
-    <div ng-if="party.public">
-      Everyone is invited
+    <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
+  </div>
+  <div class="col-md-6 h100 ma-angular-map-col">
+    <div class="angular-google-map-container h100">
+      <ui-gmap-google-map center="partiesList.map.center" zoom="partiesList.map.zoom" options="partiesList.map.options">
+        <ui-gmap-markers models="partiesList.parties" coords="'location'"
+                         fit="true" idkey="'_id'" doRebuildAll="true">
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
     </div>
-    <p><small>Posted by {{ partiesList.getPartyCreator(party) | displayName }}</small></p>
-  </li>
-</ul>
-<div class="angular-google-map-container">
-  <ui-gmap-google-map center="partiesList.party.location || partiesList.map.center" zoom="partiesList.map.zoom">
-    <ui-gmap-markers models="partiesList.parties" coords="'location'"
-                     fit="true" idkey="'_id'" doRebuildAll="true">
-    </ui-gmap-markers>
-  </ui-gmap-google-map>
+  </div>
 </div>
-<dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
