@@ -3,11 +3,18 @@
 </head>
 <body>
 
-<login-buttons></login-buttons>
-<h1>
-  <a href="/parties">Home</a>
-</h1>
-
-<div ui-view=""></div>
+<div>
+  <header class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h1>
+          <a href="/parties">Home</a>
+        </h1>
+      </div>
+      <login-buttons></login-buttons>
+    </div>
+  </header>
+  <div ui-view class="container-fluid"></div>
+</div>
 
 </body>
