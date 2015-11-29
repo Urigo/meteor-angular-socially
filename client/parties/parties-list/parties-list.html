@@ -40,6 +40,12 @@
         {{ partiesList.getUserById(rsvp.user) | displayName }} - {{ rsvp.rsvp }}
       </div>
     </div>
+    <ul>
+      Users who not responded:
+      <li ng-repeat="invitedUser in partiesList.outstandingInvitations(party)">
+        {{ invitedUser | displayName }}
+      </li>
+    </ul>
     <p><small>Posted by {{ partiesList.getPartyCreator(party) | displayName }}</small></p>
   </li>
 </ul>
