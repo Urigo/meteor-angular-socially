@@ -15,7 +15,10 @@ angular.module('socially').directive('partyDetails', function () {
         },
         users: () => {
           return Meteor.users.find({});
-        }
+        },
+        isLoggedIn: () => {
+          return Meteor.userId() !== null;
+        },
       });
 
       this.save = () => {
