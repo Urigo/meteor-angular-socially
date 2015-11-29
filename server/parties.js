@@ -1,4 +1,4 @@
-Meteor.publish("parties", function (options) {
+Meteor.publish("parties", function (options, searchString) {
   let selector = {
     $or: [
       {
