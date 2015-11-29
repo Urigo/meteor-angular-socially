@@ -88,7 +88,13 @@ angular.module('socially').directive('partiesList', function () {
 
       this.getUserById = (userId) => {
         return Meteor.users.findOne(userId);
-      }
+      };
+
+      this.outstandingInvitations = (party) => {
+        return _.filter(this.users, (user) => {
+          return (_.contains(party.invited, user._id) && !_.findWhere(party.rsvps, {user: user._id}));
+        });
+      };
     }
   }
 });
