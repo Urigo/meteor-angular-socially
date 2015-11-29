@@ -9,6 +9,7 @@ angular@1.3.1
 angular-meteor-data@0.0.8
 angular-templates@0.0.3
 angular:angular@1.4.8
+angularui:angular-google-maps@2.2.1
 angularui:angular-ui-router@0.2.15
 angularutils:pagination@0.9.1_2
 autoupdate@1.2.4
@@ -62,6 +63,7 @@ mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 mongo@1.1.3
 mongo-id@1.0.1
+nmccready:angular-simple-logger@0.0.4
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 oauth@1.1.6
@@ -85,6 +87,7 @@ spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4
 standard-minifiers@1.0.2
+stevezhu:lodash@1.0.2
 templating@1.1.5
 templating-tools@1.0.0
 tmeasday:publish-counts@0.7.2
