@@ -1,5 +1,10 @@
 Meteor.publish("parties", function (options, searchString) {
+  if (!searchString || searchString == null) {
+    searchString = '';
+  }
+
   let selector = {
+    name: { '$regex' : '.*' + searchString || '' + '.*', '$options' : 'i' },
     $or: [
       {
         $and: [
