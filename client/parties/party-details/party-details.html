@@ -10,6 +10,6 @@ The party your selected is:
 <ul>
   Users to invite:
   <li ng-repeat="user in partyDetails.users | uninvited:partyDetails.party">
-    <div>{{ user.emails[0].address }}</div>
+    <div>{{ user | displayName }}</div>
   </li>
 </ul>
