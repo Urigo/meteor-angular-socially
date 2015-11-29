@@ -20,6 +20,11 @@
     {{party.name}}
     <p>{{party.description}}</p>
     <button ng-click="partiesList.removeParty(party)">X</button>
+    <div>
+      <input type="button" value="I'm going!" ng-click="partiesList.rsvp(party._id, 'yes')">
+      <input type="button" value="Maybe" ng-click="partiesList.rsvp(party._id, 'maybe')">
+      <input type="button" value="No" ng-click="partiesList.rsvp(party._id, 'no')">
+    </div>
     <p><small>Posted by {{ partiesList.getPartyCreator(party) | displayName }}</small></p>
   </li>
 </ul>
