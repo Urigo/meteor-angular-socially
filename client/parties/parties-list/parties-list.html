@@ -7,6 +7,9 @@
   <input type="checkbox" ng-model="partiesList.newParty.public">
   <button ng-click="partiesList.addParty()">Add Party!</button>
 </form>
+<div ng-hide="partiesList.isLoggedIn">
+  Log in to create a party!
+</div>
 <h1>Parties:</h1>
 <div>
   <input type="search" ng-model="partiesList.searchText" placeholder="Search" />
