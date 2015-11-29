@@ -45,6 +45,13 @@ angular.module('socially').directive('partyDetails', function () {
           }
         });
       };
+
+      this.canInvite = () => {
+        if (!this.party)
+          return false;
+
+        return !this.party.public && this.party.owner === Meteor.userId();
+      };
     }
   }
 });
