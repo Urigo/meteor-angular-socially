@@ -13,6 +13,7 @@ angular.module('socially').directive('partiesList', function () {
         name: 1
       };
       this.orderProperty = '1';
+      this.searchText = '';
 
       this.helpers({
         parties: () => {
@@ -29,7 +30,8 @@ angular.module('socially').directive('partiesList', function () {
             limit: parseInt(this.perPage),
             skip: parseInt((this.getReactively('page') - 1) * this.perPage),
             sort: this.getReactively('sort')
-          }
+          },
+          this.getReactively('searchText')
         ]
       });
 
