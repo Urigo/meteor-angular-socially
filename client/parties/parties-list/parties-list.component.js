@@ -24,6 +24,9 @@ angular.module('socially').directive('partiesList', function () {
         },
         partiesCount: () => {
           return Counts.get('numberOfParties');
+        },
+        isLoggedIn: () => {
+          return Meteor.userId() !== null;
         }
       });
 
