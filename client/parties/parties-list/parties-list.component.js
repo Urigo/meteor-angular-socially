@@ -85,6 +85,10 @@ angular.module('socially').directive('partiesList', function () {
           }
         });
       };
+
+      this.getUserById = (userId) => {
+        return Meteor.users.findOne(userId);
+      }
     }
   }
 });
