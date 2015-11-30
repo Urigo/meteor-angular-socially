@@ -3,7 +3,7 @@ angular.module('socially').directive('partiesList', function () {
     restrict: 'E',
     templateUrl: 'client/parties/parties-list/parties-list.html',
     controllerAs: 'partiesList',
-    controller: function ($scope, $reactive, $modal) {
+    controller: function ($scope, $reactive, $mdDialog) {
       $reactive(this).attach($scope);
 
       this.perPage = 3;
@@ -103,7 +103,7 @@ angular.module('socially').directive('partiesList', function () {
         }
       };
 
-      this.getPartyCreator = function(party){
+      this.getPartyCreator = function (party) {
         if (!party) {
           return '';
         }
@@ -143,9 +143,9 @@ angular.module('socially').directive('partiesList', function () {
       };
 
       this.openAddNewPartyModal = function () {
-        $modal.open({
-          animation: true,
-          template: '<add-new-party-modal></add-new-party-modal>'
+        $mdDialog.show({
+          template: '<add-new-party-modal></add-new-party-modal>',
+          clickOutsideToClose: true
         });
       };
 
