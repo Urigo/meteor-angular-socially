@@ -4,7 +4,7 @@ angular.module('socially', [
   'accounts.ui',
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
-  'ui.bootstrap'
+  'ngMaterial'
 ]);
 
 function onReady() {
