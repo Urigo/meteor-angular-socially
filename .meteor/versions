@@ -9,6 +9,9 @@ angular@1.3.1
 angular-meteor-data@0.0.8
 angular-templates@0.0.3
 angular:angular@1.4.8
+angular:angular-animate@1.4.8
+angular:angular-aria@1.4.8
+angular:angular-material@0.11.4
 angularui:angular-google-maps@2.2.1
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
