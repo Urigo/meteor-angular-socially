@@ -1,55 +1,45 @@
-<div class="row ma-party-details-container">
-  <div class="col-sm-6 col-sm-offset-3">
-    <legend>
-      View and Edit Your Party Details:
+<div layout="row" flex class="ma-party-details">
+  <div flex="33" offset="33">
+    <legend style="margin:20px 0;">
+      Here you will see and change the details of the party:
     </legend>
-    <form class="form-horizontal">
-      <div class="form-group">
+    <form layout="column">
+      <md-input-container>
         <label>Party Name</label>
-        <input ng-model="partyDetails.party.name" ng-disabled="partyDetails.party.owner != partyDetails.currentUserId" type="text"
-               class="form-control">
+        <input ng-model="partyDetails.party.name" ng-disabled="partyDetails.party.owner != partyDetails.currentUserId" type="text" aria-label="Name">
+      </md-input-container>
+      <md-input-container>
+        <label>Party Description</label>
+        <input ng-model="partyDetails.party.description" ng-disabled="partyDetails.party.owner != partyDetails.currentUserId" type="text" aria-label="Description">
+      </md-input-container>
+      <md-checkbox ng-model="partyDetails.party.public" ng-disabled="partyDetails.party.owner != partyDetails.currentUserId" aria-label="Public">
+        Is public
+      </md-checkbox>
+
+      <div layout="row" layout-align="left">
+        <md-button ng-show="partyDetails.party.owner == partyDetails.currentUserId" ng-click="partyDetails.save()">Save</md-button>
+        <md-button ng-href="/parties">Back</md-button>
       </div>
-      <div class="form-group">
-        <label>Party Name</label>
-        <input ng-model="partyDetails.party.description" ng-disabled="partyDetails.party.owner != partyDetails.currentUserId" type="text"
-               class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Is public</label>
-        <input type="checkbox" ng-model="partyDetails.party.public" ng-disabled="partyDetails.party.owner != partyDetails.currentUserId">
-      </div>
-      <div class="form-group" ng-show="partyDetails.party.owner == partyDetails.currentUserId">
-        <button ng-click="partyDetails.save()" class="btn btn-primary">Save</button>
+
+      <md-list ng-show="partyDetails.canInvite()">
+        <md-subheader class="md-no-sticky">Users to invite:</md-subheader>
+        <md-list-item ng-repeat="user in partyDetails.users | uninvited:partyDetails.party">
+          <div>{{ user | displayName }}</div>
+          <md-button ng-click="partyDetails.invite(user)">Invite</md-button>
+        </md-list-item>
+        <md-list-item ng-if="(partyDetails.users | uninvited:partyDetails.party).length <= 0">
+          Everyone are already invited.
+        </md-list-item>
+      </md-list>
+
+      <div class="angular-google-map-container">
+        <ui-gmap-google-map center="partyDetails.party.location || partyDetails.map.center"
+                            events="partyDetails.map.events" zoom="partyDetails.map.zoom">
+          <ui-gmap-marker coords="partyDetails.party.location" options="partyDetails.map.marker.options"
+                          events="partyDetails.map.marker.events" idkey="partyDetails.party._id">
+          </ui-gmap-marker>
+        </ui-gmap-google-map>
       </div>
     </form>
-
-    <div class="ma-invite-list" ng-show="partyDetails.canInvite()">
-      <h3>
-        Users to invite:
-      </h3>
-      <ul>
-        <li ng-repeat="user in partyDetails.users | uninvited:partyDetails.party">
-          <div>{{ user | displayName }}</div>
-          <button ng-click="partyDetails.invite(user)" class="btn btn-primary">Invite</button>
-        </li>
-        <li ng-if="(partyDetails.users | uninvited:partyDetails.party).length <= 0">
-          Everyone are already invited.
-        </li>
-      </ul>
-    </div>
-
-    <h3 class="ma-map-title">
-      Click the map to set the party location
-    </h3>
-
-    <div class="angular-google-map-container">
-      <ui-gmap-google-map center="partyDetails.party.location || partyDetails.map.center"
-                          events="partyDetails.map.events" zoom="partyDetails.map.zoom">
-        <ui-gmap-marker coords="partyDetails.party.location" options="partyDetails.map.marker.options"
-                        events="partyDetails.map.marker.events" idkey="partyDetails.party._id">
-        </ui-gmap-marker>
-      </ui-gmap-google-map>
-    </div>
   </div>
-
 </div>
