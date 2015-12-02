@@ -6,7 +6,8 @@ angular.module('socially', [
   'uiGmapgoogle-maps',
   'ngMaterial',
   'ngFileUpload',
-  'ngImgCrop'
+  'ngImgCrop',
+  'xeditable'
 ]);
 
 angular.module('socially').config(($mdIconProvider) => {
