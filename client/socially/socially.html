@@ -4,7 +4,10 @@
   </h2>
   <span flex></span>
   <div class="navbar-right navbar-text">
-    <login-buttons></login-buttons>
+    <md-button ng-href="/login" ng-hide="socially.isLoggedIn">Login</md-button>
+    <md-button ng-href="/register" ng-hide="socially.isLoggedIn">Sign up</md-button>
+    <div ng-show="socially.isLoggedIn">{{ socially.currentUser | displayName }}</div>
+    <md-button ng-click="socially.logout()" ng-show="socially.isLoggedIn">Logout</md-button>
   </div>
 </md-toolbar>
 <div ui-view flex-gt-sm layout-gt-sm="row"></div>
