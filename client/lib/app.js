@@ -4,7 +4,8 @@ angular.module('socially', [
   'accounts.ui',
   'angularUtils.directives.dirPagination',
   'uiGmapgoogle-maps',
-  'ngMaterial'
+  'ngMaterial',
+  'ngFileUpload'
 ]);
 
 angular.module('socially').config(($mdIconProvider) => {
