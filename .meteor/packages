@@ -31,3 +31,4 @@ angular:angular-material
 planettraining:material-design-icons
 cfs:standard-packages
 cfs:gridfs
+danialfarid:ng-file-upload
