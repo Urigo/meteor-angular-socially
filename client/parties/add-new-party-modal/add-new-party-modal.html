@@ -40,6 +40,12 @@
               </div>
             </div>
           </div>
+          <br />
+          <div layout="row" class="images-container-title">
+            <div class="party-image-container" ng-repeat="image in addNewPartyModal.newParty.images">
+              <img ng-src="{{ image.url() }}"/><br/>
+            </div>
+          </div>
         </md-whiteframe>
         <md-checkbox ng-model="addNewPartyModal.newParty.public" id="public" aria-label="Public">
           Public
