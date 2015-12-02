@@ -6,8 +6,8 @@
 @color6 : #2F2933;
 @color7 : #FF6F69;
 
-html, body {
-  height: 100%;
+html,body{
+  height:100%;
 }
 
 body {
@@ -16,16 +16,22 @@ body {
   font-family: 'Muli', sans-serif;
 }
 
-.h100 {
-  height: 100%;
+.h100{
+  height : 100%;
 }
 
-.w100 {
-  width: 100%;
+.w100{
+  width:100%;
 }
 
-.ma-main-container {
+
+.ma-main-container{
   @media (min-width: 400px) {
-    padding-right: 0;
+    padding-right : 0;
   }
 }
+
+@import "navbar.import.less";
+@import "../parties/add-new-party-modal/add-new-party-modal.import.less";
+@import "../parties/parties-list/parties-list.import.less";
+@import "../parties/party-details/party-details.import.less";
