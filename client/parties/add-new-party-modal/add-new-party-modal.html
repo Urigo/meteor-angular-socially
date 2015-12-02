@@ -20,7 +20,7 @@
           <div layout="row" class="images-container-title">
             <div flex>
               <h3>Add photos to your party!</h3>
-                <div ngf-drop ngf-select
+                <div ng-hide="addNewPartyModal.cropImgSrc" ngf-drop ngf-select
                      ngf-change="addNewPartyModal.addImages($files)"
                      ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" class="drop-box"
                      ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'image/*'"
@@ -31,6 +31,10 @@
                   </div>
                   You can also drop image to here
                 </div>
+              <div ng-show="addNewPartyModal.cropImgSrc" class="ng-crop-container">
+                <h3>Great! Now edit & crop your image...</h3><br />
+                <img-crop image="addNewPartyModal.cropImgSrc" result-image="addNewPartyModal.myCroppedImage" area-type="square"></img-crop>
+              </div>
             </div>
           </div>
         </md-whiteframe>
