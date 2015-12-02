@@ -13,6 +13,12 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use('angular');
+
+  api.addFiles([
+    'client/lib/module.js',
+    'client/auth/login/login.component.js',
+    'client/auth/login/login.html'
+  ], 'client');
 });
 
 Package.onTest(function(api) {
