@@ -20,6 +20,10 @@
         <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
         <div dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount" class="ma-party">
           <md-card>
+            <div ng-if="party.images && party.images.length > 0"
+                 ng-style="partiesList.getMainImage(party.images)"
+                 class="party-image">
+            </div>
             <md-card-content>
               <h2 class="md-title ma-name" style=""><a href="/parties/{{party._id}}">{{party.name}}</a></h2>
               <p class="ma-description" style="padding:0 10px;margin-bottom:35px;margin-top: 6px;">{{party.description}}</p>
