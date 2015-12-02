@@ -27,7 +27,19 @@ angular.module('socially').directive('addNewPartyModal', function () {
 
       this.addImages = (files) => {
         if (files.length > 0) {
-          Images.insert(files[0]);
+          let reader = new FileReader();
+
+          reader.onload = (e) => {
+            $scope.$apply(() => {
+              this.cropImgSrc = e.target.result;
+              this.myCroppedImage = '';
+            });
+          };
+
+          reader.readAsDataURL(files[0]);
+        }
+        else {
+          this.cropImgSrc = undefined;
         }
       };
     }
