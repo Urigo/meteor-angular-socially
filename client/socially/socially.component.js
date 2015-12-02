@@ -14,6 +14,10 @@ angular.module('socially').directive('socially', function () {
           return Meteor.user();
         }
       });
+
+      this.logout = () => {
+        Accounts.logout();
+      }
     }
   }
 });
