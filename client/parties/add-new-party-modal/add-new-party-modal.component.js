@@ -60,6 +60,10 @@ angular.module('socially').directive('addNewPartyModal', function () {
           });
         }
       };
+
+      this.updateDescription = ($data, image) => {
+        Images.update({_id: image._id}, {$set: {'metadata.description': $data}});
+      };
     }
   }
 });
