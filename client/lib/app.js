@@ -7,7 +7,8 @@ angular.module('socially', [
   'ngMaterial',
   'ngFileUpload',
   'ngImgCrop',
-  'xeditable'
+  'xeditable',
+  'angular-sortable-view'
 ]);
 
 angular.module('socially').config(($mdIconProvider) => {
