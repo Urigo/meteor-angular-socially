@@ -1,1 +1,33 @@
-Some temp html :)
+<md-content layout="row">
+  <span flex></span>
+  <md-whiteframe layout="column" flex="50">
+    <div layout="row" layout-align="space-around center">
+      <div>Login with SMS</div>
+    </div>
+    <div ng-show="login.error" class="md-warn">
+      <small>{{ login.error }}</small>
+    </div>
+    <form layout="column" ng-show="login.isStepTwo">
+      <md-input-container>
+        <input type="text" ng-model="login.verificationCode"
+               placeholder="code"/>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="login.verifyCode()"
+                 aria-label="login">Verify Code
+      </md-button>
+    </form>
+    <form layout="column" ng-show="!login.isStepTwo">
+      <md-input-container>
+        <input type="text" ng-model="login.phoneNumber"
+               placeholder="phone"/>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="login.verifyPhone()"
+                 aria-label="login">Send SMS
+      </md-button>
+    </form>
+    <div layout="row" layout-align="space-around center">
+      <a href="/resetpw">Forgot password?</a>
+    </div>
+  </md-whiteframe>
+  <span flex></span>
+</md-content>
