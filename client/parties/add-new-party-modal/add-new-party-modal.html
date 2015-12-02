@@ -32,7 +32,10 @@
                   You can also drop image to here
                 </div>
               <div ng-show="addNewPartyModal.cropImgSrc" class="ng-crop-container">
-                <h3>Great! Now edit & crop your image...</h3><br />
+                <h3>Great! Now edit & crop your image...</h3>
+                <md-button ng-click="addNewPartyModal.saveCroppedImage()" ng-disabled="!addNewPartyModal.cropImgSrc" class="md-primary">
+                  Save Image
+                </md-button>
                 <img-crop image="addNewPartyModal.cropImgSrc" result-image="addNewPartyModal.myCroppedImage" area-type="square"></img-crop>
               </div>
             </div>
