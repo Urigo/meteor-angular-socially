@@ -1,7 +1,7 @@
-angular.module('socially').directive('socially', function () {
+angular.module('socially.browser').directive('socially', function () {
   return {
     restrict: 'E',
-    templateUrl: 'client/socially/socially.html',
+    templateUrl: '/packages/socially-browser/client/socially/socially.html',
     controllerAs: 'socially',
     controller: function ($scope, $reactive) {
       $reactive(this).attach($scope);
