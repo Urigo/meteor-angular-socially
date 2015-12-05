@@ -1,0 +1,20 @@
+<ion-view title="Socially" hide-back-button="true">
+  <ion-content class="padding">
+    <div class="list card">
+      <div ng-repeat="party in partiesList.parties">
+        <div class="item" ng-class="{'item-avatar': party.images && party.images.length > 0}">
+          <img ng-if="party.images && party.images.length > 0" ng-src="{{ partiesList.getMainImage(party.images, true) }}">
+          {{party.name}}
+        </div>
+        <div class="item item-text-wrap">
+          {{party.description}}
+        </div>
+        <div class="item item-divider">
+          Yes: {{ (party.rsvps | filter:{rsvp:'yes'}).length || "0" }},
+          Maybe: {{ (party.rsvps | filter:{rsvp:'maybe'}).length || "0" }},
+          No: {{ (party.rsvps | filter:{rsvp:'no'}).length || "0" }}
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
