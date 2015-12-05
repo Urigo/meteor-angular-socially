@@ -23,7 +23,6 @@ Package.onUse(function(api) {
     'client/auth/register/register.html',
     'client/auth/reset-password/reset-password.component.js',
     'client/auth/reset-password/reset-password.html',
-    'client/socially/socially.component.js',
     'client/socially/socially.html',
     'client/parties/add-new-party-modal/add-new-party-modal.component.js',
     'client/parties/add-new-party-modal/add-new-party-modal.html',
