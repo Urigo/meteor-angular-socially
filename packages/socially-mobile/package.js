@@ -18,7 +18,8 @@ Package.onUse(function(api) {
   api.addFiles([
     'client/lib/module.js',
     'client/auth/login/login.component.js',
-    'client/auth/login/login.html'
+    'client/auth/login/login.html',
+    'client/socially/socially.html'
   ], 'client');
 });
 
