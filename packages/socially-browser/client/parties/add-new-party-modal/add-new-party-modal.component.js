@@ -1,7 +1,7 @@
-angular.module('socially').directive('addNewPartyModal', function () {
+angular.module('socially.browser').directive('addNewPartyModal', function () {
   return {
     restrict: 'E',
-    templateUrl: 'client/parties/add-new-party-modal/add-new-party-modal.html',
+    templateUrl: '/packages/socially-browser/client/parties/add-new-party-modal/add-new-party-modal.html',
     controllerAs: 'addNewPartyModal',
     controller: function ($scope, $stateParams, $reactive, $mdDialog) {
       $reactive(this).attach($scope);

@@ -1,7 +1,7 @@
-angular.module('socially').directive('partiesList', function () {
+angular.module('socially.browser').directive('partiesList', function () {
   return {
     restrict: 'E',
-    templateUrl: 'client/parties/parties-list/parties-list.html',
+    templateUrl: '/packages/socially-browser/client/parties/parties-list/parties-list.html',
     controllerAs: 'partiesList',
     controller: function ($scope, $reactive, $mdDialog, $filter) {
       $reactive(this).attach($scope);
