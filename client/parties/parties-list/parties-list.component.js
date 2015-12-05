@@ -1,7 +1,13 @@
-angular.module('socially.browser').directive('partiesList', function () {
+angular.module('socially').directive('partiesList', function () {
   return {
     restrict: 'E',
-    templateUrl: '/packages/socially-browser/client/parties/parties-list/parties-list.html',
+    templateUrl: () => {
+      if (Meteor.isCordova) {
+        return '/packages/socially-mobile/client/parties/parties-list/parties-list.html';
+      }
+
+      return '/packages/socially-browser/client/parties/parties-list/parties-list.html';
+    },
     controllerAs: 'partiesList',
     controller: function ($scope, $reactive, $mdDialog, $filter) {
       $reactive(this).attach($scope);
@@ -168,9 +174,13 @@ angular.module('socially.browser').directive('partiesList', function () {
         }
       };
 
-      this.getMainImage = (images) => {
+      this.getMainImage = (images, onlyUrl) => {
         if (images && images.length && images[0] && images[0]) {
           var url = $filter('filter')(this.images, {_id: images[0]})[0].url();
+
+          if (onlyUrl) {
+            return url;
+          }
 
           return {
             'background-image': 'url("' + url + '")'
