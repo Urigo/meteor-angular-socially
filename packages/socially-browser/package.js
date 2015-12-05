@@ -26,7 +26,6 @@ Package.onUse(function(api) {
     'client/socially/socially.html',
     'client/parties/add-new-party-modal/add-new-party-modal.component.js',
     'client/parties/add-new-party-modal/add-new-party-modal.html',
-    'client/parties/parties-list/parties-list.component.js',
     'client/parties/parties-list/parties-list.html',
     'client/parties/party-details/party-details.component.js',
     'client/parties/party-details/party-details.html',
