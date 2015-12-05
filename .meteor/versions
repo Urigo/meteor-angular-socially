@@ -12,6 +12,7 @@ angular:angular@1.4.8
 angular:angular-animate@1.4.8
 angular:angular-aria@1.4.8
 angular:angular-material@0.11.4
+angular:angular-sanitize@1.4.8
 angularui:angular-google-maps@2.2.1
 angularui:angular-ui-bootstrap@0.13.0
 angularui:angular-ui-router@0.2.15
@@ -58,6 +59,7 @@ ddp-server@1.2.2
 deps@1.0.9
 diff-sequence@1.0.1
 dotansimha:accounts-ui-angular@0.0.2
+driftyco:ionic@1.1.0_2
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
 ejson@1.0.7
@@ -125,6 +127,7 @@ tracker@1.0.9
 twitter@1.1.5
 ui@1.0.8
 underscore@1.0.4
+urigo:cancel-fastclick@0.0.2
 url@1.0.5
 vitalets:angular-xeditable@0.1.9
 webapp@1.2.3
