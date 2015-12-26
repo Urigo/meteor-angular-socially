@@ -15,13 +15,17 @@ SetModule('socially');
 class socially {
   constructor() {
     this.helpers({
-      isLoggedIn: () => {
-        return Meteor.userId() !== null;
-      },
-      currentUser: () => {
-        return Meteor.user();
-      }
+      isLoggedIn: this.isLoggedIn,
+      currentUser: this.currentUser
     });
+  }
+
+  currentUser() {
+    return Meteor.user();
+  }
+
+  isLoggedIn() {
+    return Meteor.userId() !== null;
   }
 
   logout() {
