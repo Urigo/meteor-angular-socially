@@ -22,9 +22,9 @@ class socially {
         return Meteor.user();
       }
     });
+  }
 
-    this.logout = () => {
-      Accounts.logout();
-    }
+  logout() {
+    Accounts.logout();
   }
 }
