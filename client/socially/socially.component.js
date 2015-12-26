@@ -1,4 +1,4 @@
-let {Component, View, SetModule, Inject} = angular2now;
+let {Component, View, SetModule, Inject, MeteorReactive} = angular2now;
 
 SetModule('socially');
 
