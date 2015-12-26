@@ -5,8 +5,9 @@ accounts-password@1.1.4
 accounts-twitter@1.0.6
 accounts-ui@1.1.6
 accounts-ui-unstyled@1.1.8
-angular@1.3.1
-angular-meteor-data@0.0.8
+alexk111:ng-img-crop@0.3.2
+angular@1.3.4
+angular-meteor-data@0.0.9
 angular-templates@0.0.3
 angular:angular@1.4.8
 angular:angular-animate@1.4.8
@@ -99,7 +100,8 @@ oauth2@1.1.5
 observe-sequence@1.0.7
 okland:accounts-phone@0.0.21
 ordered-dict@1.0.4
-pbastowski:angular-babel@1.0.7
+pbastowski:angular-babel@1.0.8
+pbastowski:angular2-now@1.1.6
 planettraining:material-design-icons@2.0.0
 promise@0.5.1
 raix:eventemitter@0.1.3
