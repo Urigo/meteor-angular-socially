@@ -1,4 +1,4 @@
-let {Component, View, SetModule, Inject, MeteorReactive} = angular2now;
+let {Component, View, SetModule, Inject, MeteorReactive, LocalInjectables} = angular2now;
 
 SetModule('socially');
 
@@ -14,8 +14,9 @@ SetModule('socially');
 })
 @Inject('$mdDialog', '$filter')
 @MeteorReactive
+@LocalInjectables
 class partiesList {
-  constructor($mdDialog, $filter) {
+  constructor() {
     this.perPage = 3;
     this.page = 1;
     this.sort = {
@@ -128,7 +129,7 @@ class partiesList {
   }
 
   openAddNewPartyModal() {
-    $mdDialog.show({
+    this.$mdDialog.show({
       template: '<add-new-party-modal></add-new-party-modal>',
       clickOutsideToClose: true
     });
@@ -151,7 +152,7 @@ class partiesList {
 
   getMainImage(images, onlyUrl) {
     if (images && images.length && images[0] && images[0]) {
-      var url = $filter('filter')(this.images, {_id: images[0]})[0].url();
+      var url = this.$filter('filter')(this.images, {_id: images[0]})[0].url();
 
       if (onlyUrl) {
         return url;
