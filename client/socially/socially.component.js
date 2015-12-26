@@ -11,11 +11,9 @@ SetModule('socially');
     return '/packages/socially-browser/client/socially/socially.html';
   }
 }})
-@Inject('$reactive', '$scope')
+@MeteorReactive
 class socially {
-  constructor($reactive, $scope) {
-    $reactive(this).attach($scope);
-
+  constructor() {
     this.helpers({
       isLoggedIn: () => {
         return Meteor.userId() !== null;
