@@ -1,7 +1,7 @@
 # meteor-angular-socially - [Tutorial's site](http://angular-meteor.com/tutorialIntro)
 angular-meteor example and tutorial app.
 
-The tutorial starts at branch 'step_00' till the last step.
+The tutorial starts at tag 'step_00' and continues with a new tag for each step.
 
 The master branch is always equal to the last step.
 
