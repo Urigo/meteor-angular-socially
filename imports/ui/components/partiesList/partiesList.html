@@ -14,7 +14,7 @@
     </a>
     <p>{{party.description}}</p>
     <party-remove party="party"></party-remove>
-    <party-rsvp party="party"></party-rsvp>
+    <party-rsvp party="party" ng-show="partiesList.isLoggedIn"></party-rsvp>
     <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
     <party-unanswered party="party"></party-unanswered>
     <party-creator party="party"></party-creator>
