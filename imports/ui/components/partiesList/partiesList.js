@@ -27,7 +27,9 @@ class PartiesList {
 
     this.helpers({
       parties() {
-        return Parties.find({});
+        return Parties.find({}, {
+          sort : this.getReactively('sort')
+        });
       }
     });
   }
