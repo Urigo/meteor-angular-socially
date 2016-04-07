@@ -4,4 +4,7 @@
     <div>{{ user | displayNameFilter }}</div>
     <button ng-click="partyUninvited.invite(user)">Invite</button>
   </li>
+  <li ng-if="(partyUninvited.users | uninvitedFilter:partyUninvited.party).length <= 0">
+    Everyone are already invited.
+  </li>
 </ul>
