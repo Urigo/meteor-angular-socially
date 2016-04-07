@@ -89,6 +89,7 @@ standard-minifier-js@1.0.6
 templating@1.1.7
 templating-tools@1.0.2
 tmeasday:check-npm-versions@0.1.1
+tmeasday:publish-counts@0.7.3
 tracker@1.0.13
 twitter@1.1.7
 ui@1.0.11
