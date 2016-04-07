@@ -13,6 +13,8 @@ class PartiesList {
 
     $reactive(this).attach($scope);
 
+    this.subscribe('parties');
+
     this.helpers({
       parties() {
         return Parties.find({});
