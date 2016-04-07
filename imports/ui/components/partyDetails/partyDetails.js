@@ -15,6 +15,8 @@ class PartyDetails {
 
     this.partyId = $stateParams.partyId;
 
+    this.subscribe('parties');
+
     this.helpers({
       party() {
         return Parties.findOne({
