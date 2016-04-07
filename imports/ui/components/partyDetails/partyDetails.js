@@ -50,7 +50,8 @@ class PartyDetails {
       $set: {
         name: this.party.name,
         description: this.party.description,
-        public: this.party.public
+        public: this.party.public,
+        location: this.party.location
       }
     }, (error) => {
       if (error) {
