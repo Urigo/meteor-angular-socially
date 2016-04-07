@@ -7,6 +7,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import template from './partiesList.html';
 import { Parties } from '../../../api/parties';
+import { name as PartiesSort } from '../partiesSort/partiesSort';
 import { name as PartyAdd } from '../partyAdd/partyAdd';
 import { name as PartyRemove } from '../partyRemove/partyRemove';
 
@@ -52,6 +53,7 @@ export default angular.module(name, [
   angularMeteor,
   uiRouter,
   utilsPagination,
+  PartiesSort,
   PartyAdd,
   PartyRemove
 ]).component(name, {
