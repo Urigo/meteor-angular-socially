@@ -21,3 +21,4 @@ angular-templates
 sanjo:jasmine
 velocity:html-reporter
 velocity:console-reporter
+accounts-password
