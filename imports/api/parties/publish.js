@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { Parties } from './collection';
 
@@ -25,6 +26,10 @@ if (Meteor.isServer) {
         }]
       }]
     };
+
+    Counts.publish(this, 'numberOfParties', Parties.find(selector), {
+      noReady: true
+    });
 
     return Parties.find(selector, options);
   });
