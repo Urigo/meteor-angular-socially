@@ -2,5 +2,6 @@
   Users to invite:
   <li ng-repeat="user in partyUninvited.users | uninvitedFilter:partyUninvited.party">
     <div>{{ user | displayNameFilter }}</div>
+    <button ng-click="partyUninvited.invite(user)">Invite</button>
   </li>
 </ul>
