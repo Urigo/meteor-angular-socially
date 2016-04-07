@@ -3,7 +3,15 @@ import angularMeteor from 'angular-meteor';
 
 import './partyAdd.html';
 
-class PartyAdd {}
+class PartyAdd {
+  constructor() {
+    this.party = {};
+  }
+
+  submit() {
+    console.log('submit:', this.party);
+  }
+}
 
 const name = 'partyAdd';
 
