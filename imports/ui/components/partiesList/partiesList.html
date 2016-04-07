@@ -1,7 +1,7 @@
 <party-add></party-add>
 
 <ul>
-  <li ng-repeat="party in partiesList.parties">
+  <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
     <a ui-sref="partyDetails({ partyId: party._id })">
       {{party.name}}
     </a>
