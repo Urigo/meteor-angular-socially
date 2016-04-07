@@ -27,6 +27,9 @@ class PartyDetails {
       },
       users() {
         return Meteor.users.find({});
+      },
+      isLoggedIn() {
+        return !!Meteor.userId();
       }
     });
   }
