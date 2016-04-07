@@ -21,6 +21,17 @@ class PartyDetails {
       }
     });
   }
+
+  save() {
+    Parties.update({
+      _id: this.party._id
+    }, {
+      $set: {
+        name: this.party.name,
+        description: this.party.description
+      }
+    });
+  }
 }
 
 const name = 'partyDetails';
