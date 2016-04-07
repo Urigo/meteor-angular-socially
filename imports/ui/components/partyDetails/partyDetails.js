@@ -3,12 +3,23 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './partyDetails.html';
+import { Parties } from '../../../api/parties';
 
 class PartyDetails {
-  constructor($stateParams) {
+  constructor($stateParams, $scope, $reactive) {
     'ngInject';
 
+    $reactive(this).attach($scope);
+
     this.partyId = $stateParams.partyId;
+
+    this.helpers({
+      party() {
+        return Parties.findOne({
+          _id: $stateParams.partyId
+        });
+      }
+    });
   }
 }
 
