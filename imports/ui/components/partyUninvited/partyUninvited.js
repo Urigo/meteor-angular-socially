@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './partyUninvited.html';
 import { name as UninvitedFilter } from '../../filters/uninvitedFilter';
+import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
 
 class PartyUninvited {
   constructor($scope) {
@@ -25,7 +26,8 @@ const name = 'partyUninvited';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  UninvitedFilter
+  UninvitedFilter,
+  DisplayNameFilter
 ]).component(name, {
   template,
   controllerAs: name,
