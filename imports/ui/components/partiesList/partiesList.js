@@ -19,7 +19,11 @@ class PartiesList {
       name: 1
     };
 
-    this.subscribe('parties');
+    this.subscribe('parties', () => [{
+      limit: parseInt(this.perPage),
+      skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+      sort: this.getReactively('sort')}
+    ]);
 
     this.helpers({
       parties() {
