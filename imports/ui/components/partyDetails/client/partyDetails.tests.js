@@ -12,7 +12,8 @@ describe('PartyDetails', () => {
     const party = {
       _id: 'partyId',
       name: 'Foo',
-      description: 'Birthday of Foo'
+      description: 'Birthday of Foo',
+      public: true
     };
 
     beforeEach(() => {
@@ -40,7 +41,8 @@ describe('PartyDetails', () => {
         expect(Parties.update.calls.mostRecent().args[1]).toEqual({
           $set: {
             name: party.name,
-            description: party.description
+            description: party.description,
+            public: party.public
           }
         });
       });
