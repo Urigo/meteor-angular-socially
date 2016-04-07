@@ -5,6 +5,8 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "angular": "^1.5.3",
+    "angular-meteor": "^1.3.9",
     "meteor-node-stubs": "~0.2.0"
   }
 }
