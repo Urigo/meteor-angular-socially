@@ -27,6 +27,16 @@ class PartyDetails {
       },
       users() {
         return Meteor.users.find({});
+      },
+      isLoggedIn() {
+        return !!Meteor.userId();
+      },
+      isOwner() {
+        if (!this.party) {
+          return false;
+        }
+
+        return this.party.owner === Meteor.userId();
       }
     });
   }
