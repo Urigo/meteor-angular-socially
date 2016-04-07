@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Parties } from './collection';
 
 if (Meteor.isServer) {
-  Meteor.publish('parties', function() {
+  Meteor.publish('parties', function(options) {
     const selector = {
       $or: [{
         // the public parties
@@ -26,6 +26,6 @@ if (Meteor.isServer) {
       }]
     };
 
-    return Parties.find(selector);
+    return Parties.find(selector, options);
   });
 }
