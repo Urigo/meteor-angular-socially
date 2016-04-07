@@ -62,6 +62,83 @@ export function invite(partyId, userId) {
   }
 }
 
+export function rsvp(partyId, rsvp) {
+  check(partyId, String);
+  check(rsvp, String);
+
+  if (!this.userId) {
+    throw new Meteor.Error(403, 'You must be logged in to RSVP');
+  }
+
+  if (!_.contains(['yes', 'no', 'maybe'], rsvp)) {
+    throw new Meteor.Error(400, 'Invalid RSVP');
+  }
+
+  const party = Parties.findOne({
+    _id: partyId,
+    $or: [{
+      // is public
+      $and: [{
+        public: true
+      }, {
+        public: {
+          $exists: true
+        }
+      }]
+    },{
+      // is owner
+      $and: [{
+        owner: this.userId
+      }, {
+        owner: {
+          $exists: true
+        }
+      }]
+    }, {
+      // is invited
+      $and: [{
+        invited: this.userId
+      }, {
+        invited: {
+          $exists: true
+        }
+      }]
+    }]
+  });
+
+  if (!party) {
+    throw new Meteor.Error(404, 'No such party');
+  }
+
+  const hasUserRsvp = _.findWhere(party.rsvps, {
+    user: this.userId
+  });
+
+  if (!hasUserRsvp) {
+    // add new rsvp entry
+    Parties.update(partyId, {
+      $push: {
+        rsvps: {
+          rsvp,
+          user: this.userId
+        }
+      }
+    });
+  } else {
+    // update rsvp entry
+    const userId = this.userId;
+    Parties.update({
+      _id: partyId,
+      'rsvps.user': userId
+    }, {
+      $set: {
+        'rsvps.$.rsvp': rsvp
+      }
+    });
+  }
+}
+
 Meteor.methods({
-  invite
+  invite,
+  rsvp
 });
