@@ -19,3 +19,6 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 pbastowski:angular-babel
 urigo:static-templates
+sanjo:jasmine
+velocity:html-reporter
+velocity:console-reporter
