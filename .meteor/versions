@@ -1,5 +1,7 @@
 accounts-base@1.2.12_1
 accounts-password@1.3.0
+accounts-ui@1.1.8
+accounts-ui-unstyled@1.1.11
 allow-deny@1.0.5
 amplify@1.0.0
 autopublish@1.0.7
@@ -9,6 +11,7 @@ babel-runtime@0.1.11_1
 base64@1.0.9
 binary-heap@1.0.9
 blaze@2.1.9
+blaze-html-templates@1.0.4
 blaze-tools@1.0.10
 boilerplate-generator@1.0.10
 caching-compiler@1.0.6
@@ -22,6 +25,7 @@ ddp-rate-limiter@1.0.5
 ddp-server@1.2.10
 deps@1.0.12
 diff-sequence@1.0.6
+dotansimha:accounts-ui-angular@0.0.4
 ecmascript@0.5.8_1
 ecmascript-runtime@0.3.14_1
 ejson@1.0.12
@@ -75,6 +79,7 @@ standard-minifier-css@1.2.1
 standard-minifier-js@1.2.0_1
 templating@1.1.14
 templating-tools@1.0.5
+tmeasday:check-npm-versions@0.1.1
 tracker@1.1.0
 ui@1.0.12
 underscore@1.0.9
