@@ -34,6 +34,10 @@ class PartiesList {
       }
     });
   }
+
+  pageChanged(newPage) {
+    this.page = newPage;
+  }
 }
 
 const name = 'partiesList';
