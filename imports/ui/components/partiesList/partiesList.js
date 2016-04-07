@@ -1,6 +1,8 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
+import './partiesList.html';
+
 class PartiesList {
   constructor($scope, $reactive) {
     'ngInject';
