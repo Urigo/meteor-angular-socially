@@ -45,6 +45,9 @@ class PartiesList {
       },
       partiesCount() {
         return Counts.get('numberOfParties');
+      },
+      isLoggedIn() {
+        return !!Meteor.userId();
       }
     });
   }
