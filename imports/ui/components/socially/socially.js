@@ -4,6 +4,7 @@ import uiRouter from 'angular-ui-router';
 
 import './socially.html';
 import { name as PartiesList } from '../partiesList/partiesList';
+import { name as Navigation } from '../navigation/navigation';
 
 class Socially {}
 
@@ -13,7 +14,8 @@ const name = 'socially';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  PartiesList
+  PartiesList,
+  Navigation
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
   controllerAs: name,
