@@ -35,6 +35,8 @@ class PartiesList {
       }, this.getReactively('searchText')
     ]);
 
+    this.subscribe('users');
+
     this.helpers({
       parties() {
         return Parties.find({}, {
