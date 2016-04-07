@@ -22,3 +22,4 @@ sanjo:jasmine
 velocity:html-reporter
 velocity:console-reporter
 accounts-password
+dotansimha:accounts-ui-angular
