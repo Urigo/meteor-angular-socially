@@ -44,6 +44,10 @@ class PartiesList {
   pageChanged(newPage) {
     this.page = newPage;
   }
+
+  sortChanged(sort) {
+    this.sort = sort;
+  }
 }
 
 const name = 'partiesList';
