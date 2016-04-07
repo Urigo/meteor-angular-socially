@@ -4,7 +4,9 @@ import angularMeteor from 'angular-meteor';
 angular.module('socially', [
     angularMeteor
   ])
-  .controller('PartiesListCtrl', ['$scope', function($scope) {
+  .controller('PartiesListCtrl', function($scope) {
+    'ngInject';
+    
     $scope.parties = [{
       'name': 'Dubstep-Free Zone',
       'description': 'Can we please just for an evening not listen to dubstep.'
@@ -15,4 +17,4 @@ angular.module('socially', [
       'name': 'Savage lounging',
       'description': 'Leisure suit required. And only fiercest manners.'
     }];
-  }]);
+  });
