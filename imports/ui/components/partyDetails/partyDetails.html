@@ -8,9 +8,4 @@ The party your selected is:
 
 <button ui-sref="parties">Back</button>
 
-<ul>
-  Users:
-  <li ng-repeat="user in partyDetails.users">
-    <div>{{ user.emails[0].address }}</div>
-  </li>
-</ul>
+<party-uninvited party="partyDetails.party"></party-uninvited>
