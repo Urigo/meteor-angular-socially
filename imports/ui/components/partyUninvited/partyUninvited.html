@@ -1,6 +1,6 @@
 <ul>
-  Users:
-  <li ng-repeat="user in partyUninvited.users">
+  Users to invite:
+  <li ng-repeat="user in partyUninvited.users | uninvitedFilter:partyUninvited.party">
     <div>{{ user.emails[0].address }}</div>
   </li>
 </ul>
