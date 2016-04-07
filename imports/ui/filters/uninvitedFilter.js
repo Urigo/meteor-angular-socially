@@ -1,4 +1,5 @@
 import angular from 'angular';
+import _ from 'underscore';
 
 const name = 'uninvitedFilter';
 
@@ -9,7 +10,7 @@ function UninvitedFilter(users, party) {
 
   return users.filter((user) => {
     // if not the owner and not invited
-    return user._id !== party.owner && (party.invited || []).indexOf(user._id) === -1;
+    return user._id !== party.owner && !_.contains(party.invited, user._id);
   });
 }
 
