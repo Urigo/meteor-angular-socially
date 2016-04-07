@@ -31,6 +31,14 @@ class PartyDetails {
     });
   }
 
+  canInvite() {
+    if (!this.party) {
+      return false;
+    }
+
+    return !this.party.public && this.party.owner === Meteor.userId();
+  }
+
   save() {
     Parties.update({
       _id: this.party._id
