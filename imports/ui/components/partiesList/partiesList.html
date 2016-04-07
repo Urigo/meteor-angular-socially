@@ -20,7 +20,12 @@
     </div>
 
     <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
-    <party-unanswered party="party"></party-unanswered>
+
+    <party-unanswered party="party" ng-if="!party.public"></party-unanswered>
+    <div ng-if="party.public">
+      Everyone is invited
+    </div>
+
     <party-creator party="party"></party-creator>
   </li>
 </ul>
