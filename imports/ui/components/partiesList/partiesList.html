@@ -1,4 +1,7 @@
 <party-add ng-show="partiesList.isLoggedIn"></party-add>
+<div ng-hide="partiesList.isLoggedIn">
+  Log in to create a party!
+</div>
 
 <input type="search" ng-model="partiesList.searchText" placeholder="Search" />
 
