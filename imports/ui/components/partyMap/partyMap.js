@@ -16,14 +16,31 @@ class PartyMap {
         longitude: -73
       },
       zoom: 8,
-      events: {}
+      events: {
+        click: (mapModel, eventName, originalEventArgs) => {
+          this.setLocation(originalEventArgs[0].latLng.lat(), originalEventArgs[0].latLng.lng());
+          $scope.$apply();
+        }
+      }
     };
 
     this.marker = {
       options: {
         draggable: true
       },
-      events: {}
+      events: {
+        dragend: (marker, eventName, args) => {
+          this.setLocation(marker.getPosition().lat(), marker.getPosition().lng());
+          $scope.$apply();
+        }
+      }
+    };
+  }
+
+  setLocation(latitude, longitude) {
+    this.location = {
+      latitude,
+      longitude
     };
   }
 }
