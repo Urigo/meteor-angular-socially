@@ -48,8 +48,15 @@ class PartiesList {
       },
       isLoggedIn() {
         return !!Meteor.userId();
+      },
+      currentUserId() {
+        return Meteor.userId();
       }
     });
+  }
+
+  isOwner(party) {
+    return this.isLoggedIn && party.owner === this.currentUserId;
   }
 
   pageChanged(newPage) {
