@@ -9,6 +9,7 @@
     "angular": "^1.5.3",
     "angular-meteor": "^1.3.9",
     "angular-ui-router": "^0.2.18",
+    "angular-utils-pagination": "^0.11.1",
     "meteor-node-stubs": "~0.2.0"
   },
   "devDependencies": {
