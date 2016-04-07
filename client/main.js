@@ -4,10 +4,12 @@ import angularMeteor from 'angular-meteor';
 angular.module('socially', [
     angularMeteor
   ])
-  .controller('PartiesListCtrl', function($scope) {
+  .controller('PartiesListCtrl', function($scope, $reactive) {
     'ngInject';
 
-    $scope.helpers({
+    $reactive(this).attach($scope);
+
+    this.helpers({
       parties() {
         return Parties.find({});
       }
