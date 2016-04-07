@@ -16,6 +16,9 @@ export default angular.module(name, [
   angularMeteor
 ]).component(name, {
   template,
+  bindings: {
+    party: '<'
+  },
   controllerAs: name,
   controller: PartyRemove
 });
