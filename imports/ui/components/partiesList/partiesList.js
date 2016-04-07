@@ -3,6 +3,8 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 import utilsPagination from 'angular-utils-pagination';
 
+import { Counts } from 'meteor/tmeasday:publish-counts';
+
 import template from './partiesList.html';
 import { Parties } from '../../../api/parties';
 import { name as PartyAdd } from '../partyAdd/partyAdd';
@@ -31,6 +33,9 @@ class PartiesList {
         return Parties.find({}, {
           sort : this.getReactively('sort')
         });
+      },
+      partiesCount() {
+        return Counts.get('numberOfParties');
       }
     });
   }
