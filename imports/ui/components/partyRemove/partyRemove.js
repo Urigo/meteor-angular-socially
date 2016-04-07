@@ -2,10 +2,13 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './partyRemove.html';
+import { Parties } from '../../../api/parties';
 
 class PartyRemove {
   remove() {
-    console.log('remove party');
+    if (this.party) {
+      Parties.remove(this.party._id);
+    }
   }
 }
 
