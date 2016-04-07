@@ -64,7 +64,7 @@ function config($stateProvider) {
     resolve: {
       currentUser($q) {
         if (Meteor.userId() === null) {
-          return $q.reject();
+          return $q.reject('AUTH_REQUIRED');
         } else {
           return $q.resolve();
         }
