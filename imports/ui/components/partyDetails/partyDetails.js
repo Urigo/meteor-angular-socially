@@ -16,9 +16,20 @@ const name = 'partyDetails';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor
+  angularMeteor,
+  uiRouter
 ]).component(name, {
   template,
   controllerAs: name,
   controller: PartyDetails
-});
+})
+  .config(config);
+
+function config($stateProvider) {
+  'ngInject';
+
+  $stateProvider.state('partyDetails', {
+    url: '/parties/:partyId',
+    template: '<party-details></party-details>'
+  });
+}
