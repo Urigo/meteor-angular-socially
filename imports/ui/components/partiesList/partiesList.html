@@ -2,7 +2,9 @@
 
 <ul>
   <li ng-repeat="party in partiesList.parties">
-    {{party.name}}
+    <a ui-sref="partyDetails({ partyId: party._id })">
+      {{party.name}}
+    </a>
     <p>{{party.description}}</p>
     <party-remove party="party"></party-remove>
   </li>
