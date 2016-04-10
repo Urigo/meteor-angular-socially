@@ -1,15 +1,20 @@
 <form>
-  <label>
-    Party Name:
-  </label>
-  <input type="text" ng-model="partyAdd.party.name" />
-  <label>
-    Description:
-  </label>
-  <input type="text" ng-model="partyAdd.party.description" />
-  <label>
-    Public Party?
-  </label>
-  <input type="checkbox" ng-model="partyAdd.party.public">
-  <button ng-click="partyAdd.submit()">Add Party!</button>
+  <div class="form-group">
+    <label>
+      Party Name:
+    </label>
+    <input type="text" ng-model="partyAdd.party.name" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label>
+      Description:
+    </label>
+    <input type="text" ng-model="partyAdd.party.description" class="form-control"/>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="partyAdd.party.public"/> Public Party?
+    </label>
+  </div>
+  <button ng-click="partyAdd.submit()" class="btn btn-success">Add Party!</button>
 </form>
