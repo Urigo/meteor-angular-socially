@@ -1,10 +1,26 @@
-Who is coming: Yes -
-{{ (partyRsvpsList.rsvps | filter:{rsvp:'yes'}).length }}
-Maybe -
-{{ (partyRsvpsList.rsvps | filter:{rsvp:'maybe'}).length }}
-No -
-{{ (partyRsvpsList.rsvps | filter:{rsvp:'no'}).length }}
-
-<party-rsvp-users rsvps="partyRsvpsList.rsvps" type="yes"></party-rsvp-users>
-<party-rsvp-users rsvps="partyRsvpsList.rsvps" type="maybe"></party-rsvp-users>
-<party-rsvp-users rsvps="partyRsvpsList.rsvps" type="no"></party-rsvp-users>
+<div class="rsvp-sum">
+  <div class="rsvp-amount">
+    <div class="amount">
+      {{ (partyRsvpsList.rsvps | filter:{rsvp:'yes'}).length || 0 }}
+    </div>
+    <div class="rsvp-title">
+      YES
+    </div>
+  </div>
+  <div class="rsvp-amount">
+    <div class="amount">
+      {{ (partyRsvpsList.rsvps | filter:{rsvp:'maybe'}).length || 0 }}
+    </div>
+    <div class="rsvp-title">
+      MAYBE
+    </div>
+  </div>
+  <div class="rsvp-amount">
+    <div class="amount">
+      {{ (partyRsvpsList.rsvps | filter:{rsvp:'no'}).length || 0 }}
+    </div>
+    <div class="rsvp-title">
+      NO
+    </div>
+  </div>
+</div>
