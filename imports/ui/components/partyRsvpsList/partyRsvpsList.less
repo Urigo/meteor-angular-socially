@@ -1,0 +1,24 @@
+.rsvp-sum {
+  width: 160px;
+  @media (min-width: 400px) {
+    float: right;
+  }
+  @media (max-width: 400px) {
+    margin: 0 auto;
+  }
+  > .rsvp-amount {
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+
+    > .amount {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    > .rsvp-title {
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+    }
+  }
+}
