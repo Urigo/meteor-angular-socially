@@ -3,7 +3,6 @@ import angularMeteor from 'angular-meteor';
 import 'angular-simple-logger';
 import 'angular-google-maps';
 
-import './partyMap.css';
 import template from './partyMap.html';
 
 class PartyMap {
