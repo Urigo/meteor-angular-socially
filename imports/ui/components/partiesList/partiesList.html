@@ -1,36 +1,66 @@
-<party-add ng-show="partiesList.isLoggedIn"></party-add>
-<div ng-hide="partiesList.isLoggedIn">
-  Log in to create a party!
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <party-add ng-show="partiesList.isLoggedIn"></party-add>
+
+      <div class="alert alert-warning" role="alert" ng-hide="partiesList.isLoggedIn">
+        <strong>Warning!</strong>
+        Log in to create a party!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>List of parties:</h2>
+      <form class="form-inline">
+        <div class="form-group">
+          <input type="search" ng-model="partiesList.searchText" placeholder="Search" class="form-control"/>
+        </div>
+        <parties-sort class="form-group" on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul class="parties">
+        <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
+          <div class="row">
+            <div class="col-sm-8">
+              <h3 class="party-name">
+                <a ui-sref="partyDetails({ partyId: party._id })">{{party.name}}</a>
+              </h3>
+              <p class="party-description">
+                {{party.description}}
+              </p>
+            </div>
+            <div class="col-sm-4">
+              <party-remove party="party" ng-show="partiesList.isOwner(party)"></party-remove>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <party-rsvp party="party" ng-show="partiesList.isLoggedIn"></party-rsvp>
+              <div class="alert alert-warning" role="alert" ng-hide="partiesList.isLoggedIn">
+                <strong>Warning!</strong>
+                <i>Sign in to RSVP for this party.</i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <party-creator party="party"></party-creator>
+            </div>
+            <div class="col-md-8">
+              <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
+    </div>
+    <div class="col-md-6">
+      <parties-map parties="partiesList.parties"></parties-map>
+    </div>
+  </div>
 </div>
-
-<input type="search" ng-model="partiesList.searchText" placeholder="Search" />
-
-<parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
-
-<ul>
-  <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
-    <a ui-sref="partyDetails({ partyId: party._id })">
-      {{party.name}}
-    </a>
-    <p>{{party.description}}</p>
-    <party-remove party="party" ng-show="partiesList.isOwner(party)"></party-remove>
-    <party-rsvp party="party" ng-show="partiesList.isLoggedIn"></party-rsvp>
-    <div ng-hide="partiesList.isLoggedIn">
-      <i>Sign in to RSVP for this party.</i>
-    </div>
-
-    <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
-
-    <party-unanswered party="party" ng-if="!party.public"></party-unanswered>
-    <div ng-if="party.public">
-      Everyone is invited
-    </div>
-
-    <party-creator party="party"></party-creator>
-  </li>
-</ul>
-
-<dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
-
-
-<parties-map parties="partiesList.parties"></parties-map>
