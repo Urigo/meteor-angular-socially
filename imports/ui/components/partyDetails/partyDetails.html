@@ -1,13 +1,35 @@
-The party your selected is:
-<form>
-  Party name: <input type="text" ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn"/>
-  Description: <input type="text" ng-model="partyDetails.party.description" ng-disabled="!partyDetails.isLoggedIn"/>
-  Public Party? <input type="checkbox" ng-model="partyDetails.party.public" ng-disabled="!partyDetails.isLoggedIn"/>
-  <button ng-click="partyDetails.save()">Save</button>
-</form>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <fieldset class="form-group">
+          <label>Party name</label>
+          <input type="text" ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn" class="form-control"/>
+        </fieldset>
 
-<button ui-sref="parties">Back</button>
+        <fieldset class="form-group">
+          <label>Description</label>
+          <input type="text" ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn" class="form-control"/>
+        </fieldset>
 
-<party-uninvited party="partyDetails.party" ng-show="partyDetails.canInvite()"></party-uninvited>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="partyDetails.party.public" ng-disabled="!partyDetails.isLoggedIn"/>
+            Public Party?
+          </label>
+        </div>
 
-<party-map location="partyDetails.party.location"></party-map>
+        <button ng-click="partyDetails.save()" type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <party-map location="partyDetails.party.location"></party-map>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <party-uninvited party="partyDetails.party" ng-show="partyDetails.canInvite()"></party-uninvited>
+    </div>
+  </div>
+</div>
