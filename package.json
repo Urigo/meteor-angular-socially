@@ -12,6 +12,7 @@
     "angular-ui-router": "^0.2.18",
     "angular-simple-logger": "^0.1.7",
     "angular-utils-pagination": "^0.11.1",
+    "bootstrap": "^4.0.0-alpha.2",
     "meteor-node-stubs": "~0.2.0",
     "underscore": "^1.8.3"
   },
