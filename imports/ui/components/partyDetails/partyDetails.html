@@ -1,35 +1,28 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6">
-      <form>
-        <fieldset class="form-group">
-          <label>Party name</label>
-          <input type="text" ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn" class="form-control"/>
-        </fieldset>
+<div layout="column" layout-padding>
+  <div layout="column" layout-gt-sm="row"  layout-padding>
+    <form flex="50" layout="column">
+      <md-input-container>
+        <label>Party name</label>
+        <input ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn">
+      </md-input-container>
 
-        <fieldset class="form-group">
-          <label>Description</label>
-          <input type="text" ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isLoggedIn" class="form-control"/>
-        </fieldset>
+      <md-input-container>
+        <label>Description</label>
+        <input ng-model="partyDetails.party.description" ng-disabled="!partyDetails.isLoggedIn">
+      </md-input-container>
 
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" ng-model="partyDetails.party.public" ng-disabled="!partyDetails.isLoggedIn"/>
-            Public Party?
-          </label>
-        </div>
+      <div>
+        <md-checkbox ng-model="partyDetails.party.public" ng-disabled="!partyDetails.isLoggedIn" aria-label="Public Party?">
+          Public Party?
+        </md-checkbox>
+      </div>
 
-        <button ng-click="partyDetails.save()" type="submit" class="btn btn-primary">Save</button>
-      </form>
-    </div>
-    <div class="col-md-6">
-      <party-map location="partyDetails.party.location"></party-map>
-    </div>
+      <div>
+        <md-button ng-click="partyDetails.save()" class="md-primary md-raised">Save</md-button>
+      </div>
+    </form>
+    <party-map flex="50" location="partyDetails.party.location"></party-map>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <party-uninvited party="partyDetails.party" ng-show="partyDetails.canInvite()"></party-uninvited>
-    </div>
-  </div>
+  <party-uninvited flex party="partyDetails.party" ng-show="partyDetails.canInvite()"></party-uninvited>
 </div>
