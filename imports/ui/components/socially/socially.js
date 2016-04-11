@@ -1,5 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
 import './socially.html';
@@ -14,6 +15,7 @@ const name = 'socially';
 // create a module
 export default angular.module(name, [
   angularMeteor,
+  ngMaterial,
   uiRouter,
   PartiesList,
   PartyDetails,
@@ -37,7 +39,7 @@ function config($locationProvider, $urlRouterProvider) {
 
 function run($rootScope, $state) {
   'ngInject';
-  
+
   $rootScope.$on('$stateChangeError',
     (event, toState, toParams, fromState, fromParams, error) => {
       if (error === 'AUTH_REQUIRED') {
