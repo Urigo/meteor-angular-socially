@@ -1,5 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
+import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
 
 import template from './socially.html';
@@ -14,6 +15,7 @@ const name = 'socially';
 // create a module
 export default angular.module(name, [
   angularMeteor,
+  ngMaterial,
   uiRouter,
   PartiesList,
   PartyDetails,
