@@ -29,7 +29,7 @@ export default angular.module(name, [
   .config(config)
   .run(run);
 
-function config($locationProvider, $urlRouterProvider, $qProvider) {
+function config($locationProvider, $urlRouterProvider, $qProvider, $mdIconProvider) {
   'ngInject';
 
   $locationProvider.html5Mode(true);
@@ -37,6 +37,24 @@ function config($locationProvider, $urlRouterProvider, $qProvider) {
   $urlRouterProvider.otherwise('/parties');
 
   $qProvider.errorOnUnhandledRejections(false);
+
+  const iconPath =  '/packages/planettraining_material-design-icons/bower_components/material-design-icons/sprites/svg-sprite/';
+
+  $mdIconProvider
+    .iconSet('social',
+      iconPath + 'svg-sprite-social.svg')
+    .iconSet('action',
+      iconPath + 'svg-sprite-action.svg')
+    .iconSet('communication',
+      iconPath + 'svg-sprite-communication.svg')
+    .iconSet('content',
+      iconPath + 'svg-sprite-content.svg')
+    .iconSet('toggle',
+      iconPath + 'svg-sprite-toggle.svg')
+    .iconSet('navigation',
+      iconPath + 'svg-sprite-navigation.svg')
+    .iconSet('image',
+      iconPath + 'svg-sprite-image.svg');
 }
 
 function run($rootScope, $state) {
