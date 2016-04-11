@@ -14,7 +14,6 @@ import { name as PartyRemove } from '../partyRemove/partyRemove';
 import { name as PartyCreator } from '../partyCreator/partyCreator';
 import { name as PartyRsvp } from '../partyRsvp/partyRsvp';
 import { name as PartyRsvpsList } from '../partyRsvpsList/partyRsvpsList';
-import { name as PartyUnanswered } from '../partyUnanswered/partyUnanswered';
 
 class PartiesList {
   constructor($scope, $reactive) {
@@ -82,8 +81,7 @@ export default angular.module(name, [
   PartyRemove,
   PartyCreator,
   PartyRsvp,
-  PartyRsvpsList,
-  PartyUnanswered
+  PartyRsvpsList
 ]).component(name, {
   template,
   controllerAs: name,
