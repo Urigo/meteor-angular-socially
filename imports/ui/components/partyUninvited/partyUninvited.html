@@ -1,10 +1,12 @@
-<h4>Users to invite:</h4>
-<ul>
-  <li ng-repeat="user in partyUninvited.users | uninvitedFilter:partyUninvited.party">
-    <button ng-click="partyUninvited.invite(user)" class="btn btn-primary-outline">Invite</button>
-    {{ user | displayNameFilter }}
-  </li>
-</ul>
-<div class="alert alert-success" role="alert" ng-if="(partyUninvited.users | uninvitedFilter:partyUninvited.party).length <= 0">
-  Everyone are already invited.
-</div>
+<h4 class="md-headline">
+  Users to invite:
+</h4>
+
+<md-list>
+  <md-list-item ng-repeat="user in partyUninvited.users | uninvitedFilter:partyUninvited.party" ng-click="partyUninvited.invite(user)">
+    <p>{{ user | displayNameFilter }}</p>
+  </md-list-item>
+  <md-list-item ng-if="(partyUninvited.users | uninvitedFilter:partyUninvited.party).length <= 0">
+    Everyone are already invited.
+  </md-list-item>
+</md-list>
