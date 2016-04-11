@@ -1,0 +1,72 @@
+<md-content layout="row" layout-align="center start" layout-fill layout-margin>
+  <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+
+    <md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>
+      <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
+        <h3 class="md-display-1">
+          Register a new account</h3>
+      </div>
+    </md-toolbar>
+
+    <div layout="column" layout-fill layout-margin layout-padding>
+
+      <div layout="row" layout-fill layout-margin>
+        <p class="md-body-2">Use your email?</p>
+      </div>
+
+      <form name="registerForm" layout="column" layout-fill layout-padding layout-margin>
+        <md-input-container >
+          <label>
+            Email
+          </label>
+          <input type="text" ng-model="register.credentials.email" placeholder="email" aria-label="email" required/>
+        </md-input-container>
+        <md-input-container >
+          <label>
+            Password
+          </label>
+          <input type="password" ng-model="register.credentials.password" placeholder="password" aria-label="password" required/>
+        </md-input-container>
+        <div layout="row" layout-align="end center">
+          <md-button class="md-raised md-primary" ng-click="register.register()" aria-label="login" ng-disabled="register.registerForm.$invalid()">Register</md-button>
+        </div>
+      </form>
+
+      <md-divider class="inset"></md-divider>
+
+      <div layout="row" layout-fill layout-margin>
+        <p class="md-body-2">
+          Want to use an existing account?
+        </p>
+      </div>
+
+      <div layout="row" layout-fill layout-margin layout-padding layout-wrap>
+        <md-button class="md-raised">
+          <md-icon md-svg-icon="social:ic_google_24px" style="color: #DC4A38;"></md-icon>
+          <span>
+            Google</span>
+        </md-button>
+        <md-button class="md-raised">
+          <md-icon md-svg-icon="social:ic_facebook_24px" style="color: #3F62B4;"></md-icon>
+          <span>Facebook
+          </span>
+        </md-button>
+        <md-button class="md-raised">
+          <md-icon md-svg-icon="social:ic_twitter_24px" style="color: #27AAE2;"></md-icon>
+          <span>Twitter
+          </span>
+        </md-button>
+      </div>
+      <md-toolbar ng-show="register.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+        <p class="md-body-1">{{ register.error }}</p>
+      </md-toolbar>
+
+      <md-divider></md-divider>
+      <div layout="row" layout-align="center">
+        <a class="md-button" href="/login">Already a user?</a>
+      </div>
+
+    </div>
+
+  </md-whiteframe>
+</md-content>
