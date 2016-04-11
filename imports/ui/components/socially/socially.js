@@ -7,6 +7,7 @@ import './socially.html';
 import { name as PartiesList } from '../partiesList/partiesList';
 import { name as PartyDetails } from '../partyDetails/partyDetails';
 import { name as Navigation } from '../navigation/navigation';
+import { name as Auth } from '../auth/auth';
 
 class Socially {}
 
@@ -20,6 +21,7 @@ export default angular.module(name, [
   PartiesList,
   PartyDetails,
   Navigation,
+  Auth,
   'accounts.ui'
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
