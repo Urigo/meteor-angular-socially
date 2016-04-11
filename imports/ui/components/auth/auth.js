@@ -7,6 +7,7 @@ import { Accounts } from 'meteor/accounts-base';
 import './auth.html';
 import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
 import { name as Login } from '../login/login';
+import { name as Register } from '../register/register';
 
 const name = 'auth';
 
@@ -35,7 +36,8 @@ class Auth {
 export default angular.module(name, [
   angularMeteor,
   DisplayNameFilter,
-  Login
+  Login,
+  Register
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
   controllerAs: name,
