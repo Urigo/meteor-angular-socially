@@ -1,3 +1,5 @@
-<input type="button" value="I'm going!" ng-click="partyRsvp.yes()" class="btn btn-default" ng-class="{'btn-primary' : partyRsvp.isYes()}"/>
-<input type="button" value="Maybe" ng-click="partyRsvp.maybe()" class="btn btn-default" ng-class="{'btn-primary' : partyRsvp.isMaybe()}"/>
-<input type="button" value="No" ng-click="partyRsvp.no()" class="btn btn-default" ng-class="{'btn-primary' : partyRsvp.isNo()}"/>
+<div layout="row" layout-align="end center">
+  <md-button ng-click="partyRsvp.yes()" ng-class="{'md-primary' : partyRsvp.isYes()}">I'm going!</md-button>
+  <md-button ng-click="partyRsvp.maybe()" ng-class="{'md-primary' : partyRsvp.isMaybe()}">Maybe</md-button>
+  <md-button ng-click="partyRsvp.no()" ng-class="{'md-primary' : partyRsvp.isNo()}">No</md-button>
+</div>
