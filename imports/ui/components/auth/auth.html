@@ -1,0 +1,6 @@
+<div layout="row">
+  <md-button flex ui-sref="login" ng-hide="auth.isLoggedIn">Login</md-button>
+  <md-button flex ui-sref="register" ng-hide="auth.isLoggedIn">Sign up</md-button>
+  <md-button flex ng-click="auth.logout()" ng-show="auth.isLoggedIn">Logout</md-button>
+  <div ng-show="auth.isLoggedIn">{{ auth.currentUser | displayNameFilter }}</div>
+</div>
