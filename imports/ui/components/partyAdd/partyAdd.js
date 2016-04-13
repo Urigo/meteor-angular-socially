@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import './partyAdd.html';
 import { Parties } from '../../../api/parties';
+import { name as PartyUpload } from '../partyUpload/partyUpload';
 
 class PartyAdd {
   constructor() {
@@ -18,7 +19,7 @@ class PartyAdd {
     if(this.done) {
       this.done();
     }
-    
+
     this.reset();
   }
 
@@ -31,7 +32,8 @@ const name = 'partyAdd';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor
+  angularMeteor,
+  PartyUpload
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
   bindings: {
