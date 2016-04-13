@@ -14,6 +14,7 @@ import { name as PartyRemove } from '../partyRemove/partyRemove';
 import { name as PartyCreator } from '../partyCreator/partyCreator';
 import { name as PartyRsvp } from '../partyRsvp/partyRsvp';
 import { name as PartyRsvpsList } from '../partyRsvpsList/partyRsvpsList';
+import { name as PartyImage } from '../partyImage/partyImage';
 
 class PartiesList {
   constructor($scope, $reactive) {
@@ -36,6 +37,7 @@ class PartiesList {
     ]);
 
     this.subscribe('users');
+    this.subscribe('images');
 
     this.helpers({
       parties() {
@@ -81,7 +83,8 @@ export default angular.module(name, [
   PartyRemove,
   PartyCreator,
   PartyRsvp,
-  PartyRsvpsList
+  PartyRsvpsList,
+  PartyImage
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
   controllerAs: name,
