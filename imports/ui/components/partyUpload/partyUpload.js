@@ -1,6 +1,9 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngFileUpload from 'ng-file-upload';
+import 'ng-img-crop/compile/minified/ng-img-crop';
+import 'ng-img-crop/compile/minified/ng-img-crop.css';
+
 
 import { Meteor } from 'meteor/meteor';
 
@@ -36,7 +39,8 @@ const name = 'partyUpload';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  ngFileUpload
+  ngFileUpload,
+  'ngImgCrop'
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
   controllerAs: name,
