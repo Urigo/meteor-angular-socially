@@ -8,7 +8,7 @@ import 'ng-img-crop/compile/minified/ng-img-crop.css';
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyUpload.html';
-import { upload } from '../../../api/images';
+import { Thumbs, upload } from '../../../api/images';
 
 class PartyUpload {
   constructor($scope, $reactive) {
@@ -17,6 +17,21 @@ class PartyUpload {
     $reactive(this).attach($scope);
 
     this.uploaded = [];
+
+    this.subscribe('thumbs', () => [
+      this.getReactively('files', true) || []
+    ]);
+
+    this.helpers({
+      thumbs() {
+        return Thumbs.find({
+          originalStore: 'images',
+          originalId: {
+            $in: this.getReactively('files', true) || []
+          }
+        });
+      }
+    });
   }
 
   addImages(files) {
@@ -39,6 +54,12 @@ class PartyUpload {
   save() {
     upload(this.myCroppedImage, this.currentFile.name, this.$bindToContext((file) => {
       this.uploaded.push(file);
+
+      if (!this.files || !this.files.length) {
+        this.files = [];
+      }
+      this.files.push(file._id);
+
       this.reset();
     }), (e) => {
       console.log('Oops, something went wrong', e);
