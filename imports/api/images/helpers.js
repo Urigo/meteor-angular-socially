@@ -29,3 +29,26 @@ export function dataURLToBlob(dataURL) {
 
     return new Blob([uInt8Array], {type: contentType});
 }
+
+/**
+ * Converts Blob object to ArrayBuffer
+ *
+ * @param  {Blob}       blob          Source file
+ * @param  {Function}   callback      Success callback with converted object as a first argument
+ * @param  {Function}   errorCallback Error callback with error as a first argument
+ */
+export function blobToArrayBuffer(blob, callback, errorCallback) {
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    callback(e.target.result);
+  };
+
+  reader.onerror = (e) => {
+    if (errorCallback) {
+      errorCallback(e);
+    }
+  };
+
+  reader.readAsArrayBuffer(blob);
+}
