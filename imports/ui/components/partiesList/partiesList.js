@@ -9,7 +9,7 @@ import './partiesList.html';
 import { Parties } from '../../../api/parties';
 import { name as PartiesSort } from '../partiesSort/partiesSort';
 import { name as PartiesMap } from '../partiesMap/partiesMap';
-import { name as PartyAdd } from '../partyAdd/partyAdd';
+import { name as PartyAddButton } from '../partyAddButton/partyAddButton';
 import { name as PartyRemove } from '../partyRemove/partyRemove';
 import { name as PartyCreator } from '../partyCreator/partyCreator';
 import { name as PartyRsvp } from '../partyRsvp/partyRsvp';
@@ -77,7 +77,7 @@ export default angular.module(name, [
   utilsPagination,
   PartiesSort,
   PartiesMap,
-  PartyAdd,
+  PartyAddButton,
   PartyRemove,
   PartyCreator,
   PartyRsvp,
