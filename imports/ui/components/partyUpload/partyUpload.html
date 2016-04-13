@@ -1,9 +1,18 @@
 <div layout="column">
-  <div>
-      <div>Click here to select image</div>
-      <div>
-        <strong>OR</strong>
-      </div>
-      <div>You can also drop image to here</div>
+  <div ngf-drop
+    ngf-select
+    ngf-change="partyUpload.addImages($files)"
+    ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+    class="drop-box"
+    ngf-multiple="false"
+    ngf-allow-dir="false"
+    ngf-accept="'image/*'"
+    ngf-drop-available="true"
+    ng-hide="partyUpload.cropImgSrc">
+    <div>Click here to select image</div>
+    <div>
+      <strong>OR</strong>
+    </div>
+    <div>You can also drop image to here</div>
   </div>
 </div>
