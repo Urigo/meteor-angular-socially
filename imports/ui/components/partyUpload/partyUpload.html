@@ -29,9 +29,9 @@
       <img-crop image="partyUpload.cropImgSrc" result-image="partyUpload.myCroppedImage" area-type="square"></img-crop>
     </div>
   </div>
-  <div layout="row" class="images-container-title">
-    <div class="party-image-container" ng-class="{'main-image': $index === 0}" ng-repeat="thumb in partyUpload.thumbs">
-      <img ng-src="{{ thumb.url }}"/>
+  <div layout="row" class="images-container-title" sv-root sv-part="partyUpload.thumbs">
+    <div sv-element class="party-image-container" ng-class="{'main-image': $index === 0}" ng-repeat="thumb in partyUpload.thumbs">
+      <img draggable="false" ng-src="{{ thumb.url }}"/>
     </div>
   </div>
 </div>
