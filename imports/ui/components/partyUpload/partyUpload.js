@@ -8,12 +8,15 @@ import 'ng-img-crop/compile/minified/ng-img-crop.css';
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyUpload.html';
+import { upload } from '../../../api/images';
 
 class PartyUpload {
   constructor($scope, $reactive) {
     'ngInject';
 
     $reactive(this).attach($scope);
+
+    this.uploaded = [];
   }
 
   addImages(files) {
@@ -31,6 +34,20 @@ class PartyUpload {
     } else {
       this.cropImgSrc = undefined;
     }
+  }
+
+  save() {
+    upload(this.myCroppedImage, this.currentFile.name, this.$bindToContext((file) => {
+      this.uploaded.push(file);
+      this.reset();
+    }), (e) => {
+      console.log('Oops, something went wrong', e);
+    });
+  }
+
+  reset() {
+    this.cropImgSrc = undefined;
+    this.myCroppedImage = '';
   }
 }
 
