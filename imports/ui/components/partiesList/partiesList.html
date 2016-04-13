@@ -25,6 +25,11 @@
             </span>
             <span class="md-subhead">{{party.description}}</span>
           </md-card-title-text>
+          <md-card-title-media ng-if="party.images">
+            <div class="md-media-lg card-media">
+              <party-image images="party.images"></party-image>
+            </div>
+          </md-card-title-media>
         </md-card-title>
         <md-card-content>
           <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
