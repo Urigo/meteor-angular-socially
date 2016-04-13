@@ -15,4 +15,18 @@
     </div>
     <div>You can also drop image to here</div>
   </div>
+  <div ng-show="partyUpload.cropImgSrc" layout="column" class="ng-crop">
+    <div>
+      <h3>Edit &amp; crop</h3>
+      <md-button ng-click="partyUpload.save()" class="md-primary">
+        Save Image
+      </md-button>
+      <md-button ng-click="partyUpload.reset()">
+        Cancel
+      </md-button>
+    </div>
+    <div class="ng-crop-container">
+      <img-crop image="partyUpload.cropImgSrc" result-image="partyUpload.myCroppedImage" area-type="square"></img-crop>
+    </div>
+  </div>
 </div>
