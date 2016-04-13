@@ -83,6 +83,9 @@ export default angular.module(name, [
   'angular-sortable-view'
 ]).component(name, {
   template,
+  bindings: {
+    files: '=?'
+  },
   controllerAs: name,
   controller: PartyUpload
 });
