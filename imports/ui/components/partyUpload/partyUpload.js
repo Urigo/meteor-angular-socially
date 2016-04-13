@@ -6,7 +6,30 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './partyUpload.html';
 
-class PartyUpload {}
+class PartyUpload {
+  constructor($scope, $reactive) {
+    'ngInject';
+
+    $reactive(this).attach($scope);
+  }
+
+  addImages(files) {
+    if (files.length) {
+      this.currentFile = files[0];
+
+      const reader = new FileReader;
+
+      reader.onload = this.$bindToContext((e) => {
+        this.cropImgSrc = e.target.result;
+        this.myCroppedImage = '';
+      });
+
+      reader.readAsDataURL(files[0]);
+    } else {
+      this.cropImgSrc = undefined;
+    }
+  }
+}
 
 const name = 'partyUpload';
 
