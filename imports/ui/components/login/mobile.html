@@ -4,13 +4,22 @@
     <md-toolbar class="md-primary md-tall" layout="column" layout-align="end" layout-fill>
       <div layout="row" class="md-toolbar-tools md-toolbar-tools-bottom">
         <h3 class="md-display-1">
-          Login
+          Login with SMS
         </h3>
       </div>
     </md-toolbar>
 
     <!-- content -->
     <div layout="column" layout-fill layout-margin layout-padding>
+      <!-- step 1: phone verification -->
+      <form ng-show="!login.isStepTwo" layout="column" layout-fill layout-padding layout-margin>
+        <md-input-container>
+          <input type="text" ng-model="login.phoneNumber" placeholder="phone"/>
+        </md-input-container>
+        <md-button class="md-raised md-primary" ng-click="login.verifyPhone()" aria-label="login" ng-disabled="!login.phoneNumber">Send SMS
+        </md-button>
+      </form>
+      
       <!-- display an error -->
       <md-toolbar ng-show="login.error" class="md-warn" layout="row" layout-fill layout-padding layout-margin>
         <p class="md-body-1">{{ login.error }}</p>
