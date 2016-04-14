@@ -4,40 +4,14 @@ import uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
-import './login.html';
-
-import { name as Register } from '../register/register';
-
-class Login {
-  constructor($scope, $reactive, $state) {
-    'ngInject';
-
-    this.$state = $state;
-
-    $reactive(this).attach($scope);
-
-    this.credentials = {
-      email: '',
-      password: ''
-    };
-
-    this.error = '';
-  }
-
-  login() {
-    Meteor.loginWithPassword(this.credentials.email, this.credentials.password,
-      this.$bindToContext((err) => {
-        if (err) {
-          this.error = err;
-        } else {
-          this.$state.go('parties');
-        }
-      })
-    );
-  }
-}
+import './web.html';
+import { Login as LoginWeb } from './web';
+import './mobile.html';
+import { Login as LoginMobile } from './mobile';
 
 const name = 'login';
+const template = Meteor.isCordova ? 'mobile' : 'web';
+const controller = Meteor.isCordova ? LoginMobile : LoginWeb;
 
 // create a module
 export default angular.module(name, [
@@ -45,9 +19,9 @@ export default angular.module(name, [
   uiRouter
 ])
   .component(name, {
-    templateUrl: `imports/ui/components/${name}/${name}.html`,
+    controller,
     controllerAs: name,
-    controller: Login
+    templateUrl: `imports/ui/components/${name}/${template}.html`,
   })
   .config(config);
 
