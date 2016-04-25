@@ -1,6 +1,7 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
+import ngSanitize from 'angular-sanitize';
 import uiRouter from 'angular-ui-router';
 
 import template from './socially.html';
@@ -17,6 +18,7 @@ const name = 'socially';
 export default angular.module(name, [
   angularMeteor,
   ngMaterial,
+  ngSanitize,
   uiRouter,
   PartiesList,
   PartyDetails,
