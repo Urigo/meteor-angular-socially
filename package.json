@@ -13,6 +13,7 @@
     "angular-material": "^1.0.7",
     "angular-messages": "^1.5.3",
     "angular-meteor": "^1.3.9",
+    "angular-sanitize": "^1.5.5",
     "angular-simple-logger": "^0.1.7",
     "angular-sortable-view": "0.0.15",
     "angular-ui-router": "^1.0.0-alpha.4",
