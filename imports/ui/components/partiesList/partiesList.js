@@ -4,8 +4,10 @@ import uiRouter from 'angular-ui-router';
 import utilsPagination from 'angular-utils-pagination';
 
 import { Counts } from 'meteor/tmeasday:publish-counts';
+import { Meteor } from 'meteor/meteor';
 
-import template from './partiesList.html';
+import webTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 import { Parties } from '../../../api/parties';
 import { name as PartiesSort } from '../partiesSort/partiesSort';
 import { name as PartiesMap } from '../partiesMap/partiesMap';
@@ -71,6 +73,7 @@ class PartiesList {
 }
 
 const name = 'partiesList';
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 
 // create a module
 export default angular.module(name, [
