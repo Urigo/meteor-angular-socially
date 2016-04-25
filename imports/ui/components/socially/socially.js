@@ -7,7 +7,10 @@ import 'ionic-sdk/release/js/ionic';
 import 'ionic-sdk/release/js/ionic-angular';
 import 'ionic-sdk/release/css/ionic.css';
 
-import template from './socially.html';
+import { Meteor } from 'meteor/meteor';
+
+import webTemplate from './web.html';
+import mobileTemplate from './mobile.html';
 import { name as PartiesList } from '../partiesList/partiesList';
 import { name as PartyDetails } from '../partyDetails/partyDetails';
 import { name as Navigation } from '../navigation/navigation';
@@ -16,6 +19,7 @@ import { name as Auth } from '../auth/auth';
 class Socially {}
 
 const name = 'socially';
+const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 
 // create a module
 export default angular.module(name, [
