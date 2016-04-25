@@ -3,6 +3,7 @@ import angularMeteor from 'angular-meteor';
 
 import template from './partyImage.html';
 import { Images } from '../../../api/images';
+import { name as DisplayImageFilter } from '../../filters/displayImageFilter';
 
 class PartyImage {
   constructor($scope, $reactive) {
@@ -26,7 +27,8 @@ const name = 'partyImage';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor
+  angularMeteor,
+  DisplayImageFilter
 ]).component(name, {
   template,
   bindings: {
