@@ -1,0 +1,57 @@
+<div layout="column" layout-padding>
+  <party-add-button ng-show="partiesList.isLoggedIn"></party-add-button>
+
+  <div flex>
+    <h2 class="md-display-1">List of the parties:</h2>
+  </div>
+
+  <div flex layout="row" layout-padding>
+    <md-input-container>
+      <label>Search</label>
+      <input ng-model="partiesList.searchText">
+    </md-input-container>
+
+    <parties-sort on-change="partiesList.sortChanged(sort)" property="name" order="1"></parties-sort>
+  </div>
+
+  <div layout="column" layout-gt-sm="row">
+    <div flex="50">
+      <md-card dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline" ui-sref="partyDetails({ partyId: party._id })">
+              {{party.name}}
+              <party-remove party="party"></party-remove>
+            </span>
+            <span class="md-subhead">{{party.description}}</span>
+          </md-card-title-text>
+          <md-card-title-media ng-if="party.images">
+            <div class="md-media-lg card-media">
+              <party-image images="party.images"></party-image>
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+          <party-rsvps-list rsvps="party.rsvps"></party-rsvps-list>
+
+          <party-unanswered party="party" ng-if="!party.public"></party-unanswered>
+          <div ng-if="party.public">
+            Everyone is invited
+          </div>
+
+          <party-creator party="party"></party-creator>
+        </md-card-content>
+        <md-card-actions>
+          <party-rsvp party="party" ng-show="partiesList.isLoggedIn"></party-rsvp>
+          <div ng-hide="partiesList.isLoggedIn">
+            <i>Sign in to RSVP for this party.</i>
+          </div>
+        </md-card-actions>
+      </md-card>
+      <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>
+    </div>
+    <div flex="50">
+      <parties-map parties="partiesList.parties"></parties-map>
+    </div>
+  </div>
+</div>
