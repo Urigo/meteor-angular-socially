@@ -4,8 +4,10 @@ import uiRouter from 'angular-ui-router';
 import utilsPagination from 'angular-utils-pagination';
 
 import { Counts } from 'meteor/tmeasday:publish-counts';
+import { Meteor } from 'meteor/meteor';
 
-import './partiesList.html';
+import './web.html';
+import './mobile.html';
 import { Parties } from '../../../api/parties';
 import { name as PartiesSort } from '../partiesSort/partiesSort';
 import { name as PartiesMap } from '../partiesMap/partiesMap';
@@ -71,6 +73,7 @@ class PartiesList {
 }
 
 const name = 'partiesList';
+const template = Meteor.isCordova ? 'mobile' : 'web';
 
 // create a module
 export default angular.module(name, [
@@ -86,7 +89,7 @@ export default angular.module(name, [
   PartyRsvpsList,
   PartyImage
 ]).component(name, {
-  templateUrl: `imports/ui/components/${name}/${name}.html`,
+  templateUrl: `imports/ui/components/${name}/${template}.html`,
   controllerAs: name,
   controller: PartiesList
 })
