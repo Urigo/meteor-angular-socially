@@ -16,7 +16,7 @@
     "angular-sanitize": "^1.5.5",
     "angular-simple-logger": "^0.1.7",
     "angular-sortable-view": "0.0.15",
-    "angular-ui-router": "^1.0.0-alpha.4",
+    "angular-ui-router": "^0.2.18",
     "angular-utils-pagination": "^0.11.1",
     "gm": "^1.22.0",
     "ionic-sdk": "^1.2.4",
