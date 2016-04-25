@@ -3,6 +3,8 @@ import angularMeteor from 'angular-meteor';
 import ngMaterial from 'angular-material';
 import ngSanitize from 'angular-sanitize';
 import uiRouter from 'angular-ui-router';
+import 'ionic-sdk/release/js/ionic';
+import 'ionic-sdk/release/js/ionic-angular';
 
 import './socially.html';
 import { name as PartiesList } from '../partiesList/partiesList';
@@ -24,7 +26,8 @@ export default angular.module(name, [
   PartyDetails,
   Navigation,
   Auth,
-  'accounts.ui'
+  'accounts.ui',
+  'ionic'
 ]).component(name, {
   templateUrl: `imports/ui/components/${name}/${name}.html`,
   controllerAs: name,
