@@ -24,7 +24,8 @@ export default angular.module(name, [
   controllerAs: name,
   controller: Socially
 })
-  .config(config);
+  .config(config)
+  .run(run);
 
 function config($locationProvider, $urlRouterProvider) {
   'ngInject';
@@ -32,4 +33,16 @@ function config($locationProvider, $urlRouterProvider) {
   $locationProvider.html5Mode(true);
 
   $urlRouterProvider.otherwise('/parties');
+}
+
+function run($rootScope, $state) {
+  'ngInject';
+
+  $rootScope.$on('$stateChangeError',
+    (event, toState, toParams, fromState, fromParams, error) => {
+      if (error === 'AUTH_REQUIRED') {
+        $state.go('parties');
+      }
+    }
+  );
 }
