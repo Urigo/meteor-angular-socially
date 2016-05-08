@@ -8,7 +8,6 @@ import 'ng-img-crop/compile/minified/ng-img-crop.css';
 
 import { Meteor } from 'meteor/meteor';
 
-import './partyUpload.html';
 import { Thumbs, upload } from '../../../api/images';
 
 class PartyUpload {

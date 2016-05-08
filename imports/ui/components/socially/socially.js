@@ -9,8 +9,6 @@ import 'ionic-sdk/release/css/ionic.css';
 
 import { Meteor } from 'meteor/meteor';
 
-import './web.html';
-import './mobile.html';
 import { name as PartiesList } from '../partiesList/partiesList';
 import { name as PartyDetails } from '../partyDetails/partyDetails';
 import { name as Navigation } from '../navigation/navigation';

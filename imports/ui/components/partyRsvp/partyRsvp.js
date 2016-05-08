@@ -4,8 +4,6 @@ import _ from 'underscore';
 
 import { Meteor } from 'meteor/meteor';
 
-import './partyRsvp.html';
-
 class PartyRsvp {
   yes() {
     this.answer('yes');

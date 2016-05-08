@@ -1,7 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partyImage.html';
 import { Images } from '../../../api/images';
 import { name as DisplayImageFilter } from '../../filters/displayImageFilter';
 

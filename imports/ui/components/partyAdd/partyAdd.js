@@ -3,7 +3,6 @@ import angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
-import './partyAdd.html';
 import { Parties } from '../../../api/parties';
 import { name as PartyUpload } from '../partyUpload/partyUpload';
 

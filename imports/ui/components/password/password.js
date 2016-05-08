@@ -4,8 +4,6 @@ import uiRouter from 'angular-ui-router';
 
 import { Accounts } from 'meteor/accounts-base';
 
-import './password.html';
-
 class Register {
   constructor($scope, $reactive, $state) {
     'ngInject';

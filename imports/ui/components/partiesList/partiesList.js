@@ -6,8 +6,6 @@ import utilsPagination from 'angular-utils-pagination';
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { Meteor } from 'meteor/meteor';
 
-import './web.html';
-import './mobile.html';
 import { Parties } from '../../../api/parties';
 import { name as PartiesSort } from '../partiesSort/partiesSort';
 import { name as PartiesMap } from '../partiesMap/partiesMap';

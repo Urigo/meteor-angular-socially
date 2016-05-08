@@ -3,7 +3,6 @@ import angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
-import './partyCreator.html';
 import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
 
 /**

@@ -1,8 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partyAddButton.html';
-import './partyAddModal.html';
 import { name as PartyAdd } from '../partyAdd/partyAdd';
 
 class PartyAddButton {

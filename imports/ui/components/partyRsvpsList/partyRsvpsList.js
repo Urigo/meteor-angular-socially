@@ -1,8 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partyRsvpsList.html';
-
 class PartyRsvpsList { }
 
 const name = 'partyRsvpsList';

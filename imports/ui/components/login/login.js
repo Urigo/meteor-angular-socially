@@ -4,9 +4,7 @@ import uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
-import './web.html';
 import { Login as LoginWeb } from './web';
-import './mobile.html';
 import { Login as LoginMobile } from './mobile';
 
 const name = 'login';

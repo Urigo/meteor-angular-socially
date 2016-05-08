@@ -1,8 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partiesSort.html';
-
 class PartiesSort {
   constructor() {
     this.changed();

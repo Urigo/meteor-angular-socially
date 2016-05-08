@@ -1,7 +1,6 @@
 import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
-import './partyRemove.html';
 import { Parties } from '../../../api/parties';
 
 class PartyRemove {

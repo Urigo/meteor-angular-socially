@@ -4,7 +4,6 @@ import angularMeteor from 'angular-meteor';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
-import './auth.html';
 import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
 import { name as Login } from '../login/login';
 import { name as Register } from '../register/register';

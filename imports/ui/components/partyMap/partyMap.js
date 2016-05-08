@@ -3,8 +3,6 @@ import angularMeteor from 'angular-meteor';
 import 'angular-simple-logger';
 import 'angular-google-maps';
 
-import './partyMap.html';
-
 class PartyMap {
   constructor($scope) {
     'ngInject';
