@@ -1,3 +1,9 @@
+import 'angular'
+import 'reflect-metadata'
+import 'rxjs'
+import 'zone.js/dist/zone'
+import { upgradeAdapter } from '../imports/ui/upgradeAdapter'
+ 
 import angular from 'angular';
 
 import { Meteor } from 'meteor/meteor';
@@ -5,7 +11,8 @@ import { Meteor } from 'meteor/meteor';
 import { name as Socially } from '../imports/ui/components/socially/socially';
 
 function onReady() {
-  angular.bootstrap(document, [
+  
+  upgradeAdapter.bootstrap(document, [
     Socially
   ], {
     strictDi: true
