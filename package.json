@@ -6,6 +6,12 @@
     "test:watch": "meteor test --driver-package sanjo:jasmine"
   },
   "dependencies": {
+    "@angular/common": "^2.0.0-rc.1",
+    "@angular/compiler": "^2.0.0-rc.1",
+    "@angular/core": "^2.0.0-rc.1",
+    "@angular/platform-browser": "^2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.1",
+    "@angular/upgrade": "^2.0.0-rc.1",
     "angular": "^1.5.3",
     "angular-animate": "^1.5.3",
     "angular-aria": "^1.5.3",
@@ -26,6 +32,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "angular-mocks": "^1.5.3"
+    "angular-mocks": "^1.5.3",
+    "typings": "^0.8.1"
   }
 }
