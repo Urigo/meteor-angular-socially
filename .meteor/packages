@@ -16,7 +16,6 @@ standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 
 pbastowski:angular-babel
-angular-templates
 sanjo:jasmine
 velocity:html-reporter
 velocity:console-reporter
@@ -32,3 +31,4 @@ planettraining:material-design-icons
 jalik:ufs
 jalik:ufs-gridfs
 mys:accounts-phone
+angular2-compilers
