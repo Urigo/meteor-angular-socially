@@ -8,7 +8,6 @@ import { Meteor } from 'meteor/meteor';
 
 import template from './partyDetails.html';
 import { Parties } from '../../../api/parties';
-import { PartyUninvitedNg1Module } from '../partyUninvited/partyUninvited';
 import { PartyMapNg1Module } from '../partyMap/partyMap';
 
 @Component({
@@ -72,7 +71,6 @@ const name = 'partyDetails';
 export const PartyDetailsNg1Module = angular.module(name, [
   angularMeteor,
   uiRouter,
-  PartyUninvitedNg1Module.name,
   PartyMapNg1Module.name
 ]);
 
