@@ -3,6 +3,9 @@ import * as angularMeteor from 'angular-meteor';
 import * as uiRouter from 'angular-ui-router';
 import { Component, Input, Output } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
+import { MdButton } from '@angular2-material/button';
+import { MdInput } from '@angular2-material/input';
+import { MdCheckbox } from '@angular2-material/checkbox';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -18,6 +21,9 @@ import { upgradeAdapter } from '../../upgradeAdapter';
   directives: [
     PartyUninvited,
     upgradeAdapter.upgradeNg1Component('partyMap'),
+    MdButton,
+    MdInput,
+    MdCheckbox,
   ]
 })
 class PartyDetails extends MeteorComponent {
