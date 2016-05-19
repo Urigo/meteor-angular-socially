@@ -6,7 +6,7 @@
   <md-list-item *ngFor="let user of users | uninvited:party" ng-click="invite(user)">
     <p>{{ user | displayName }}</p>
   </md-list-item>
-  <md-list-item ng-if="(users | uninvited:party).length <= 0">
+  <md-list-item *ngIf="(users | uninvited:party).length <= 0">
     Everyone are already invited.
   </md-list-item>
 </md-list>
