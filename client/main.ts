@@ -16,7 +16,7 @@ import { registerPartiesSort } from '../imports/ui/components/partiesSort/partie
 import { registerPartyAdd } from '../imports/ui/components/partyAdd/partyAdd';
 import { registerPartyAddButton } from '../imports/ui/components/partyAddButton/partyAddButton';
 import { registerPartyCreator } from '../imports/ui/components/partyCreator/partyCreator';
-import { registerPartyDetails } from '../imports/ui/components/partyDetails/partyDetails';
+import { registerPartyDetails, PartyDetails } from '../imports/ui/components/partyDetails/partyDetails';
 import { registerPartyImage } from '../imports/ui/components/partyImage/partyImage';
 import { registerPartyMap } from '../imports/ui/components/partyMap/partyMap';
 import { registerPartyRemove } from '../imports/ui/components/partyRemove/partyRemove';
@@ -34,6 +34,7 @@ import { UninvitedPipe } from '../imports/ui/filters/uninvitedPipe';
   declarations: [
     DisplayNamePipe,
     UninvitedPipe,
+    PartyDetails,
     PartyUninvited
   ],
   imports: [
