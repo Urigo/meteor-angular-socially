@@ -18,16 +18,11 @@ import { DisplayNamePipe } from '../../filters/displayNamePipe';
   ]
 })
 class PartyUninvited extends MeteorComponent {
-  constructor($scope) {
-    'ngInject';
+  constructor() {
     super();
 
-    $scope.viewModel(this);
-
-    this.helpers({
-      users() {
-        return Meteor.users.find({});
-      }
+    this.autorun(() => {
+      this.users = Meteor.users.find({}).fetch();
     });
   }
 
