@@ -1,4 +1,8 @@
+import 'angular2-meteor-polyfills/browser';
 import * as angular from 'angular';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { UpgradeAdapter } from '@angular/upgrade';
 
 import { Meteor } from 'meteor/meteor';
@@ -24,7 +28,15 @@ import { registerPassword } from '../imports/ui/components/password/password';
 import { registerRegister } from '../imports/ui/components/register/register';
 import { registerSocially, SociallyNg1Module } from '../imports/ui/components/socially/socially';
 
-const adapter = new UpgradeAdapter();
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule
+  ]
+})
+class AppNg2Module {}
+
+const adapter = new UpgradeAdapter(AppNg2Module);
 
 registerAuth(adapter);
 registerLogin(adapter);
@@ -48,7 +60,7 @@ registerRegister(adapter);
 registerSocially(adapter);
 
 function onReady() {
-  angular.bootstrap(document, [
+  adapter.bootstrap(document.body, [
     SociallyNg1Module.name
   ]);
 }
