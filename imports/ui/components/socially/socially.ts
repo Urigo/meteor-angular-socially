@@ -11,10 +11,10 @@ import { Meteor } from 'meteor/meteor';
 
 import * as webTemplate from './web.html';
 import * as mobileTemplate from './mobile.html';
-import { name as PartiesList } from '../partiesList/partiesList';
-import { name as PartyDetails } from '../partyDetails/partyDetails';
-import { name as Navigation } from '../navigation/navigation';
-import { name as Auth } from '../auth/auth';
+import PartiesList from '../partiesList/partiesList';
+import PartyDetails from '../partyDetails/partyDetails';
+import Navigation from '../navigation/navigation';
+import Auth from '../auth/auth';
 
 class Socially {}
 
@@ -27,10 +27,10 @@ export default angular.module(name, [
   ngMaterial,
   ngSanitize,
   uiRouter,
-  PartiesList,
-  PartyDetails,
-  Navigation,
-  Auth,
+  PartiesList.name,
+  PartyDetails.name,
+  Navigation.name,
+  Auth.name,
   'accounts.ui',
   'ionic'
 ]).component(name, {
