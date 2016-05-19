@@ -15,7 +15,8 @@ import { upgradeAdapter } from '../../upgradeAdapter';
   template,
   selector: 'party-details',
   directives: [
-    PartyUninvited
+    PartyUninvited,
+    upgradeAdapter.upgradeNg1Component('partyMap'),
   ]
 })
 class PartyDetails {
