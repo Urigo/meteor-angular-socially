@@ -22,7 +22,7 @@ import { registerPartyMap } from '../imports/ui/components/partyMap/partyMap';
 import { registerPartyRemove } from '../imports/ui/components/partyRemove/partyRemove';
 import { registerPartyRsvp } from '../imports/ui/components/partyRsvp/partyRsvp';
 import { registerPartyRsvpsList } from '../imports/ui/components/partyRsvpsList/partyRsvpsList';
-import { registerPartyUninvited } from '../imports/ui/components/partyUninvited/partyUninvited';
+import { registerPartyUninvited, PartyUninvited } from '../imports/ui/components/partyUninvited/partyUninvited';
 import { registerPartyUpload } from '../imports/ui/components/partyUpload/partyUpload';
 import { registerPassword } from '../imports/ui/components/password/password';
 import { registerRegister } from '../imports/ui/components/register/register';
@@ -33,7 +33,8 @@ import { UninvitedPipe } from '../imports/ui/filters/uninvitedPipe';
 @NgModule({
   declarations: [
     DisplayNamePipe,
-    UninvitedPipe
+    UninvitedPipe,
+    PartyUninvited
   ],
   imports: [
     BrowserModule,
