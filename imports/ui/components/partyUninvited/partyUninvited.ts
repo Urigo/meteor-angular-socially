@@ -1,5 +1,3 @@
-import * as angular from 'angular';
-import * as angularMeteor from 'angular-meteor';
 import { Component, Input } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
 
@@ -8,7 +6,6 @@ import { Meteor } from 'meteor/meteor';
 import * as template from './partyUninvited.html';
 import { UninvitedPipe } from '../../filters/uninvitedPipe';
 import { DisplayNamePipe } from '../../filters/displayNamePipe';
-import { upgradeAdapter } from '../../upgradeAdapter';
 
 @Component({
   template,
@@ -18,7 +15,7 @@ import { upgradeAdapter } from '../../upgradeAdapter';
     DisplayNamePipe
   ]
 })
-class PartyUninvited extends MeteorComponent {
+export default class PartyUninvited extends MeteorComponent {
   @Input() party: any;
 
   constructor() {
@@ -41,10 +38,3 @@ class PartyUninvited extends MeteorComponent {
     );
   }
 }
-
-const name = 'partyUninvited';
-
-// create a module
-export default angular.module(name, [
-  angularMeteor
-]).directive(name, upgradeAdapter.downgradeNg2Component(PartyUninvited));
