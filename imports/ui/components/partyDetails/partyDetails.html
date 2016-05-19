@@ -1,28 +1,22 @@
-<div layout="column" layout-padding>
+<div *ngIf="party" layout="column" layout-padding>
   <div layout="column" layout-gt-sm="row"  layout-padding>
     <form flex="50" layout="column">
-      <md-input-container>
-        <label>Party name</label>
-        <input ng-model="partyDetails.party.name" ng-disabled="!partyDetails.isOwner">
-      </md-input-container>
+      <md-input [(ngModel)]="party.name" [disabled]="!isOwner" placeholder="Party name"></md-input>
 
-      <md-input-container>
-        <label>Description</label>
-        <input ng-model="partyDetails.party.description" ng-disabled="!partyDetails.isOwner">
-      </md-input-container>
+      <md-input [(ngModel)]="party.description" [disabled]="!isOwner" placeholder="Description"></md-input>
 
       <div>
-        <md-checkbox ng-model="partyDetails.party.public" ng-disabled="!partyDetails.isOwner" aria-label="Public Party?">
+        <md-checkbox [checked]="party.public">
           Public Party?
         </md-checkbox>
       </div>
 
       <div>
-        <md-button ng-click="partyDetails.save()" class="md-primary md-raised">Save</md-button>
+        <md-button md-raised-button color="primary" (click)="save()">Save</md-button>
       </div>
     </form>
-    <party-map flex="50" location="partyDetails.party.location"></party-map>
+    <party-map flex="50" [location]="party.location"></party-map>
   </div>
 
-  <party-uninvited flex [party]="partyDetails.party" ng-show="partyDetails.canInvite()"></party-uninvited>
+  <party-uninvited flex [party]="party" *ngIf="canInvite()"></party-uninvited>
 </div>
