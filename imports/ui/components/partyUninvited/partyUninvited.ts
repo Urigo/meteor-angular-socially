@@ -5,12 +5,16 @@ import { Component } from '@angular/core';
 import { Meteor } from 'meteor/meteor';
 
 import * as template from './partyUninvited.html';
-import UninvitedFilter from '../../filters/uninvitedFilter';
-import DisplayNameFilter from '../../filters/displayNameFilter';
+import { UninvitedPipe } from '../../filters/uninvitedPipe';
+import { DisplayNamePipe } from '../../filters/displayNamePipe';
 
 @Component({
   template,
-  selector: 'party-uninvited'
+  selector: 'party-uninvited',
+  pipes: [
+    UninvitedPipe,
+    DisplayNamePipe
+  ]
 })
 class PartyUninvited {
   constructor($scope) {
@@ -42,9 +46,7 @@ const name = 'partyUninvited';
 
 // create a module
 export default angular.module(name, [
-  angularMeteor,
-  UninvitedFilter.name,
-  DisplayNameFilter.name
+  angularMeteor
 ]).component(name, {
   template,
   controllerAs: name,
