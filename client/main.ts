@@ -1,4 +1,5 @@
 import * as angular from 'angular';
+import { UpgradeAdapter } from '@angular/upgrade';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -23,26 +24,28 @@ import { registerPassword } from '../imports/ui/components/password/password';
 import { registerRegister } from '../imports/ui/components/register/register';
 import { registerSocially, SociallyNg1Module } from '../imports/ui/components/socially/socially';
 
-registerAuth();
-registerLogin();
-registerNavigation();
-registerPartiesList();
-registerPartiesMap();
-registerPartiesSort();
-registerPartyAdd();
-registerPartyAddButton();
-registerPartyCreator();
-registerPartyDetails();
-registerPartyImage();
-registerPartyMap();
-registerPartyRemove();
-registerPartyRsvp();
-registerPartyRsvpsList();
-registerPartyUninvited();
-registerPartyUpload();
-registerPassword();
-registerRegister();
-registerSocially();
+const adapter = new UpgradeAdapter();
+
+registerAuth(adapter);
+registerLogin(adapter);
+registerNavigation(adapter);
+registerPartiesList(adapter);
+registerPartiesMap(adapter);
+registerPartiesSort(adapter);
+registerPartyAdd(adapter);
+registerPartyAddButton(adapter);
+registerPartyCreator(adapter);
+registerPartyDetails(adapter);
+registerPartyImage(adapter);
+registerPartyMap(adapter);
+registerPartyRemove(adapter);
+registerPartyRsvp(adapter);
+registerPartyRsvpsList(adapter);
+registerPartyUninvited(adapter);
+registerPartyUpload(adapter);
+registerPassword(adapter);
+registerRegister(adapter);
+registerSocially(adapter);
 
 function onReady() {
   angular.bootstrap(document, [
