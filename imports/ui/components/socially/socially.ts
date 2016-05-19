@@ -11,10 +11,10 @@ import { Meteor } from 'meteor/meteor';
 
 import webTemplate from './web.html';
 import mobileTemplate from './mobile.html';
-import { name as PartiesList } from '../partiesList/partiesList';
-import { name as PartyDetails } from '../partyDetails/partyDetails';
-import { name as Navigation } from '../navigation/navigation';
-import { name as Auth } from '../auth/auth';
+import { PartiesListNg1Module } from '../partiesList/partiesList';
+import { PartyDetailsNg1Module } from '../partyDetails/partyDetails';
+import { NavigationNg1Module } from '../navigation/navigation';
+import { AuthNg1Module } from '../auth/auth';
 
 class Socially {}
 
@@ -22,24 +22,29 @@ const name = 'socially';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 
 // create a module
-export default angular.module(name, [
+export const SociallyNg1Module = angular.module(name, [
   angularMeteor,
   ngMaterial,
   ngSanitize,
   uiRouter,
-  PartiesList,
-  PartyDetails,
-  Navigation,
-  Auth,
+  PartiesListNg1Module.name,
+  PartyDetailsNg1Module.name,
+  NavigationNg1Module.name,
+  AuthNg1Module.name,
   'accounts.ui',
   'ionic'
-]).component(name, {
-  template,
-  controllerAs: name,
-  controller: Socially
-})
-  .config(config)
-  .run(run);
+]);
+
+export function registerSocially() {
+  SociallyNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      controller: Socially
+    })
+    .config(config)
+    .run(run);
+}
 
 function config($locationProvider, $urlRouterProvider, $mdIconProvider) {
   'ngInject';
