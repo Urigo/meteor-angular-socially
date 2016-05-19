@@ -86,7 +86,12 @@ function config($stateProvider) {
 
   $stateProvider.state('partyDetails', {
     url: '/parties/:partyId',
-    template: '<party-details></party-details>',
+    template: '<party-details [party-id]="partyDetailsRoute.partyId"></party-details>',
+    controllerAs: 'partyDetailsRoute',
+    controller: function($stateParams, $scope) {
+      'ngInject';
+      this.partyId = $stateParams.partyId;
+    },
     resolve: {
       currentUser($q) {
         if (Meteor.userId() === null) {
