@@ -76,13 +76,9 @@ export const PartyDetailsNg1Module = angular.module(name, [
   PartyMapNg1Module.name
 ]);
 
-export function registerPartyDetails() {
+export function registerPartyDetails(adapter) {
   PartyDetailsNg1Module
-    .component(name, {
-      template,
-      controllerAs: name,
-      controller: PartyDetails
-    })
+    .directive(name, adapter.downgradeNg2Component(PartyDetails))
     .config(config);
 }
 
