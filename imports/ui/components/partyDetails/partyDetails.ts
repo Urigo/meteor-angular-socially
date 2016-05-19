@@ -2,6 +2,7 @@ import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
 import * as uiRouter from 'angular-ui-router';
 import { Component } from '@angular/core';
+import { MeteorComponent } from 'angular2-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -19,30 +20,27 @@ import { upgradeAdapter } from '../../upgradeAdapter';
     upgradeAdapter.upgradeNg1Component('partyMap'),
   ]
 })
-class PartyDetails {
-  constructor($stateParams, $scope, $reactive) {
-    'ngInject';
+class PartyDetails extends MeteorComponent {
+  partyId: string;
+  party: Object = {};
+  users: Object[];
+  isLoggedIn: boolean;
 
-    $reactive(this).attach($scope);
-
-    this.partyId = $stateParams.partyId;
+  constructor() {
+    super();
 
     this.subscribe('parties');
     this.subscribe('users');
 
-    this.helpers({
-      party() {
-        return Parties.findOne({
-          _id: $stateParams.partyId
-        });
-      },
-      users() {
-        return Meteor.users.find({});
-      },
-      isLoggedIn() {
-        return !!Meteor.userId();
-      }
-    });
+    this.autorun(() => {
+      this.party = Parties.findOne({
+        _id: this.partyId
+      });
+
+      this.users = Meteor.users.find({}).fetch();
+
+      this.isLoggedIn = !!Meteor.userId();
+    }, true);
   }
 
   canInvite() {
