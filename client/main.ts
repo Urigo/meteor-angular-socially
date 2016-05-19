@@ -28,10 +28,12 @@ import { registerPassword } from '../imports/ui/components/password/password';
 import { registerRegister } from '../imports/ui/components/register/register';
 import { registerSocially, SociallyNg1Module } from '../imports/ui/components/socially/socially';
 import { DisplayNamePipe } from '../imports/ui/filters/displayNamePipe';
+import { UninvitedPipe } from '../imports/ui/filters/uninvitedPipe';
 
 @NgModule({
   declarations: [
-    DisplayNamePipe
+    DisplayNamePipe,
+    UninvitedPipe
   ],
   imports: [
     BrowserModule,
