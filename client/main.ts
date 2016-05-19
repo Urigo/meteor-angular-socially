@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { UpgradeAdapter } from '@angular/upgrade';
+import { MaterialModule } from '@angular/material';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -39,7 +40,8 @@ import { UninvitedPipe } from '../imports/ui/filters/uninvitedPipe';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ]
 })
 class AppNg2Module {}
