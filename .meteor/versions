@@ -10,6 +10,8 @@ amplify@1.0.0
 autoupdate@1.2.8
 babel-compiler@6.6.4
 babel-runtime@0.1.8
+barbatus:typescript-compiler@0.5.10
+barbatus:typescript-runtime@0.1.2
 base64@1.0.8
 binary-heap@1.0.8
 blaze@2.1.7
@@ -62,6 +64,7 @@ modules-runtime@0.6.3
 mongo@1.1.7
 mongo-id@1.0.4
 mys:accounts-phone@0.0.21
+mys:typescript-ng-annotate@0.0.1
 npm-bcrypt@0.8.5
 npm-mongo@1.4.43
 oauth@1.1.10
