@@ -1,8 +1,8 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import ngMaterial from 'angular-material';
-import ngSanitize from 'angular-sanitize';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as ngMaterial from 'angular-material';
+import * as ngSanitize from 'angular-sanitize';
+import * as uiRouter from 'angular-ui-router';
 import 'ionic-sdk/release/js/ionic';
 import 'ionic-sdk/release/js/ionic-angular';
 import 'ionic-sdk/release/css/ionic.css';
