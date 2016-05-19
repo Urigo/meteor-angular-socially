@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
 import { Component } from '@angular/core';
+import { MeteorComponent } from 'angular2-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -16,9 +17,10 @@ import { DisplayNamePipe } from '../../filters/displayNamePipe';
     DisplayNamePipe
   ]
 })
-class PartyUninvited {
+class PartyUninvited extends MeteorComponent {
   constructor($scope) {
     'ngInject';
+    super();
 
     $scope.viewModel(this);
 
