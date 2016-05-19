@@ -1,11 +1,14 @@
+import 'reflect-metadata';
+import 'zone.js/dist/zone';
 import * as angular from 'angular';
+import { upgradeAdapter } from '../imports/ui/upgradeAdapter';
 
 import { Meteor } from 'meteor/meteor';
 
 import Socially from '../imports/ui/components/socially/socially';
 
 function onReady() {
-  angular.bootstrap(document, [
+  upgradeAdapter.bootstrap(document.body, [
     Socially.name
   ], {
     strictDi: true
