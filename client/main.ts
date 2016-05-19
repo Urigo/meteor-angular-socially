@@ -27,8 +27,12 @@ import { registerPartyUpload } from '../imports/ui/components/partyUpload/partyU
 import { registerPassword } from '../imports/ui/components/password/password';
 import { registerRegister } from '../imports/ui/components/register/register';
 import { registerSocially, SociallyNg1Module } from '../imports/ui/components/socially/socially';
+import { DisplayNamePipe } from '../imports/ui/filters/displayNamePipe';
 
 @NgModule({
+  declarations: [
+    DisplayNamePipe
+  ],
   imports: [
     BrowserModule,
     FormsModule
