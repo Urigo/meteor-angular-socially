@@ -1,9 +1,9 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import template from './partyImage.html';
 import { Images } from '../../../api/images';
-import { name as DisplayImageFilter } from '../../filters/displayImageFilter';
+import DisplayImageFilter from '../../filters/displayImageFilter';
 
 class PartyImage {
   constructor($scope, $reactive) {
@@ -26,14 +26,19 @@ class PartyImage {
 const name = 'partyImage';
 
 // create a module
-export default angular.module(name, [
+export const PartyImageNg1Module = angular.module(name, [
   angularMeteor,
-  DisplayImageFilter
-]).component(name, {
-  template,
-  bindings: {
-    images: '<'
-  },
-  controllerAs: name,
-  controller: PartyImage
-});
+  DisplayImageFilter.name
+]);
+
+export function registerPartyImage() {
+  PartyImageNg1Module
+    .component(name, {
+      template,
+      bindings: {
+        images: '<'
+      },
+      controllerAs: name,
+      controller: PartyImage
+    });
+}

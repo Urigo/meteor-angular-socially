@@ -1,5 +1,5 @@
-import angular from 'angular';
-import _ from 'underscore';
+import * as angular from 'angular';
+import * as _ from 'underscore';
 
 const name = 'uninvitedFilter';
 

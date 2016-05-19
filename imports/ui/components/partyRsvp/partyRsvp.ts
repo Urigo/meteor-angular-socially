@@ -1,6 +1,6 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import _ from 'underscore';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as _ from 'underscore';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -50,13 +50,18 @@ class PartyRsvp {
 const name = 'partyRsvp';
 
 // create a module
-export default angular.module(name, [
+export const PartyRsvpNg1Module = angular.module(name, [
   angularMeteor
-]).component(name, {
-  template,
-  controllerAs: name,
-  bindings: {
-    party: '<'
-  },
-  controller: PartyRsvp
-});
+])
+
+export function registerPartyRsvp() {
+  PartyRsvpNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      bindings: {
+        party: '<'
+      },
+      controller: PartyRsvp
+    });
+}

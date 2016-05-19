@@ -1,5 +1,5 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 import 'angular-simple-logger';
 import 'angular-google-maps';
 
@@ -47,15 +47,20 @@ class PartyMap {
 const name = 'partyMap';
 
 // create a module
-export default angular.module(name, [
+export const PartyMapNg1Module = angular.module(name, [
   angularMeteor,
   'nemLogging', // https://github.com/angular-ui/angular-google-maps/issues/1633
   'uiGmapgoogle-maps'
-]).component(name, {
-  template,
-  controllerAs: name,
-  bindings: {
-    location: '='
-  },
-  controller: PartyMap
-});
+]);
+
+export function registerPartyMap() {
+  PartyMapNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      bindings: {
+        location: '='
+      },
+      controller: PartyMap
+    });
+}
