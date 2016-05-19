@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
 import * as uiRouter from 'angular-ui-router';
+import { Component } from '@angular/core';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -9,7 +10,11 @@ import { Parties } from '../../../api/parties';
 import { PartyUninvitedNg1Module } from '../partyUninvited/partyUninvited';
 import { PartyMapNg1Module } from '../partyMap/partyMap';
 
-class PartyDetails {
+@Component({
+  template,
+  selector: 'party-details'
+})
+export class PartyDetails {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
 
