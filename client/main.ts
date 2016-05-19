@@ -46,6 +46,8 @@ class AppNg2Module {}
 
 const adapter = new UpgradeAdapter(AppNg2Module);
 
+adapter.upgradeNg1Component('partyMap');
+
 registerAuth(adapter);
 registerLogin(adapter);
 registerNavigation(adapter);
