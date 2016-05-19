@@ -1,6 +1,6 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import ngFileUpload from 'ng-file-upload';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as ngFileUpload from 'ng-file-upload';
 import 'angular-sortable-view';
 import 'ng-img-crop/compile/minified/ng-img-crop';
 import 'ng-img-crop/compile/minified/ng-img-crop.css';
@@ -76,16 +76,21 @@ class PartyUpload {
 const name = 'partyUpload';
 
 // create a module
-export default angular.module(name, [
+export const PartyUploadNg1Module = angular.module(name, [
   angularMeteor,
   ngFileUpload,
   'ngImgCrop',
   'angular-sortable-view'
-]).component(name, {
-  template,
-  bindings: {
-    files: '=?'
-  },
-  controllerAs: name,
-  controller: PartyUpload
-});
+]);
+
+export function registerPartyUpload() {
+  PartyUploadNg1Module
+    .component(name, {
+      template,
+      bindings: {
+        files: '=?'
+      },
+      controllerAs: name,
+      controller: PartyUpload
+    });
+}

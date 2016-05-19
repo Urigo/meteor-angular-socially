@@ -1,7 +1,7 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
-import utilsPagination from 'angular-utils-pagination';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
+import * as utilsPagination from 'angular-utils-pagination';
 
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { Meteor } from 'meteor/meteor';
@@ -9,14 +9,14 @@ import { Meteor } from 'meteor/meteor';
 import webTemplate from './web.html';
 import mobileTemplate from './mobile.html';
 import { Parties } from '../../../api/parties';
-import { name as PartiesSort } from '../partiesSort/partiesSort';
-import { name as PartiesMap } from '../partiesMap/partiesMap';
-import { name as PartyAddButton } from '../partyAddButton/partyAddButton';
-import { name as PartyRemove } from '../partyRemove/partyRemove';
-import { name as PartyCreator } from '../partyCreator/partyCreator';
-import { name as PartyRsvp } from '../partyRsvp/partyRsvp';
-import { name as PartyRsvpsList } from '../partyRsvpsList/partyRsvpsList';
-import { name as PartyImage } from '../partyImage/partyImage';
+import { PartiesSortNg1Module } from '../partiesSort/partiesSort';
+import { PartiesMapNg1Module } from '../partiesMap/partiesMap';
+import { PartyAddButtonNg1Module } from '../partyAddButton/partyAddButton';
+import { PartyRemoveNg1Module } from '../partyRemove/partyRemove';
+import { PartyCreatorNg1Module } from '../partyCreator/partyCreator';
+import { PartyRsvpNg1Module } from '../partyRsvp/partyRsvp';
+import { PartyRsvpsListNg1Module } from '../partyRsvpsList/partyRsvpsList';
+import { PartyImageNg1Module } from '../partyImage/partyImage';
 
 class PartiesList {
   constructor($scope, $reactive) {
@@ -76,24 +76,29 @@ const name = 'partiesList';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 
 // create a module
-export default angular.module(name, [
+export const PartiesListNg1Module = angular.module(name, [
   angularMeteor,
   uiRouter,
   utilsPagination,
-  PartiesSort,
-  PartiesMap,
-  PartyAddButton,
-  PartyRemove,
-  PartyCreator,
-  PartyRsvp,
-  PartyRsvpsList,
-  PartyImage
-]).component(name, {
-  template,
-  controllerAs: name,
-  controller: PartiesList
-})
-  .config(config);
+  PartiesSortNg1Module.name,
+  PartiesMapNg1Module.name,
+  PartyAddButtonNg1Module.name,
+  PartyRemoveNg1Module.name,
+  PartyCreatorNg1Module.name,
+  PartyRsvpNg1Module.name,
+  PartyRsvpsListNg1Module.name,
+  PartyImageNg1Module.name
+]);
+
+export function registerPartiesList() {
+  PartiesListNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      controller: PartiesList
+    })
+    .config(config);
+}
 
 function config($stateProvider) {
   'ngInject';
