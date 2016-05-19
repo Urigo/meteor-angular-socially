@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
 import * as uiRouter from 'angular-ui-router';
+import { Component } from '@angular/core';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -8,7 +9,15 @@ import * as template from './partyDetails.html';
 import { Parties } from '../../../api/parties';
 import PartyUninvited from '../partyUninvited/partyUninvited';
 import PartyMap from '../partyMap/partyMap';
+import { upgradeAdapter } from '../../upgradeAdapter';
 
+@Component({
+  template,
+  selector: 'party-details',
+  directives: [
+    PartyUninvited
+  ]
+})
 class PartyDetails {
   constructor($stateParams, $scope, $reactive) {
     'ngInject';
