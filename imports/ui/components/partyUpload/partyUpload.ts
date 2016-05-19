@@ -1,6 +1,6 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import ngFileUpload from 'ng-file-upload';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as ngFileUpload from 'ng-file-upload';
 import 'angular-sortable-view';
 import 'ng-img-crop/compile/minified/ng-img-crop';
 import 'ng-img-crop/compile/minified/ng-img-crop.css';
@@ -8,7 +8,7 @@ import 'ng-img-crop/compile/minified/ng-img-crop.css';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './partyUpload.html';
+import * as template from './partyUpload.html';
 import { Thumbs, upload } from '../../../api/images';
 
 class PartyUpload {

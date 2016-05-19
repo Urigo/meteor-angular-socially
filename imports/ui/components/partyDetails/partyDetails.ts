@@ -1,13 +1,13 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './partyDetails.html';
+import * as template from './partyDetails.html';
 import { Parties } from '../../../api/parties';
-import { name as PartyUninvited } from '../partyUninvited/partyUninvited';
-import { name as PartyMap } from '../partyMap/partyMap';
+import PartyUninvited from '../partyUninvited/partyUninvited';
+import PartyMap from '../partyMap/partyMap';
 
 class PartyDetails {
   constructor($stateParams, $scope, $reactive) {
@@ -69,8 +69,8 @@ const name = 'partyDetails';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  PartyUninvited,
-  PartyMap
+  PartyUninvited.name,
+  PartyMap.name
 ]).component(name, {
   template,
   controllerAs: name,

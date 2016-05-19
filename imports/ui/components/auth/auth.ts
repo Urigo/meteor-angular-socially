@@ -1,14 +1,14 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 
-import template from './auth.html';
-import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
-import { name as Login } from '../login/login';
-import { name as Register } from '../register/register';
-import { name as Password } from '../password/password';
+import * as template from './auth.html';
+import DisplayNameFilter from '../../filters/displayNameFilter';
+import Login from '../login/login';
+import Register from '../register/register';
+import Password from '../password/password';
 
 const name = 'auth';
 
@@ -36,10 +36,10 @@ class Auth {
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  DisplayNameFilter,
-  Login,
-  Register,
-  Password
+  DisplayNameFilter.name,
+  Login.name,
+  Register.name,
+  Password.name
 ]).component(name, {
   template,
   controllerAs: name,

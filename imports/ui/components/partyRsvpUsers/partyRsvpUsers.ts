@@ -1,10 +1,10 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './partyRsvpUsers.html';
-import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
+import * as template from './partyRsvpUsers.html';
+import DisplayNameFilter from '../../filters/displayNameFilter';
 
 class PartyRsvpUsers {
   getUserById(userId) {
@@ -17,7 +17,7 @@ const name = 'partyRsvpUsers';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  DisplayNameFilter
+  DisplayNameFilter.name
 ]).component(name, {
   template,
   controllerAs: name,

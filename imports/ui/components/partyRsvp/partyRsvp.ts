@@ -1,10 +1,10 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import _ from 'underscore';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as _ from 'underscore';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './partyRsvp.html';
+import * as template from './partyRsvp.html';
 
 class PartyRsvp {
   yes() {

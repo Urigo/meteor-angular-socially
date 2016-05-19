@@ -1,9 +1,9 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
-import buttonTemplate from './partyAddButton.html';
-import modalTemplate from './partyAddModal.html';
-import { name as PartyAdd } from '../partyAdd/partyAdd';
+import * as buttonTemplate from './partyAddButton.html';
+import * as modalTemplate from './partyAddModal.html';
+import PartyAdd from '../partyAdd/partyAdd';
 
 class PartyAddButton {
   constructor($mdDialog, $mdMedia) {
@@ -37,7 +37,7 @@ const name = 'partyAddButton';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  PartyAdd
+  PartyAdd.name
 ]).component(name, {
   template: buttonTemplate,
   controllerAs: name,

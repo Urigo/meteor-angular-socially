@@ -1,7 +1,7 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
-import template from './navigation.html';
+import * as template from './navigation.html';
 
 const name = 'navigation';
 

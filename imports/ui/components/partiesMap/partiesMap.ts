@@ -1,9 +1,9 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 import 'angular-simple-logger';
 import 'angular-google-maps';
 
-import template from './partiesMap.html';
+import * as template from './partiesMap.html';
 
 /**
  * PartiesMap component

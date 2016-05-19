@@ -1,4 +1,4 @@
-import angular from 'angular';
+import * as angular from 'angular';
 
 import { Meteor } from 'meteor/meteor';
 

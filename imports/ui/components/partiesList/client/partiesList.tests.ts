@@ -1,9 +1,9 @@
-import { name as PartiesList } from '../partiesList';
+import PartiesList from '../partiesList';
 import 'angular-mocks';
 
 describe('PartiesList', () => {
   beforeEach(() => {
-    window.module(PartiesList);
+    window.module(PartiesList.name);
   });
 
   describe('controller', () => {
@@ -11,7 +11,7 @@ describe('PartiesList', () => {
 
     beforeEach(() => {
       inject(($rootScope, $componentController) => {
-        controller = $componentController(PartiesList, {
+        controller = $componentController(PartiesList.name, {
           $scope: $rootScope.$new(true)
         });
       });

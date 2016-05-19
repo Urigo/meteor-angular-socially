@@ -1,11 +1,11 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './partyUninvited.html';
-import { name as UninvitedFilter } from '../../filters/uninvitedFilter';
-import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
+import * as template from './partyUninvited.html';
+import UninvitedFilter from '../../filters/uninvitedFilter';
+import DisplayNameFilter from '../../filters/displayNameFilter';
 
 class PartyUninvited {
   constructor($scope) {
@@ -38,8 +38,8 @@ const name = 'partyUninvited';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  UninvitedFilter,
-  DisplayNameFilter
+  UninvitedFilter.name,
+  DisplayNameFilter.name
 ]).component(name, {
   template,
   controllerAs: name,

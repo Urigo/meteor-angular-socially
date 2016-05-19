@@ -1,13 +1,13 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
-import webTemplate from './web.html';
-import { Login as LoginWeb } from './web';
-import mobileTemplate from './mobile.html';
-import { Login as LoginMobile } from './mobile';
+import * as webTemplate from './web.html';
+import LoginWeb from './web';
+import * as mobileTemplate from './mobile.html';
+import LoginMobile from './mobile';
 
 const name = 'login';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;

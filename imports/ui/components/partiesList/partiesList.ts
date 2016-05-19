@@ -1,22 +1,22 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
-import utilsPagination from 'angular-utils-pagination';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
+import * as utilsPagination from 'angular-utils-pagination';
 
 import { Counts } from 'meteor/tmeasday:publish-counts';
 import { Meteor } from 'meteor/meteor';
 
-import webTemplate from './web.html';
-import mobileTemplate from './mobile.html';
+import * as webTemplate from './web.html';
+import * as mobileTemplate from './mobile.html';
 import { Parties } from '../../../api/parties';
-import { name as PartiesSort } from '../partiesSort/partiesSort';
-import { name as PartiesMap } from '../partiesMap/partiesMap';
-import { name as PartyAddButton } from '../partyAddButton/partyAddButton';
-import { name as PartyRemove } from '../partyRemove/partyRemove';
-import { name as PartyCreator } from '../partyCreator/partyCreator';
-import { name as PartyRsvp } from '../partyRsvp/partyRsvp';
-import { name as PartyRsvpsList } from '../partyRsvpsList/partyRsvpsList';
-import { name as PartyImage } from '../partyImage/partyImage';
+import PartiesSort from '../partiesSort/partiesSort';
+import PartiesMap from '../partiesMap/partiesMap';
+import PartyAddButton from '../partyAddButton/partyAddButton';
+import PartyRemove from '../partyRemove/partyRemove';
+import PartyCreator from '../partyCreator/partyCreator';
+import PartyRsvp from '../partyRsvp/partyRsvp';
+import PartyRsvpsList from '../partyRsvpsList/partyRsvpsList';
+import PartyImage from '../partyImage/partyImage';
 
 class PartiesList {
   constructor($scope, $reactive) {
@@ -80,14 +80,14 @@ export default angular.module(name, [
   angularMeteor,
   uiRouter,
   utilsPagination,
-  PartiesSort,
-  PartiesMap,
-  PartyAddButton,
-  PartyRemove,
-  PartyCreator,
-  PartyRsvp,
-  PartyRsvpsList,
-  PartyImage
+  PartiesSort.name,
+  PartiesMap.name,
+  PartyAddButton.name,
+  PartyRemove.name,
+  PartyCreator.name,
+  PartyRsvp.name,
+  PartyRsvpsList.name,
+  PartyImage.name
 ]).component(name, {
   template,
   controllerAs: name,

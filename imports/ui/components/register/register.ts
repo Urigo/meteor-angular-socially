@@ -1,10 +1,10 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
 
 import { Accounts } from 'meteor/accounts-base';
 
-import template from './register.html';
+import * as template from './register.html';
 
 class Register {
   constructor($scope, $reactive, $state) {

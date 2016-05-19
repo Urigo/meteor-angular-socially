@@ -1,10 +1,10 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
-import template from './partyCreator.html';
-import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
+import * as template from './partyCreator.html';
+import DisplayNameFilter from '../../filters/displayNameFilter';
 
 /**
  * PartyCreator component
@@ -38,7 +38,7 @@ const name = 'partyCreator';
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  DisplayNameFilter
+  DisplayNameFilter.name
 ]).component(name, {
   template,
   controllerAs: name,
