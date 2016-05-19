@@ -3,7 +3,7 @@
 </h4>
 
 <md-list>
-  <md-list-item ng-repeat="user in users | uninvited:party" ng-click="invite(user)">
+  <md-list-item *ngFor="let user of users | uninvited:party" ng-click="invite(user)">
     <p>{{ user | displayName }}</p>
   </md-list-item>
   <md-list-item ng-if="(users | uninvited:party).length <= 0">
