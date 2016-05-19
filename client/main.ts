@@ -1,12 +1,12 @@
-import angular from 'angular';
+import * as angular from 'angular';
 
 import { Meteor } from 'meteor/meteor';
 
-import { name as Socially } from '../imports/ui/components/socially/socially';
+import Socially from '../imports/ui/components/socially/socially';
 
 function onReady() {
   angular.bootstrap(document, [
-    Socially
+    Socially.name
   ], {
     strictDi: true
   });
