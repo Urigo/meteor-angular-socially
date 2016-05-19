@@ -1,5 +1,6 @@
 import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
+import { Component } from '@angular/core';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -7,6 +8,10 @@ import * as template from './partyUninvited.html';
 import UninvitedFilter from '../../filters/uninvitedFilter';
 import DisplayNameFilter from '../../filters/displayNameFilter';
 
+@Component({
+  template,
+  selector: 'party-uninvited'
+})
 class PartyUninvited {
   constructor($scope) {
     'ngInject';
