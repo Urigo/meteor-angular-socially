@@ -1,11 +1,11 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyAdd.html';
 import { Parties } from '../../../api/parties';
-import { name as PartyUpload } from '../partyUpload/partyUpload';
+import { PartyUploadNg1Module } from '../partyUpload/partyUpload';
 
 class PartyAdd {
   constructor() {
@@ -31,14 +31,19 @@ class PartyAdd {
 const name = 'partyAdd';
 
 // create a module
-export default angular.module(name, [
+export const PartyAddNg1Module = angular.module(name, [
   angularMeteor,
-  PartyUpload
-]).component(name, {
-  template,
-  bindings: {
-    done: '&?'
-  },
-  controllerAs: name,
-  controller: PartyAdd
-});
+  PartyUploadNg1Module.name
+]);
+
+export function registerPartyAdd() {
+  PartyAddNg1Module
+    .component(name, {
+      template,
+      bindings: {
+        done: '&?'
+      },
+      controllerAs: name,
+      controller: PartyAdd
+    });
+}

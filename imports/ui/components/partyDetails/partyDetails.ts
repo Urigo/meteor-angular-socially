@@ -1,13 +1,13 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyDetails.html';
 import { Parties } from '../../../api/parties';
-import { name as PartyUninvited } from '../partyUninvited/partyUninvited';
-import { name as PartyMap } from '../partyMap/partyMap';
+import { PartyUninvitedNg1Module } from '../partyUninvited/partyUninvited';
+import { PartyMapNg1Module } from '../partyMap/partyMap';
 
 class PartyDetails {
   constructor($stateParams, $scope, $reactive) {
@@ -73,17 +73,22 @@ class PartyDetails {
 const name = 'partyDetails';
 
 // create a module
-export default angular.module(name, [
+export const PartyDetailsNg1Module = angular.module(name, [
   angularMeteor,
   uiRouter,
-  PartyUninvited,
-  PartyMap
-]).component(name, {
-  template,
-  controllerAs: name,
-  controller: PartyDetails
-})
-  .config(config);
+  PartyUninvitedNg1Module.name,
+  PartyMapNg1Module.name
+]);
+
+export function registerPartyDetails() {
+  PartyDetailsNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      controller: PartyDetails
+    })
+    .config(config);
+}
 
 function config($stateProvider) {
   'ngInject';

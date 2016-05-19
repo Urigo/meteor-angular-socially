@@ -1,29 +1,33 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
 
 import { Meteor } from 'meteor/meteor';
 
 import webTemplate from './web.html';
-import { Login as LoginWeb } from './web';
+import LoginWeb from './web';
 import mobileTemplate from './mobile.html';
-import { Login as LoginMobile } from './mobile';
+import LoginMobile from './mobile';
 
 const name = 'login';
 const template = Meteor.isCordova ? mobileTemplate : webTemplate;
 const controller = Meteor.isCordova ? LoginMobile : LoginWeb;
 
 // create a module
-export default angular.module(name, [
+export const LoginNg1Module = angular.module(name, [
   angularMeteor,
   uiRouter
-])
-  .component(name, {
-    template,
-    controller,
-    controllerAs: name
-  })
-  .config(config);
+]);
+
+export function registerLogin() {
+  LoginNg1Module
+    .component(name, {
+      template,
+      controller,
+      controllerAs: name
+    })
+    .config(config);
+}
 
 function config($stateProvider) {
   'ngInject';

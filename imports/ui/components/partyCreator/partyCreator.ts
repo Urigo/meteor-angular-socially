@@ -1,10 +1,10 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
 
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyCreator.html';
-import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
+import DisplayNameFilter from '../../filters/displayNameFilter';
 
 /**
  * PartyCreator component
@@ -38,14 +38,19 @@ class PartyCreator {
 const name = 'partyCreator';
 
 // create a module
-export default angular.module(name, [
+export const PartyCreatorNg1Module = angular.module(name, [
   angularMeteor,
-  DisplayNameFilter
-]).component(name, {
-  template,
-  controllerAs: name,
-  bindings: {
-    party: '<'
-  },
-  controller: PartyCreator
-});
+  DisplayNameFilter.name
+]);
+
+export function registerPartyCreator() {
+  PartyCreatorNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      bindings: {
+        party: '<'
+      },
+      controller: PartyCreator
+    });
+}

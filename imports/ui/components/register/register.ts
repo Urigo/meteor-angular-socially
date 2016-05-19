@@ -1,6 +1,6 @@
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import uiRouter from 'angular-ui-router';
+import * as angular from 'angular';
+import * as angularMeteor from 'angular-meteor';
+import * as uiRouter from 'angular-ui-router';
 
 import { Accounts } from 'meteor/accounts-base';
 
@@ -38,16 +38,20 @@ class Register {
 const name = 'register';
 
 // create a module
-export default angular.module(name, [
+export const RegisterNg1Module = angular.module(name, [
   angularMeteor,
   uiRouter
-])
-  .component(name, {
-    template,
-    controllerAs: name,
-    controller: Register
-  })
-  .config(config);
+]);
+
+export function registerRegister() {
+  RegisterNg1Module
+    .component(name, {
+      template,
+      controllerAs: name,
+      controller: Register
+    })
+    .config(config);
+}
 
 function config($stateProvider) {
   'ngInject';
