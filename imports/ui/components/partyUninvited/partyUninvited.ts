@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
 import { Meteor } from 'meteor/meteor';
 
 import template from './partyUninvited.html';
-import UninvitedFilter from '../../filters/uninvitedFilter';
-import DisplayNameFilter from '../../filters/displayNameFilter';
 
 @Component({
   template,
@@ -42,9 +40,7 @@ const name = 'partyUninvited';
 
 // create a module
 export const PartyUninvitedNg1Module = angular.module(name, [
-  angularMeteor,
-  UninvitedFilter.name,
-  DisplayNameFilter.name
+  angularMeteor
 ]);
 
 export function registerPartyUninvited() {
