@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
 import * as uiRouter from 'angular-ui-router';
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
 
 import { Meteor } from 'meteor/meteor';
@@ -21,8 +21,8 @@ import { upgradeAdapter } from '../../upgradeAdapter';
   ]
 })
 class PartyDetails extends MeteorComponent {
-  partyId: string;
-  party: Object = {};
+  @Input() partyId: string;
+  @Output() party: Object = {};
   users: Object[];
   isLoggedIn: boolean;
 
