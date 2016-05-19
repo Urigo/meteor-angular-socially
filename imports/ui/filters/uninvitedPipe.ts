@@ -9,7 +9,7 @@ const name = 'uninvited';
 export class UninvitedPipe {
   transform(users, party) {
     if (!party) {
-      return false;
+      return [];
     }
 
     return users.filter((user) => {
