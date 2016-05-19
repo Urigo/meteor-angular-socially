@@ -77,13 +77,8 @@ const name = 'partyDetails';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  PartyUninvited.name,
   PartyMap.name
-]).component(name, {
-  template,
-  controllerAs: name,
-  controller: PartyDetails
-})
+]).directive(name, upgradeAdapter.downgradeNg2Component(PartyDetails))
   .config(config);
 
 function config($stateProvider) {
