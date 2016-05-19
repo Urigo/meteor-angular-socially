@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import * as angularMeteor from 'angular-meteor';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
 
 import { Meteor } from 'meteor/meteor';
@@ -19,6 +19,8 @@ import { upgradeAdapter } from '../../upgradeAdapter';
   ]
 })
 class PartyUninvited extends MeteorComponent {
+  @Input() party: any;
+
   constructor() {
     super();
 
