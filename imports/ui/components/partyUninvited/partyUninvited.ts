@@ -8,6 +8,7 @@ import { Meteor } from 'meteor/meteor';
 import * as template from './partyUninvited.html';
 import { UninvitedPipe } from '../../filters/uninvitedPipe';
 import { DisplayNamePipe } from '../../filters/displayNamePipe';
+import { upgradeAdapter } from '../../upgradeAdapter';
 
 @Component({
   template,
@@ -44,11 +45,4 @@ const name = 'partyUninvited';
 // create a module
 export default angular.module(name, [
   angularMeteor
-]).component(name, {
-  template,
-  controllerAs: name,
-  bindings: {
-    party: '<'
-  },
-  controller: PartyUninvited
-});
+]).directive(name, upgradeAdapter.downgradeNg2Component(PartyUninvited));
