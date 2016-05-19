@@ -1,5 +1,3 @@
-import * as angular from 'angular';
-import * as angularMeteor from 'angular-meteor';
 import { Component, Input } from '@angular/core';
 import { MeteorComponent } from 'angular2-meteor';
 
@@ -33,16 +31,4 @@ export class PartyUninvited extends MeteorComponent {
       }
     );
   }
-}
-
-const name = 'partyUninvited';
-
-// create a module
-export const PartyUninvitedNg1Module = angular.module(name, [
-  angularMeteor
-]);
-
-export function registerPartyUninvited(adapter) {
-  PartyUninvitedNg1Module
-    .directive(name, adapter.downgradeNg2Component(PartyUninvited))
 }
