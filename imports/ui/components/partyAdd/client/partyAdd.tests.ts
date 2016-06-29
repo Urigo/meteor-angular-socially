@@ -26,7 +26,7 @@ describe('PartyAdd', () => {
         });
       });
 
-      spyOn(Meteor, 'user').and.returnValue(user);
+      spyOn(Meteor, 'userId').and.returnValue(user._id);
     });
 
     describe('reset()', () => {
