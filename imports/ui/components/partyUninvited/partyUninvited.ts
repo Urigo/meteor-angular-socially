@@ -40,14 +40,7 @@ export const PartyUninvitedNg1Module = angular.module(name, [
   angularMeteor
 ]);
 
-export function registerPartyUninvited() {
+export function registerPartyUninvited(adapter) {
   PartyUninvitedNg1Module
-    .component(name, {
-      template,
-      controllerAs: name,
-      bindings: {
-        party: '<'
-      },
-      controller: PartyUninvited
-    });
+    .directive(name, adapter.downgradeNg2Component(PartyUninvited))
 }
