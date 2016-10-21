@@ -12,16 +12,11 @@ import template from './partyUninvited.html';
   selector: 'party-uninvited'
 })
 export class PartyUninvited extends MeteorComponent {
-  constructor($scope) {
-    'ngInject';
+  constructor() {
     super();
 
-    $scope.viewModel(this);
-
-    this.helpers({
-      users() {
-        return Meteor.users.find({});
-      }
+    this.autorun(() => {
+      this.users = Meteor.users.find({}).fetch();
     });
   }
 
