@@ -61,6 +61,7 @@ To create our controller and model we start with `PartiesListCtrl` controller an
 ##### Changed client/main.js
 ```diff
 @@ -2,5 +2,17 @@
+   1  1 import angular from 'angular';
  ┊ 2┊ 2┊import angularMeteor from 'angular-meteor';
  ┊ 3┊ 3┊
  ┊ 4┊ 4┊angular.module('socially', [
