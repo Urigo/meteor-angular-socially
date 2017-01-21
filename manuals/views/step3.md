@@ -410,6 +410,7 @@ Because `PartiesList` module is in `imports` and it's lazy-loaded we have to imp
 ##### Changed client/main.js
 ```diff
 @@ -2,21 +2,9 @@
++┊ 1┊ 1┊import angular from 'angular';
  ┊ 2┊ 2┊import angularMeteor from 'angular-meteor';
  ┊ 3┊ 3┊import { Parties } from '../collections/parties';
  ┊ 4┊ 4┊
@@ -601,6 +602,7 @@ Here, change the main.js file like this : (remove "import { name as PartiesList 
 ##### Changed client/main.js
 ```diff
 @@ -2,9 +2,4 @@
++┊ 1┊ 1┊import angular from 'angular';
  ┊ 2┊ 2┊import angularMeteor from 'angular-meteor';
  ┊ 3┊ 3┊import { Parties } from '../collections/parties';
  ┊ 4┊ 4┊
