@@ -108,7 +108,7 @@ angular-meteor uses that process automatically so you do not need to add those e
 So let's change our code to the regular and shorter declaration way:
 
 [{]: <helper> (diff_step 2.3)
-#### Step 2.3: Remove the DI manual decleration
+#### Step 2.3: Remove the DI manual declaration
 
 ##### Changed client/main.js
 ```diff
