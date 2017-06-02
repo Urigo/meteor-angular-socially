@@ -450,7 +450,7 @@ As you can see in your browser, template is missing. It's also lazy-loaded.
 @@ -1,6 +1,8 @@
  ┊1┊1┊import angular from 'angular';
  ┊2┊2┊import angularMeteor from 'angular-meteor';
- ┊3┊3┊
+ ┊3┊3┊import { Parties } from '../../../../collections/parties';
 +┊ ┊4┊import templateUrl from './partiesList.html';
 +┊ ┊5┊
  ┊4┊6┊class PartiesList {
